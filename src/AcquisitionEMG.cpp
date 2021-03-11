@@ -5,6 +5,8 @@
  *      Author: Justin
  */
 
+//sup
+
 #include "AcquisitionEMG.h"
 
 AcquisitionEMG::AcquisitionEMG() {
