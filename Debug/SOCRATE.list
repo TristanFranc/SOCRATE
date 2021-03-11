@@ -987,11 +987,11 @@ int main(void) {
  8000888:	2206      	movs	r2, #6
  800088a:	4914      	ldr	r1, [pc, #80]	; (80008dc <main+0xb0>)
  800088c:	f7ff ff72 	bl	8000774 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h>
-	timerTest->enablePWM(1,150);
+	timerTest->enablePWM(1,200);
  8000890:	4b11      	ldr	r3, [pc, #68]	; (80008d8 <main+0xac>)
  8000892:	6818      	ldr	r0, [r3, #0]
  8000894:	23ff      	movs	r3, #255	; 0xff
- 8000896:	2296      	movs	r2, #150	; 0x96
+ 8000896:	22c8      	movs	r2, #200	; 0xc8
  8000898:	2101      	movs	r1, #1
  800089a:	f7ff fdc3 	bl	8000424 <_ZN5Timer9enablePWMEhmt>
 	//timerTest->setPeriod(100);
