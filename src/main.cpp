@@ -1,3 +1,10 @@
+/*
+ * @file       main.cpp
+ * @brief
+ * @author    Tristan Franc & Justin Bélanger
+ * @version    0.01
+ * @date       4 mars 2019
+ */
 
 //Déclarations spécifiques au matériel
 #include "hardwareConfig.h"
@@ -22,9 +29,9 @@ int main(void) {
 	stm32F446->SysClockConfig();
 	stm32F446->GPIO_Config(GPIOA,5,OUTPUT);
 
-	timerTest = new Timer(TIM4, 100000, false);
+	timerTest = new Timer(TIM4, 50000, false);
 	stm32F446->GPIO_Config(GPIOB,6,ALTERNATE,2);// met pbs en modee pwm
-	//timerTest->enablePWM(1,90);
+	timerTest->enablePWM(1,200);
 	//timerTest->setPeriod(100);
 	timerTest->start();
 	while(1)
@@ -35,9 +42,7 @@ int main(void) {
 	}
 }
 
-/**
- * Gestionnaire pour l'interruption du timer 5
- */
+
 
 
 
