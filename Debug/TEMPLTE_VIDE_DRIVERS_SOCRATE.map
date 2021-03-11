@@ -1,7 +1,7 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libstdc++_nano.a(del_ops.o)
-                              src/hardwareConfig.o (operator delete(void*, unsigned int))
+                              src/Timer_PWM.o (operator delete(void*, unsigned int))
 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libstdc++_nano.a(new_op.o)
                               src/main.o (operator new(unsigned int))
 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libstdc++_nano.a(new_handler.o)
@@ -6034,6 +6034,134 @@ Discarded input sections
  .debug_frame   0x0000000000000000      0x134 StdPeriph_Driver/src/stm32f4xx_wwdg.o
  .ARM.attributes
                 0x0000000000000000       0x39 StdPeriph_Driver/src/stm32f4xx_wwdg.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .group         0x0000000000000000        0xc src/Timer_PWM.o
+ .text          0x0000000000000000        0x0 src/Timer_PWM.o
+ .data          0x0000000000000000        0x0 src/Timer_PWM.o
+ .bss           0x0000000000000000        0x0 src/Timer_PWM.o
+ .text.NVIC_EnableIRQ
+                0x0000000000000000       0x34 src/Timer_PWM.o
+ .text.NVIC_SetPriority
+                0x0000000000000000       0x58 src/Timer_PWM.o
+ .text._ZN5TimerC2EP11TIM_TypeDefmb
+                0x0000000000000000       0xe0 src/Timer_PWM.o
+ .text._ZN5TimerD2Ev
+                0x0000000000000000       0x20 src/Timer_PWM.o
+ .text._ZN5TimerD0Ev
+                0x0000000000000000       0x20 src/Timer_PWM.o
+ .text._ZN5Timer9setPeriodEm
+                0x0000000000000000       0x74 src/Timer_PWM.o
+ .text._ZN5Timer9enablePWMEhmt
+                0x0000000000000000      0x1c4 src/Timer_PWM.o
+ .text._ZN5Timer9setPWMLvlEht
+                0x0000000000000000      0x124 src/Timer_PWM.o
+ .text._ZN5Timer5startEv
+                0x0000000000000000       0x28 src/Timer_PWM.o
+ .text._ZN5Timer4stopEv
+                0x0000000000000000       0x28 src/Timer_PWM.o
+ .rodata        0x0000000000000000       0x10 src/Timer_PWM.o
+ .debug_info    0x0000000000000000      0xd92 src/Timer_PWM.o
+ .debug_abbrev  0x0000000000000000      0x305 src/Timer_PWM.o
+ .debug_aranges
+                0x0000000000000000       0x68 src/Timer_PWM.o
+ .debug_ranges  0x0000000000000000       0x58 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x206 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0xb4a src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x34e src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x65 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x3b src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x1c src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x22 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x8e src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x51 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0xef src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x6a src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x1d1 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x34 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x26 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0xe43 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000     0x9f98 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x448 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0xb2 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x477 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0xb5 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x41c src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x341 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x2ba src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x64 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x100 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x76d src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x59e src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x342 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x36c src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x114 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x73b src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x223 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x34 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x82 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x144 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0xc3 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x3cf src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x188 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x149 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x21e src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x23a src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x359 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x287 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x29a src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x142 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x191 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000       0x35 src/Timer_PWM.o
+ .debug_line    0x0000000000000000      0x8a4 src/Timer_PWM.o
+ .debug_str     0x0000000000000000    0x6e64d src/Timer_PWM.o
+ .comment       0x0000000000000000       0x7c src/Timer_PWM.o
+ .debug_frame   0x0000000000000000      0x194 src/Timer_PWM.o
+ .ARM.attributes
+                0x0000000000000000       0x39 src/Timer_PWM.o
  .group         0x0000000000000000        0xc src/hardwareConfig.o
  .group         0x0000000000000000        0xc src/hardwareConfig.o
  .group         0x0000000000000000        0xc src/hardwareConfig.o
@@ -6083,8 +6211,10 @@ Discarded input sections
  .text          0x0000000000000000        0x0 src/hardwareConfig.o
  .data          0x0000000000000000        0x0 src/hardwareConfig.o
  .bss           0x0000000000000000        0x0 src/hardwareConfig.o
+ .debug_macro   0x0000000000000000      0xb4a src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0x65 src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0x3b src/hardwareConfig.o
+ .debug_macro   0x0000000000000000       0x1c src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0x22 src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0x8e src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0x51 src/hardwareConfig.o
@@ -6093,6 +6223,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1df src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0x34 src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0x26 src/hardwareConfig.o
+ .debug_macro   0x0000000000000000      0xe43 src/hardwareConfig.o
  .debug_macro   0x0000000000000000     0x9f98 src/hardwareConfig.o
  .debug_macro   0x0000000000000000      0x448 src/hardwareConfig.o
  .debug_macro   0x0000000000000000       0xb2 src/hardwareConfig.o
@@ -6435,6 +6566,7 @@ LOAD StdPeriph_Driver/src/stm32f4xx_syscfg.o
 LOAD StdPeriph_Driver/src/stm32f4xx_tim.o
 LOAD StdPeriph_Driver/src/stm32f4xx_usart.o
 LOAD StdPeriph_Driver/src/stm32f4xx_wwdg.o
+LOAD src/Timer_PWM.o
 LOAD src/hardwareConfig.o
 LOAD src/main.o
 LOAD src/syscalls.o
@@ -6862,55 +6994,52 @@ OUTPUT(TEMPLTE_VIDE_DRIVERS_SOCRATE.elf elf32-littlearm)
  .debug_ranges  0x0000000000000040       0xa0 src/syscalls.o
  .debug_ranges  0x00000000000000e0       0x20 startup/startup_stm32.o
 
-.debug_macro    0x0000000000000000     0x3332
+.debug_macro    0x0000000000000000     0x1989
  .debug_macro   0x0000000000000000      0x202 src/hardwareConfig.o
- .debug_macro   0x0000000000000202      0xb4a src/hardwareConfig.o
- .debug_macro   0x0000000000000d4c       0x1c src/hardwareConfig.o
- .debug_macro   0x0000000000000d68      0xe43 src/hardwareConfig.o
- .debug_macro   0x0000000000001bab       0x16 src/hardwareConfig.o
- .debug_macro   0x0000000000001bc1      0x202 src/main.o
- .debug_macro   0x0000000000001dc3      0x243 src/syscalls.o
- .debug_macro   0x0000000000002006       0x40 src/syscalls.o
- .debug_macro   0x0000000000002046       0x18 src/syscalls.o
- .debug_macro   0x000000000000205e       0x94 src/syscalls.o
- .debug_macro   0x00000000000020f2       0x3c src/syscalls.o
- .debug_macro   0x000000000000212e       0x34 src/syscalls.o
- .debug_macro   0x0000000000002162       0x57 src/syscalls.o
- .debug_macro   0x00000000000021b9      0x174 src/syscalls.o
- .debug_macro   0x000000000000232d      0x330 src/syscalls.o
- .debug_macro   0x000000000000265d       0x52 src/syscalls.o
- .debug_macro   0x00000000000026af       0x1f src/syscalls.o
- .debug_macro   0x00000000000026ce       0x43 src/syscalls.o
- .debug_macro   0x0000000000002711       0x20 src/syscalls.o
- .debug_macro   0x0000000000002731      0x1a3 src/syscalls.o
- .debug_macro   0x00000000000028d4       0x10 src/syscalls.o
- .debug_macro   0x00000000000028e4       0x35 src/syscalls.o
- .debug_macro   0x0000000000002919       0x10 src/syscalls.o
- .debug_macro   0x0000000000002929       0x10 src/syscalls.o
- .debug_macro   0x0000000000002939       0x10 src/syscalls.o
- .debug_macro   0x0000000000002949       0x1c src/syscalls.o
- .debug_macro   0x0000000000002965       0x52 src/syscalls.o
- .debug_macro   0x00000000000029b7       0x40 src/syscalls.o
- .debug_macro   0x00000000000029f7       0x10 src/syscalls.o
- .debug_macro   0x0000000000002a07       0x40 src/syscalls.o
- .debug_macro   0x0000000000002a47       0xd7 src/syscalls.o
- .debug_macro   0x0000000000002b1e       0x1c src/syscalls.o
- .debug_macro   0x0000000000002b3a       0x3d src/syscalls.o
- .debug_macro   0x0000000000002b77       0x35 src/syscalls.o
- .debug_macro   0x0000000000002bac      0x122 src/syscalls.o
- .debug_macro   0x0000000000002cce       0x16 src/syscalls.o
- .debug_macro   0x0000000000002ce4       0x16 src/syscalls.o
- .debug_macro   0x0000000000002cfa       0x29 src/syscalls.o
- .debug_macro   0x0000000000002d23       0x10 src/syscalls.o
- .debug_macro   0x0000000000002d33      0x241 src/syscalls.o
- .debug_macro   0x0000000000002f74       0x1c src/syscalls.o
- .debug_macro   0x0000000000002f90       0x10 src/syscalls.o
- .debug_macro   0x0000000000002fa0       0x10 src/syscalls.o
- .debug_macro   0x0000000000002fb0       0x16 src/syscalls.o
- .debug_macro   0x0000000000002fc6      0x145 src/syscalls.o
- .debug_macro   0x000000000000310b      0x189 src/syscalls.o
- .debug_macro   0x0000000000003294       0x16 src/syscalls.o
- .debug_macro   0x00000000000032aa       0x88 src/syscalls.o
+ .debug_macro   0x0000000000000202       0x16 src/hardwareConfig.o
+ .debug_macro   0x0000000000000218      0x202 src/main.o
+ .debug_macro   0x000000000000041a      0x243 src/syscalls.o
+ .debug_macro   0x000000000000065d       0x40 src/syscalls.o
+ .debug_macro   0x000000000000069d       0x18 src/syscalls.o
+ .debug_macro   0x00000000000006b5       0x94 src/syscalls.o
+ .debug_macro   0x0000000000000749       0x3c src/syscalls.o
+ .debug_macro   0x0000000000000785       0x34 src/syscalls.o
+ .debug_macro   0x00000000000007b9       0x57 src/syscalls.o
+ .debug_macro   0x0000000000000810      0x174 src/syscalls.o
+ .debug_macro   0x0000000000000984      0x330 src/syscalls.o
+ .debug_macro   0x0000000000000cb4       0x52 src/syscalls.o
+ .debug_macro   0x0000000000000d06       0x1f src/syscalls.o
+ .debug_macro   0x0000000000000d25       0x43 src/syscalls.o
+ .debug_macro   0x0000000000000d68       0x20 src/syscalls.o
+ .debug_macro   0x0000000000000d88      0x1a3 src/syscalls.o
+ .debug_macro   0x0000000000000f2b       0x10 src/syscalls.o
+ .debug_macro   0x0000000000000f3b       0x35 src/syscalls.o
+ .debug_macro   0x0000000000000f70       0x10 src/syscalls.o
+ .debug_macro   0x0000000000000f80       0x10 src/syscalls.o
+ .debug_macro   0x0000000000000f90       0x10 src/syscalls.o
+ .debug_macro   0x0000000000000fa0       0x1c src/syscalls.o
+ .debug_macro   0x0000000000000fbc       0x52 src/syscalls.o
+ .debug_macro   0x000000000000100e       0x40 src/syscalls.o
+ .debug_macro   0x000000000000104e       0x10 src/syscalls.o
+ .debug_macro   0x000000000000105e       0x40 src/syscalls.o
+ .debug_macro   0x000000000000109e       0xd7 src/syscalls.o
+ .debug_macro   0x0000000000001175       0x1c src/syscalls.o
+ .debug_macro   0x0000000000001191       0x3d src/syscalls.o
+ .debug_macro   0x00000000000011ce       0x35 src/syscalls.o
+ .debug_macro   0x0000000000001203      0x122 src/syscalls.o
+ .debug_macro   0x0000000000001325       0x16 src/syscalls.o
+ .debug_macro   0x000000000000133b       0x16 src/syscalls.o
+ .debug_macro   0x0000000000001351       0x29 src/syscalls.o
+ .debug_macro   0x000000000000137a       0x10 src/syscalls.o
+ .debug_macro   0x000000000000138a      0x241 src/syscalls.o
+ .debug_macro   0x00000000000015cb       0x1c src/syscalls.o
+ .debug_macro   0x00000000000015e7       0x10 src/syscalls.o
+ .debug_macro   0x00000000000015f7       0x10 src/syscalls.o
+ .debug_macro   0x0000000000001607       0x16 src/syscalls.o
+ .debug_macro   0x000000000000161d      0x145 src/syscalls.o
+ .debug_macro   0x0000000000001762      0x189 src/syscalls.o
+ .debug_macro   0x00000000000018eb       0x16 src/syscalls.o
+ .debug_macro   0x0000000000001901       0x88 src/syscalls.o
 
 .debug_line     0x0000000000000000     0x1775
  .debug_line    0x0000000000000000      0x7fc src/hardwareConfig.o
