@@ -10,6 +10,7 @@
 
 #include <stdint-gcc.h>
 #include "stm32f4xx.h"
+#include "system_stm32f4xx.h"
 
 
 class Timer
@@ -23,7 +24,7 @@ public:
 	/*
 	 * Destructeur
 	 */
-	virtual ~Timer();
+	virtual ~Timer(){};
 	/**
 	 * Configure la période du timer en us
 	 * @param La période du timer en us (de 2 à 65535000 us)

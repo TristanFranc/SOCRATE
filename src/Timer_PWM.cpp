@@ -49,9 +49,7 @@ Timer::Timer(TIM_TypeDef * tmr, uint32_t us,bool interruptEnable)
 	}
 	setPeriod(us);
 }
-Timer::~Timer() {
 
-}
 void Timer::setPeriod(uint32_t us)
 {
 	uint32_t divFactor = 2000000;
@@ -69,6 +67,7 @@ void Timer::setPeriod(uint32_t us)
 	stop();
 	timer->PSC = SystemCoreClock / divFactor - 1;
 	timer->ARR = reload;
+
 }
 void Timer::enablePWM(uint8_t ch, uint32_t freq, uint16_t range)
 {
@@ -81,32 +80,32 @@ void Timer::enablePWM(uint8_t ch, uint32_t freq, uint16_t range)
 	timer->PSC = SystemCoreClock / (freq*2*range) - 1;
 
 	switch(ch)
-		{
-		case 1  :
-			timer->CCMR1 &= ~TIM_CCMR1_OC1M;
-			timer->CCMR1 |= TIM_CCMR1_OC1M_2 | TIM_CCMR1_OC1M_1;
-			timer->CCR1 = range>>1;
-			timer->CCER |= TIM_CCER_CC1E;
-			break;
-		case 2  :
-			timer->CCMR1 &= ~TIM_CCMR1_OC2M;
-			timer->CCMR1 |= TIM_CCMR1_OC2M_2 | TIM_CCMR1_OC2M_1;
-			timer->CCR2 = range>>1;
-			timer->CCER |= TIM_CCER_CC2E;
-			break;
-		case 3  :
-			timer->CCMR2 &= ~TIM_CCMR2_OC3M;
-			timer->CCMR2 |= TIM_CCMR2_OC3M_2 | TIM_CCMR2_OC3M_1;
-			timer->CCR3 = range>>1;
-			timer->CCER |= TIM_CCER_CC3E;
-			break;
-		case 4  :
-			timer->CCMR2 &= ~TIM_CCMR2_OC4M;
-			timer->CCMR2 |= TIM_CCMR2_OC4M_2 | TIM_CCMR2_OC4M_1;
-			timer->CCR4 = range>>1;
-			timer->CCER |= TIM_CCER_CC4E;
-			break;
-		}
+	{
+	case 1  :
+		timer->CCMR1 &= ~TIM_CCMR1_OC1M;
+		timer->CCMR1 |= TIM_CCMR1_OC1M_2 | TIM_CCMR1_OC1M_1;
+		timer->CCR1 = range>>1;
+		timer->CCER |= TIM_CCER_CC1E;
+		break;
+	case 2  :
+		timer->CCMR1 &= ~TIM_CCMR1_OC2M;
+		timer->CCMR1 |= TIM_CCMR1_OC2M_2 | TIM_CCMR1_OC2M_1;
+		timer->CCR2 = range>>1;
+		timer->CCER |= TIM_CCER_CC2E;
+		break;
+	case 3  :
+		timer->CCMR2 &= ~TIM_CCMR2_OC3M;
+		timer->CCMR2 |= TIM_CCMR2_OC3M_2 | TIM_CCMR2_OC3M_1;
+		timer->CCR3 = range>>1;
+		timer->CCER |= TIM_CCER_CC3E;
+		break;
+	case 4  :
+		timer->CCMR2 &= ~TIM_CCMR2_OC4M;
+		timer->CCMR2 |= TIM_CCMR2_OC4M_2 | TIM_CCMR2_OC4M_1;
+		timer->CCR4 = range>>1;
+		timer->CCER |= TIM_CCER_CC4E;
+		break;
+	}
 }
 void Timer::setPWMLvl(uint8_t ch, uint16_t lvl)
 {
