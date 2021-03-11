@@ -35,15 +35,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  15 .debug_ranges 00000178  00000000  00000000  00023d48  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00003c8b  00000000  00000000  00023ec0  2**0
+ 16 .debug_macro  00003141  00000000  00000000  00023ec0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000027e4  00000000  00000000  00027b4b  2**0
+ 17 .debug_line   000027a5  00000000  00000000  00027001  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    00073d96  00000000  00000000  0002a32f  2**0
+ 18 .debug_str    00073d96  00000000  00000000  000297a6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  0009e0c5  2**0
+ 19 .comment      0000007b  00000000  00000000  0009d53c  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000944  00000000  00000000  0009e140  2**2
+ 20 .debug_frame  00000944  00000000  00000000  0009d5b8  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -705,6 +705,12 @@ void Timer::stop()
  8000636:	4770      	bx	lr
 
 08000638 <_ZN14hardwareConfigC1Ev>:
+ *      Author: 201723940
+ */
+
+#include "hardwareConfig.h"
+
+hardwareConfig::hardwareConfig() {
  8000638:	b480      	push	{r7}
  800063a:	b083      	sub	sp, #12
  800063c:	af00      	add	r7, sp, #0
@@ -712,6 +718,8 @@ void Timer::stop()
  8000640:	4a04      	ldr	r2, [pc, #16]	; (8000654 <_ZN14hardwareConfigC1Ev+0x1c>)
  8000642:	687b      	ldr	r3, [r7, #4]
  8000644:	601a      	str	r2, [r3, #0]
+
+}
  8000646:	687b      	ldr	r3, [r7, #4]
  8000648:	4618      	mov	r0, r3
  800064a:	370c      	adds	r7, #12
@@ -721,6 +729,8 @@ void Timer::stop()
  8000654:	08000e40 	.word	0x08000e40
 
 08000658 <_ZN14hardwareConfigD1Ev>:
+
+hardwareConfig::~hardwareConfig() {
  8000658:	b480      	push	{r7}
  800065a:	b083      	sub	sp, #12
  800065c:	af00      	add	r7, sp, #0
@@ -728,6 +738,8 @@ void Timer::stop()
  8000660:	4a04      	ldr	r2, [pc, #16]	; (8000674 <_ZN14hardwareConfigD1Ev+0x1c>)
  8000662:	687b      	ldr	r3, [r7, #4]
  8000664:	601a      	str	r2, [r3, #0]
+
+}
  8000666:	687b      	ldr	r3, [r7, #4]
  8000668:	4618      	mov	r0, r3
  800066a:	370c      	adds	r7, #12
@@ -737,10 +749,12 @@ void Timer::stop()
  8000674:	08000e40 	.word	0x08000e40
 
 08000678 <_ZN14hardwareConfigD0Ev>:
+hardwareConfig::~hardwareConfig() {
  8000678:	b580      	push	{r7, lr}
  800067a:	b082      	sub	sp, #8
  800067c:	af00      	add	r7, sp, #0
  800067e:	6078      	str	r0, [r7, #4]
+}
  8000680:	6878      	ldr	r0, [r7, #4]
  8000682:	f7ff ffe9 	bl	8000658 <_ZN14hardwareConfigD1Ev>
  8000686:	2104      	movs	r1, #4
@@ -753,13 +767,21 @@ void Timer::stop()
  8000696:	bd80      	pop	{r7, pc}
 
 08000698 <_ZN14hardwareConfig14SysClockConfigEv>:
+// gère l'initialisation de base pour assurer le fonctionnement de base du nucle
+//****dois être la première chose appeler dans le main.
+void hardwareConfig::SysClockConfig(void)
+{
  8000698:	b480      	push	{r7}
  800069a:	b083      	sub	sp, #12
  800069c:	af00      	add	r7, sp, #0
  800069e:	6078      	str	r0, [r7, #4]
+	// active le hse
+	RCC->CR = RCC_CR_HSEON;
  80006a0:	4b30      	ldr	r3, [pc, #192]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006a2:	f44f 3280 	mov.w	r2, #65536	; 0x10000
  80006a6:	601a      	str	r2, [r3, #0]
+	//attendre que le cristal soit activer
+	while(!(RCC->CR & RCC_CR_HSERDY));
  80006a8:	4b2e      	ldr	r3, [pc, #184]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006aa:	681b      	ldr	r3, [r3, #0]
  80006ac:	f403 3300 	and.w	r3, r3, #131072	; 0x20000
@@ -771,44 +793,68 @@ void Timer::stop()
  80006ba:	2b00      	cmp	r3, #0
  80006bc:	d000      	beq.n	80006c0 <_ZN14hardwareConfig14SysClockConfigEv+0x28>
  80006be:	e7f3      	b.n	80006a8 <_ZN14hardwareConfig14SysClockConfigEv+0x10>
+
+	//set le power enable et le regulateur de tension
+	RCC->APB1ENR |= RCC_APB1ENR_PWREN;
  80006c0:	4b28      	ldr	r3, [pc, #160]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006c2:	6c1b      	ldr	r3, [r3, #64]	; 0x40
  80006c4:	4a27      	ldr	r2, [pc, #156]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006c6:	f043 5380 	orr.w	r3, r3, #268435456	; 0x10000000
  80006ca:	6413      	str	r3, [r2, #64]	; 0x40
+	PWR->CR |= PWR_CR_VOS; // corresponds à la valeure reset "11"
  80006cc:	4b26      	ldr	r3, [pc, #152]	; (8000768 <_ZN14hardwareConfig14SysClockConfigEv+0xd0>)
  80006ce:	681b      	ldr	r3, [r3, #0]
  80006d0:	4a25      	ldr	r2, [pc, #148]	; (8000768 <_ZN14hardwareConfig14SysClockConfigEv+0xd0>)
  80006d2:	f443 4340 	orr.w	r3, r3, #49152	; 0xc000
  80006d6:	6013      	str	r3, [r2, #0]
+
+	// configuration du flash
+	FLASH->ACR |= FLASH_ACR_ICEN | FLASH_ACR_DCEN | FLASH_ACR_PRFTEN |FLASH_ACR_LATENCY_5WS;
  80006d8:	4b24      	ldr	r3, [pc, #144]	; (800076c <_ZN14hardwareConfig14SysClockConfigEv+0xd4>)
  80006da:	681b      	ldr	r3, [r3, #0]
  80006dc:	4a23      	ldr	r2, [pc, #140]	; (800076c <_ZN14hardwareConfig14SysClockConfigEv+0xd4>)
  80006de:	f443 63e0 	orr.w	r3, r3, #1792	; 0x700
  80006e2:	f043 0305 	orr.w	r3, r3, #5
  80006e6:	6013      	str	r3, [r2, #0]
+
+	// configuration des prescalers
+	//AHB PR
+	RCC->CFGR|= RCC_CFGR_HPRE_DIV1;
  80006e8:	4b1e      	ldr	r3, [pc, #120]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006ea:	4a1e      	ldr	r2, [pc, #120]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006ec:	689b      	ldr	r3, [r3, #8]
  80006ee:	6093      	str	r3, [r2, #8]
+
+	//APB1
+	RCC->CFGR |= RCC_CFGR_PPRE1_DIV4; //division par 4
  80006f0:	4b1c      	ldr	r3, [pc, #112]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006f2:	689b      	ldr	r3, [r3, #8]
  80006f4:	4a1b      	ldr	r2, [pc, #108]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006f6:	f443 53a0 	orr.w	r3, r3, #5120	; 0x1400
  80006fa:	6093      	str	r3, [r2, #8]
+
+	//APB1
+	RCC->CFGR |= RCC_CFGR_PPRE2_DIV2; //division par 4
  80006fc:	4b19      	ldr	r3, [pc, #100]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  80006fe:	689b      	ldr	r3, [r3, #8]
  8000700:	4a18      	ldr	r2, [pc, #96]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  8000702:	f443 4300 	orr.w	r3, r3, #32768	; 0x8000
  8000706:	6093      	str	r3, [r2, #8]
+
+	//configuration du pll
+	RCC->PLLCFGR =(PLL_M << 0) |(PLL_N << 6) | (PLL_P << 16) | (RCC_PLLCFGR_PLLSRC_HSE);
  8000708:	4b16      	ldr	r3, [pc, #88]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  800070a:	4a19      	ldr	r2, [pc, #100]	; (8000770 <_ZN14hardwareConfig14SysClockConfigEv+0xd8>)
  800070c:	605a      	str	r2, [r3, #4]
+
+	// activerle pll et attendre qu'il soit pret
+	RCC->CR |= RCC_CR_PLLON;
  800070e:	4b15      	ldr	r3, [pc, #84]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  8000710:	681b      	ldr	r3, [r3, #0]
  8000712:	4a14      	ldr	r2, [pc, #80]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  8000714:	f043 7380 	orr.w	r3, r3, #16777216	; 0x1000000
  8000718:	6013      	str	r3, [r2, #0]
+	while(!(RCC->CR & RCC_CR_PLLRDY));
  800071a:	4b12      	ldr	r3, [pc, #72]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  800071c:	681b      	ldr	r3, [r3, #0]
  800071e:	f003 7300 	and.w	r3, r3, #33554432	; 0x2000000
@@ -820,11 +866,15 @@ void Timer::stop()
  800072c:	2b00      	cmp	r3, #0
  800072e:	d000      	beq.n	8000732 <_ZN14hardwareConfig14SysClockConfigEv+0x9a>
  8000730:	e7f3      	b.n	800071a <_ZN14hardwareConfig14SysClockConfigEv+0x82>
+
+	//Sélectionner la source de la clock (pll dans ce cas ci)
+	RCC-> CFGR |= RCC_CFGR_SW_PLL;
  8000732:	4b0c      	ldr	r3, [pc, #48]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  8000734:	689b      	ldr	r3, [r3, #8]
  8000736:	4a0b      	ldr	r2, [pc, #44]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  8000738:	f043 0302 	orr.w	r3, r3, #2
  800073c:	6093      	str	r3, [r2, #8]
+	while((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL);
  800073e:	4b09      	ldr	r3, [pc, #36]	; (8000764 <_ZN14hardwareConfig14SysClockConfigEv+0xcc>)
  8000740:	689b      	ldr	r3, [r3, #8]
  8000742:	f003 030c 	and.w	r3, r3, #12
@@ -836,6 +886,7 @@ void Timer::stop()
  8000750:	2b00      	cmp	r3, #0
  8000752:	d000      	beq.n	8000756 <_ZN14hardwareConfig14SysClockConfigEv+0xbe>
  8000754:	e7f3      	b.n	800073e <_ZN14hardwareConfig14SysClockConfigEv+0xa6>
+}
  8000756:	bf00      	nop
  8000758:	370c      	adds	r7, #12
  800075a:	46bd      	mov	sp, r7
@@ -848,6 +899,11 @@ void Timer::stop()
  8000770:	00402d04 	.word	0x00402d04
 
 08000774 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h>:
+
+//Permet de configurer facilement les modes de chaques io
+void hardwareConfig::GPIO_Config(GPIO_TypeDef* gpio, uint8_t pin, _IO_MODES_t mode,
+		uint8_t alterFunction)
+{
  8000774:	b480      	push	{r7}
  8000776:	b085      	sub	sp, #20
  8000778:	af00      	add	r7, sp, #0
@@ -859,36 +915,45 @@ void Timer::stop()
  8000784:	71fb      	strb	r3, [r7, #7]
  8000786:	4613      	mov	r3, r2
  8000788:	71bb      	strb	r3, [r7, #6]
+	if (gpio == GPIOA)
  800078a:	68bb      	ldr	r3, [r7, #8]
  800078c:	4a23      	ldr	r2, [pc, #140]	; (800081c <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xa8>)
  800078e:	4293      	cmp	r3, r2
  8000790:	d105      	bne.n	800079e <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0x2a>
+		RCC->AHB1ENR |= (RCC_AHB1ENR_GPIOAEN);
  8000792:	4b23      	ldr	r3, [pc, #140]	; (8000820 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xac>)
  8000794:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  8000796:	4a22      	ldr	r2, [pc, #136]	; (8000820 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xac>)
  8000798:	f043 0301 	orr.w	r3, r3, #1
  800079c:	6313      	str	r3, [r2, #48]	; 0x30
+	if (gpio == GPIOB)
  800079e:	68bb      	ldr	r3, [r7, #8]
  80007a0:	4a20      	ldr	r2, [pc, #128]	; (8000824 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xb0>)
  80007a2:	4293      	cmp	r3, r2
  80007a4:	d105      	bne.n	80007b2 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0x3e>
+		RCC->AHB1ENR |= (RCC_AHB1ENR_GPIOBEN);
  80007a6:	4b1e      	ldr	r3, [pc, #120]	; (8000820 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xac>)
  80007a8:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  80007aa:	4a1d      	ldr	r2, [pc, #116]	; (8000820 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xac>)
  80007ac:	f043 0302 	orr.w	r3, r3, #2
  80007b0:	6313      	str	r3, [r2, #48]	; 0x30
+	if (gpio == GPIOC)
  80007b2:	68bb      	ldr	r3, [r7, #8]
  80007b4:	4a1c      	ldr	r2, [pc, #112]	; (8000828 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xb4>)
  80007b6:	4293      	cmp	r3, r2
  80007b8:	d105      	bne.n	80007c6 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0x52>
+		RCC->AHB1ENR |= (RCC_AHB1ENR_GPIOCEN);
  80007ba:	4b19      	ldr	r3, [pc, #100]	; (8000820 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xac>)
  80007bc:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  80007be:	4a18      	ldr	r2, [pc, #96]	; (8000820 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0xac>)
  80007c0:	f043 0304 	orr.w	r3, r3, #4
  80007c4:	6313      	str	r3, [r2, #48]	; 0x30
+
+	if (pin < 16)
  80007c6:	79fb      	ldrb	r3, [r7, #7]
  80007c8:	2b0f      	cmp	r3, #15
  80007ca:	d809      	bhi.n	80007e0 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0x6c>
+		gpio->MODER |= mode << (2 * pin);
  80007cc:	68bb      	ldr	r3, [r7, #8]
  80007ce:	681b      	ldr	r3, [r3, #0]
  80007d0:	79b9      	ldrb	r1, [r7, #6]
@@ -898,12 +963,16 @@ void Timer::stop()
  80007da:	431a      	orrs	r2, r3
  80007dc:	68bb      	ldr	r3, [r7, #8]
  80007de:	601a      	str	r2, [r3, #0]
+	//
+	if (mode == ALTERNATE) {
  80007e0:	79bb      	ldrb	r3, [r7, #6]
  80007e2:	2b02      	cmp	r3, #2
  80007e4:	d114      	bne.n	8000810 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0x9c>
+		if (pin < 8)
  80007e6:	79fb      	ldrb	r3, [r7, #7]
  80007e8:	2b07      	cmp	r3, #7
  80007ea:	d808      	bhi.n	80007fe <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0x8a>
+			gpio->AFR[0] = (alterFunction << (4 * pin));
  80007ec:	7e3a      	ldrb	r2, [r7, #24]
  80007ee:	79fb      	ldrb	r3, [r7, #7]
  80007f0:	009b      	lsls	r3, r3, #2
@@ -911,7 +980,13 @@ void Timer::stop()
  80007f6:	461a      	mov	r2, r3
  80007f8:	68bb      	ldr	r3, [r7, #8]
  80007fa:	621a      	str	r2, [r3, #32]
+		else
+			gpio->AFR[1] = (alterFunction << (4 * (pin - 8)));
+	}
+
+}
  80007fc:	e008      	b.n	8000810 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h+0x9c>
+			gpio->AFR[1] = (alterFunction << (4 * (pin - 8)));
  80007fe:	7e3a      	ldrb	r2, [r7, #24]
  8000800:	79fb      	ldrb	r3, [r7, #7]
  8000802:	3b08      	subs	r3, #8
@@ -920,6 +995,7 @@ void Timer::stop()
  800080a:	461a      	mov	r2, r3
  800080c:	68bb      	ldr	r3, [r7, #8]
  800080e:	625a      	str	r2, [r3, #36]	; 0x24
+}
  8000810:	bf00      	nop
  8000812:	3714      	adds	r7, #20
  8000814:	46bd      	mov	sp, r7
@@ -987,14 +1063,13 @@ int main(void) {
  8000888:	2206      	movs	r2, #6
  800088a:	4914      	ldr	r1, [pc, #80]	; (80008dc <main+0xb0>)
  800088c:	f7ff ff72 	bl	8000774 <_ZN14hardwareConfig11GPIO_ConfigEP12GPIO_TypeDefh10_IO_MODES_h>
-	timerTest->enablePWM(1,200);
+	timerTest->enablePWM(1,100);
  8000890:	4b11      	ldr	r3, [pc, #68]	; (80008d8 <main+0xac>)
  8000892:	6818      	ldr	r0, [r3, #0]
  8000894:	23ff      	movs	r3, #255	; 0xff
- 8000896:	22c8      	movs	r2, #200	; 0xc8
+ 8000896:	2264      	movs	r2, #100	; 0x64
  8000898:	2101      	movs	r1, #1
  800089a:	f7ff fdc3 	bl	8000424 <_ZN5Timer9enablePWMEhmt>
-	//timerTest->setPeriod(100);
 	timerTest->start();
  800089e:	4b0e      	ldr	r3, [pc, #56]	; (80008d8 <main+0xac>)
  80008a0:	681b      	ldr	r3, [r3, #0]
