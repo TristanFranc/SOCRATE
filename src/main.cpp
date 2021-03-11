@@ -22,10 +22,10 @@ int main(void) {
 	stm32F446->SysClockConfig();
 	stm32F446->GPIO_Config(GPIOA,5,OUTPUT);
 
-	timerTest = new Timer(TIM4, 20000, false);
+	timerTest = new Timer(TIM4, 100000, false);
 	stm32F446->GPIO_Config(GPIOB,6,ALTERNATE,2);// met pbs en modee pwm
-	timerTest->enablePWM(1,100,100);
-	timerTest->setPeriod(10000);
+	//timerTest->enablePWM(1,90);
+	//timerTest->setPeriod(100);
 	timerTest->start();
 	while(1)
 	{
