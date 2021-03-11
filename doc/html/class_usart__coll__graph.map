@@ -1,0 +1,4 @@
+<map id="Usart" name="Usart">
+<area shape="rect" id="node1" title="Classe interface qui dérive SerialLink et ajoute la méthode setBaudRate requise pour un lien série US..." alt="" coords="18,80,71,107"/>
+<area shape="rect" id="node2" href="$class_serial_link.html" title="Classe interface qui représente les méthodes requises pour un lien série standard." alt="" coords="5,5,84,32"/>
+</map>

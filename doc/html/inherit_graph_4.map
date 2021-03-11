@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_timer.html" title="Interface pour les timers." alt="" coords="5,5,60,32"/>
+<area shape="rect" id="node2" href="$class_timer_with_p_w_m.html" title="Interface pour les timers avec PWM." alt="" coords="108,5,223,32"/>
+<area shape="rect" id="node3" href="$class_stm32f446_timer.html" title="Classe générique pour configurer un timer du STM32F446 Supporte actuellelement Timer 2 à 5." alt="" coords="271,5,387,32"/>
+</map>

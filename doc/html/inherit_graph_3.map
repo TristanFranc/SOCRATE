@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_serial_link.html" title="Classe interface qui représente les méthodes requises pour un lien série standard." alt="" coords="5,5,84,32"/>
+<area shape="rect" id="node2" href="$class_usart.html" title="Classe interface qui dérive SerialLink et ajoute la méthode setBaudRate requise pour un lien série US..." alt="" coords="132,5,185,32"/>
+<area shape="rect" id="node3" href="$class_stm32f446_usart2.html" title="Classe qui représente le port série USART2 du STM32F446." alt="" coords="233,5,356,32"/>
+</map>

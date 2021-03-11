@@ -1,0 +1,5 @@
+<map id="Stm32f446Usart2" name="Stm32f446Usart2">
+<area shape="rect" id="node1" title="Classe qui représente le port série USART2 du STM32F446." alt="" coords="5,155,128,181"/>
+<area shape="rect" id="node2" href="$class_usart.html" title="Classe interface qui dérive SerialLink et ajoute la méthode setBaudRate requise pour un lien série US..." alt="" coords="40,80,93,107"/>
+<area shape="rect" id="node3" href="$class_serial_link.html" title="Classe interface qui représente les méthodes requises pour un lien série standard." alt="" coords="27,5,106,32"/>
+</map>

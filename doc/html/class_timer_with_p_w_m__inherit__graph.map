@@ -1,0 +1,5 @@
+<map id="TimerWithPWM" name="TimerWithPWM">
+<area shape="rect" id="node1" title="Interface pour les timers avec PWM." alt="" coords="6,80,121,107"/>
+<area shape="rect" id="node3" href="$class_stm32f446_timer.html" title="Classe générique pour configurer un timer du STM32F446 Supporte actuellelement Timer 2 à 5." alt="" coords="5,155,121,181"/>
+<area shape="rect" id="node2" href="$class_timer.html" title="Interface pour les timers." alt="" coords="36,5,91,32"/>
+</map>
