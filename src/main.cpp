@@ -32,6 +32,7 @@ int main(void) {
 	timerTest = new Timer(TIM4, 50000, false);
 	stm32F446->GPIO_Config(GPIOB,6,ALTERNATE,2);// met pbs en modee pwm
 	timerTest->enablePWM(1,200);
+	//timerTest->setPeriod(100);
 	timerTest->start();
 	while(1)
 	{
