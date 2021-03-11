@@ -37,7 +37,8 @@ src/Timer_PWM.o: ../src/Timer_PWM.cpp ../src/Timer_PWM.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/StdPeriph_Driver/inc/stm32f4xx_qspi.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/StdPeriph_Driver/inc/stm32f4xx_fmpi2c.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/StdPeriph_Driver/inc/stm32f4xx_spdifrx.h \
- C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/StdPeriph_Driver/inc/stm32f4xx_cec.h
+ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/StdPeriph_Driver/inc/stm32f4xx_cec.h \
+ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/CMSIS/device/system_stm32f4xx.h
 
 ../src/Timer_PWM.h:
 
@@ -118,3 +119,5 @@ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/Std
 C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/StdPeriph_Driver/inc/stm32f4xx_spdifrx.h:
 
 C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/StdPeriph_Driver/inc/stm32f4xx_cec.h:
+
+C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/TEMPLTE_VIDE_DRIVERS_SOCRATE/CMSIS/device/system_stm32f4xx.h:

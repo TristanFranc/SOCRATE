@@ -11,6 +11,7 @@ RM := rm -rf
 -include startup/subdir.mk
 -include src/subdir.mk
 -include StdPeriph_Driver/src/subdir.mk
+-include CMSIS/device/subdir.mk
 -include subdir.mk
 -include objects.mk
 
