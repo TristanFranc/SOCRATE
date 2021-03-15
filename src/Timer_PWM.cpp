@@ -47,7 +47,19 @@ Timer::Timer(TIM_TypeDef * tmr, uint32_t us,bool interruptEnable)
 		}
 
 	}
+	if ( tmr == TIM5)
+	{
+		RCC->APB1ENR |= RCC_APB1ENR_TIM5EN;
+		if(interruptEnable)
+		{
+			NVIC_EnableIRQ(TIM5_IRQn);
+			NVIC_SetPriority(TIM5_IRQn,2);
+		}
+	}
 	setPeriod(us);
+	if(interruptEnable)
+		timer->DIER = TIM_DIER_UIE;
+	timer->CR1 |= TIM_CR1_ARPE;
 }
 
 void Timer::setPeriod(uint32_t us)

@@ -45,7 +45,6 @@
 "src/CanalEMG.o"
 "src/STM32F446Usart.o"
 "src/Timer_PWM.o"
-"src/USART.o"
 "src/VecteurEMG.o"
 "src/hardwareConfig.o"
 "src/main.o"

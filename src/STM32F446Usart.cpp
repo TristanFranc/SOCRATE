@@ -7,6 +7,7 @@
 
 #include "STM32F446Usart.h"
 
+STM32F446Usart3* STM32F446Usart3::instance =0;
 
 
 STM32F446Usart3::STM32F446Usart3()
@@ -18,15 +19,15 @@ STM32F446Usart3::STM32F446Usart3()
 
 
 	//mode alternatif pour pb10 et 11
-	config->GPIO_Config(GPIOB, 10, ALTERNATE, 2);
-	config->GPIO_Config(GPIOB, 11 , ALTERNATE, 2);
-	GPIOB->AFR[0] |= (7<<8); // registre af7 fction alternative USART3
-	GPIOB->AFR[0] |= (7<<12);
+	config->GPIO_Config(GPIOC, 10, ALTERNATE, 7);
+	config->GPIO_Config(GPIOC, 5 , ALTERNATE, 7);
+	GPIOC->AFR[0] |= (7<<8); // registre af7 fction alternative USART3
+	GPIOC->AFR[1] |= (7<<12);
 
 	//sélection du baud 8N1 @9600
 	USART3->CR1 &= ~USART_CR1_UE;// usart disable
 	NVIC_EnableIRQ(USART3_IRQn);
-	NVIC_SetPriority(USART3_IRQn,3);
+	NVIC_SetPriority(USART3_IRQn,4);
 	//active le tx et rx + les interruptions dee chaqu'un
 	USART3->CR1 |=  USART_CR1_TE | USART_CR1_RE |  USART_CR1_RXNEIE | USART_CR1_TXEIE;
 	setBaudRate(9600);
@@ -58,17 +59,24 @@ void STM32F446Usart3::write(uint8_t data)
 		USART3->CR1 |= USART_CR1_TXEIE;
 	}
 }
-void STM32F446Usart3::write(char *data)
+void STM32F446Usart3::write(char *string)
 {
+
+	while(*string)
+	{
+		write(*string++);
+	}
 
 }
 uint8_t STM32F446Usart3:: read(void)
 {
-
+	if(buffRx.isEmpty())
+		return 0;
+	return buffRx.rem();
 }
 bool STM32F446Usart3::dataAvailable() const
 {
-
+	return !buffRx.isEmpty();
 }
 void STM32F446Usart3::setBaudRate(uint32_t baudrate)
 {
@@ -79,3 +87,44 @@ void STM32F446Usart3::setBaudRate(uint32_t baudrate)
 
 	USART3->BRR |= (SystemCoreClock>>2) / baudrate;
 }
+
+extern "C"
+{
+void USART3_IRQHandler(void)
+{
+	volatile unsigned int usartStatus;
+	char tmpVal;
+	//recupere le statu de l'usart
+	usartStatus = USART3->SR;
+
+	if(usartStatus & USART_SR_RXNE)
+	{
+		USART3->SR &= ~USART_SR_RXNE;
+		STM32F446Usart3::instance->buffRx.add(USART3->DR);
+	}
+	if(usartStatus & USART_SR_TXE)
+	{
+		USART3->SR &= ~USART_CR1_TXEIE;
+		if(STM32F446Usart3::instance->buffTx.isEmpty())
+		{
+			STM32F446Usart3::instance->isTransmitting =false;
+			USART3->CR1 &= (~USART_CR1_TXEIE);
+		}
+		else
+		{
+			tmpVal = STM32F446Usart3::instance->buffTx.rem();
+			USART3->DR = tmpVal;
+			STM32F446Usart3::instance->isTransmitting= true;
+		}
+	}
+}
+}
+
+
+
+
+
+
+
+
+

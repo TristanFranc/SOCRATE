@@ -53,7 +53,7 @@ public:
 	virtual ~STM32F446Usart3();
 
 	void write(uint8_t data);
-	void write(char *data);
+	void write(char *string);
 	uint8_t read(void);
 	bool dataAvailable() const;
 	void setBaudRate(uint32_t baudrate);

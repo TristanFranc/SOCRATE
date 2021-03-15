@@ -39,7 +39,8 @@ src/main.o: ../src/main.cpp ../src/hardwareConfig.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm32f4xx_spdifrx.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm32f4xx_cec.h \
  ../src/Timer_PWM.h \
- C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/system_stm32f4xx.h
+ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/system_stm32f4xx.h \
+ ../src/STM32F446Usart.h ../src/templateBufferComm.h
 
 ../src/hardwareConfig.h:
 
@@ -124,3 +125,7 @@ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm
 ../src/Timer_PWM.h:
 
 C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/system_stm32f4xx.h:
+
+../src/STM32F446Usart.h:
+
+../src/templateBufferComm.h:
