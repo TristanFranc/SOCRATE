@@ -93,14 +93,15 @@ extern "C"
 void USART3_IRQHandler(void)
 {
 	volatile unsigned int usartStatus;
-	char tmpVal;
+	char tmp;
 	//recupere le statu de l'usart
 	usartStatus = USART3->SR;
 
 	if(usartStatus & USART_SR_RXNE)
 	{
 		USART3->SR &= ~USART_SR_RXNE;
-		STM32F446Usart3::instance->buffRx.add(USART3->DR);
+		tmp =USART3->DR;
+		STM32F446Usart3::instance->buffRx.add(tmp);
 	}
 	if(usartStatus & USART_SR_TXE)
 	{
@@ -112,8 +113,8 @@ void USART3_IRQHandler(void)
 		}
 		else
 		{
-			tmpVal = STM32F446Usart3::instance->buffTx.rem();
-			USART3->DR = tmpVal;
+
+			USART3->DR = STM32F446Usart3::instance->buffTx.rem();
 			STM32F446Usart3::instance->isTransmitting= true;
 		}
 	}

@@ -18,14 +18,19 @@
 
 #include <string>
 
- volatile bool serialPcPauseCompleted = false;
-
+volatile bool serialPcPauseCompleted = false;
+enum COMM_STATE {WAIT, RXCMD, RXPAYLOAD, VALIDATE};
 hardwareConfig *stm32F446;
 Timer *timerTest;
 STM32F446Usart3 *testUsart;
-
 char tab[7]= {'<','F','u','c','k','>'};
 std::string message= "<Fuck>";
+COMM_STATE commState=WAIT;
+uint8_t rxData=0;
+uint16_t rxCnt=0;
+uint8_t rxCmd=0;
+const uint16_t PAYLOAD_SIZE[2]={3,10};
+uint16_t rxPayload[15];
 int main(void) {
 
 	stm32F446 = new hardwareConfig();
@@ -42,34 +47,48 @@ int main(void) {
 	timerTest->start();
 
 
-	//timerTest = new Timer(TIM4, 50000, false);
-	//stm32F446->GPIO_Config(GPIOB,6,ALTERNATE,2);// met pbs en modee pwm
-	//timerTest->enablePWM(1,100);
-	//timerTest->start();
+
 
 	while(1)
 	{
 
-		//GPIOA->BSRRH |= (1<<5);// set PA5
-		//GPIOA->BSRRL |= (1<<5);// reset PA5
+		while(testUsart->dataAvailable())
+		{
+			rxData= testUsart->read();
+			switch (commState) {
+			case WAIT:
+				if(rxData=='<')
+					commState=RXCMD;
+				break;
+			case RXCMD:
+				commState=RXPAYLOAD;
+				rxCnt=0;
+				rxCmd=rxData;
+				break;
+			case RXPAYLOAD:
+				rxPayload[rxCnt++]=rxData;
+				if(rxCnt>3)
+					commState =VALIDATE;
+				break;
+			case VALIDATE:
+				if(rxData=='>')
+				{
+					GPIOA -> ODR ^= 1<<5;
 
+
+				}
+				commState =WAIT;
+				break;
+			}
+		}
 		if (serialPcPauseCompleted)
 		{
-			//testUsart->write('<');
-			//testUsart->write('T');
-			//testUsart->write('>');
-			//testUsart->write(tab);
+
 			testUsart->write(tab);
 
 			serialPcPauseCompleted = false;
 		}
-		if(testUsart->read()=='T')
-		{
-			GPIOA->ODR ^= 1<<5;
-			//GPIOA->BSRRL |= (1<<5);// reset PA5
-			//GPIOA->BSRRH |= (1<<5);// set PA5
 
-		}
 	}
 }
 extern "C" void TIM5_IRQHandler(void) {
