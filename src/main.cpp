@@ -10,6 +10,7 @@
 #include "hardwareConfig.h"
 #include "Timer_PWM.h"
 #include "STM32F446Usart.h"
+#include "controlL297.h"
 
 //calis
 
@@ -23,6 +24,7 @@ enum COMM_STATE {WAIT, RXCMD, RXPAYLOAD, VALIDATE};
 hardwareConfig *stm32F446;
 Timer *timerTest;
 STM32F446Usart3 *testUsart;
+controlL297 *testL297;
 char tab[7]= {'<','F','u','c','k','>'};
 std::string message= "<Fuck>";
 COMM_STATE commState=WAIT;
@@ -36,6 +38,9 @@ int main(void) {
 	stm32F446 = new hardwareConfig();
 
 	stm32F446->SysClockConfig();
+
+	testL297 = new controlL297(L297_1);
+
 
 	stm32F446->GPIO_Config(GPIOA, 5, OUTPUT,2);
 

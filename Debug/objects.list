@@ -46,6 +46,7 @@
 "src/STM32F446Usart.o"
 "src/Timer_PWM.o"
 "src/VecteurEMG.o"
+"src/controlL297.o"
 "src/hardwareConfig.o"
 "src/main.o"
 "src/syscalls.o"
