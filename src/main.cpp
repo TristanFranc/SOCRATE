@@ -41,8 +41,8 @@ int main(void) {
 
 	testUsart = STM32F446Usart3::getInstance();
 	testUsart->setBaudRate(9600);
-	timerTest = new Timer(TIM5,50000,true);
-	timerTest->enablePWM(2, 40000, 100);
+	timerTest = new Timer(TIM5,10000,true);
+	timerTest->enablePWM(2,100);
 
 	timerTest->start();
 
@@ -63,11 +63,12 @@ int main(void) {
 			case RXCMD:
 				commState=RXPAYLOAD;
 				rxCnt=0;
-				rxCmd=rxData;
+				//rxCmd=rxData;//commande à executer
+				rxPayload[rxCnt++]=rxData;
 				break;
 			case RXPAYLOAD:
 				rxPayload[rxCnt++]=rxData;
-				if(rxCnt>3)
+				if(rxCnt>2)
 					commState =VALIDATE;
 				break;
 			case VALIDATE:
