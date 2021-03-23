@@ -74,3 +74,27 @@ void hardwareConfig::GPIO_Config(GPIO_TypeDef* gpio, uint8_t pin, _IO_MODES_t mo
 	}
 
 }
+void hardwareConfig::GPIO_Pin_Enable(GPIO_TypeDef* gpio, uint8_t pin)
+{
+	if (gpio == GPIOA)
+		GPIOA->ODR |= 1<<pin;
+	if (gpio == GPIOB)
+		GPIOB->ODR |= 1<<pin;
+	if (gpio == GPIOC)
+		GPIOC->ODR |= 1<<pin;
+}
+void hardwareConfig::GPIO_Pin_Disable(GPIO_TypeDef* gpio, uint8_t pin)
+{
+	if (gpio == GPIOA)
+		GPIOA -> ODR &= (~1<<pin);
+	if (gpio == GPIOB)
+		GPIOB -> ODR &= (~1<<pin);
+	if (gpio == GPIOC)
+		GPIOC -> ODR &= (~1<<pin);
+}
+
+
+
+
+
+

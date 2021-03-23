@@ -28,6 +28,8 @@ public:
 	void SysClockConfig(void);
 	void GPIO_Config(GPIO_TypeDef* gpio, uint8_t pin, _IO_MODES_t mode,
 			uint8_t alterFunction=0);
+	void GPIO_Pin_Enable(GPIO_TypeDef* gpio, uint8_t pin);
+	void GPIO_Pin_Disable(GPIO_TypeDef* gpio, uint8_t pin);
 };
 
 #endif /* HARDWARECONFIG_H_ */

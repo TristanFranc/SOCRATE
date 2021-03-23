@@ -1,5 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
 ################################################################################
 
 -include ../makefile.init
@@ -44,6 +45,12 @@ endif
 
 -include ../makefile.defs
 
+OPTIONAL_TOOL_DEPS := \
+$(wildcard ../makefile.defs) \
+$(wildcard ../makefile.init) \
+$(wildcard ../makefile.targets) \
+
+
 BUILD_ARTIFACT_NAME := SOCRATE
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX := 
@@ -70,22 +77,22 @@ all: main-build
 main-build: SOCRATE.elf secondary-outputs
 
 # Tool invocations
-SOCRATE.elf: $(OBJS) $(USER_OBJS) C:\Users\201723940\STM32CubeIDE\workspace_1.5.1\SOCRATE\LinkerScript.ld
+SOCRATE.elf: $(OBJS) $(USER_OBJS) C:\Users\201723940\STM32CubeIDE\workspace_1.5.1\SOCRATE\LinkerScript.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-g++ -o "SOCRATE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\201723940\STM32CubeIDE\workspace_1.5.1\SOCRATE\LinkerScript.ld" --specs=nosys.specs -Wl,-Map="SOCRATE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-default.size.stdout: $(EXECUTABLES)
+default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-size  $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-SOCRATE.list: $(EXECUTABLES)
+SOCRATE.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "SOCRATE.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-SOCRATE.bin: $(EXECUTABLES)
+SOCRATE.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "SOCRATE.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
