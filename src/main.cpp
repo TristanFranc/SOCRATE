@@ -23,6 +23,8 @@ volatile bool serialPcPauseCompleted = false;
 enum COMM_STATE {WAIT, RXCMD, RXPAYLOAD, VALIDATE};
 hardwareConfig *stm32F446;
 Timer *timerTest;
+Timer * timerTest1;
+Timer * timertest2;
 STM32F446Usart3 *testUsart;
 controlL297 *testL297;
 controlL297 *testL2972;
@@ -42,30 +44,31 @@ int main(void) {
 
 	stm32F446->SysClockConfig();
 
-	//testL297 = new controlL297(L297_2);
-	testL2972 = new controlL297(L297_2);
-	//testL2973 = new controlL297(L297_3);
-	//testL2974 = new controlL297(L297_4);
 
-	//testL297->setSpeed(10);
-	testL2972->setSpeed(100);
-	//testL2973->setSpeed(10);
-	//testL2974->setSpeed(250);
+	//testL297 = new controlL297(L297_2);
+	//testL2972 = new controlL297(L297_1);
+	//testL2973 = new controlL297(L297_3_4);
+
+
+	//testL297->setSpeed(1000);
+	//testL2972->setSpeed(1000);
+	//testL2973->setSpeed(1000);
+
 
 	//testL297->setEnable(true);
-	testL2972->setEnable(true);
+	//testL2972->setEnable(true);
 	//testL2973->setEnable(true);
-	//testL2974->setEnable(true);
 
-	//testL297->setDirection(CW);
-	testL2972->setDirection(CCW);
-	//testL2973->setDirection(CCW);
-	//testL2974->setDirection(CCW);
 
-	//testL297->setLockState(UNLOCK);
-	testL2972->setLockState(UNLOCK);
-	//testL2973->setLockState(UNLOCK);
-	//testL2974->setLockState(UNLOCK);
+	//testL297->setDirection(CCW);
+	//testL2972->setDirection(CCW);
+	//testL2973->setDirection(CW);
+
+//
+//	testL297->setLockState(UNLOCK);
+//	testL2972->setLockState(UNLOCK);
+//	testL2973->setLockState(UNLOCK);
+
 
 
 

@@ -7,14 +7,13 @@
 
 #ifndef CONTROLL297_H_
 #define CONTROLL297_H_
-
 #include "Timer_PWM.h"
 #include "hardwareConfig.h"
 
 enum _DIRECTION_ {CW=0,CCW=1};
 enum _STEP_MODE_ {HALF=0,FULL=1};
 enum _LOCK_STATE {LOCK=0,UNLOCK=1};
-enum _L297_SELECT_{L297_1=0,L297_2=1,L297_3=2,L297_4=3};
+enum _L297_SELECT_{L297_1=0,L297_2=1,L297_3_4=2};
 
 class controlL297 {
 

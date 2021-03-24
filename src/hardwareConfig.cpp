@@ -64,13 +64,13 @@ void hardwareConfig::GPIO_Config(GPIO_TypeDef* gpio, uint8_t pin, _IO_MODES_t mo
 		RCC->AHB1ENR |= (RCC_AHB1ENR_GPIOCEN);
 
 	if (pin < 16)
-		gpio->MODER |= mode << (2 * pin);
-	//
+	gpio->MODER |= mode << (2 * pin);
+
 	if (mode == ALTERNATE) {
 		if (pin < 8)
-			gpio->AFR[0] = (alterFunction << (4 * pin));
+			gpio->AFR[0] |= (alterFunction << (4 * pin));
 		else
-			gpio->AFR[1] = (alterFunction << (4 * (pin - 8)));
+			gpio->AFR[1] |= (alterFunction << (4 * (pin - 8)));
 	}
 
 }
