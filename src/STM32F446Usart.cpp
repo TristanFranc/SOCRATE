@@ -68,6 +68,13 @@ void STM32F446Usart3::write(char *string)
 	}
 
 }
+void STM32F446Usart3::write( const char *string)
+{
+	while(*string)
+		{
+			write(*string++);
+		}
+}
 uint8_t STM32F446Usart3:: read(void)
 {
 	if(buffRx.isEmpty())

@@ -129,7 +129,7 @@ void controlL297::setLockState(_STATE_ state)
 		if(_selection==2)
 		{
 			config->GPIO_Pin_Enable(GPIOC, 7);
-			config->GPIO_Pin_Enable(GPIOB, 12);
+			//config->GPIO_Pin_Enable(GPIOB, 12);
 		}
 		break;
 	case LOCK:
@@ -140,7 +140,8 @@ void controlL297::setLockState(_STATE_ state)
 		if(_selection==2)
 		{
 			config->GPIO_Pin_Disable(GPIOC, 7);
-			config->GPIO_Pin_Disable(GPIOB, 12);
+			//config->GPIO_Pin_Disable(GPIOB, 12);// la trace dois être arranger avant de pouvoir parré ce moteur
+			//à revoir
 		}
 		break;
 	}
@@ -169,7 +170,12 @@ bool controlL297::getDirection()
 }
 bool controlL297::getLockState()
 {
-	return lock;
+	if (lock==LOCK)
+	{
+		return 0;
+	}
+
+		return 1;
 }
 bool controlL297::isEnables()
 {
