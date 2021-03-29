@@ -6,12 +6,8 @@
  * @date       4 mars 2019
  */
 
-<<<<<<< Updated upstream
 //branche justin
 // branche tristan
-=======
-
->>>>>>> Stashed changes
 //Déclarations spécifiques au matériel
 #include "hardwareConfig.h"
 #include "Timer_PWM.h"
