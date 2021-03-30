@@ -86,11 +86,11 @@ void hardwareConfig::GPIO_Pin_Enable(GPIO_TypeDef* gpio, uint8_t pin)
 void hardwareConfig::GPIO_Pin_Disable(GPIO_TypeDef* gpio, uint8_t pin)
 {
 	if (gpio == GPIOA)
-		GPIOA -> ODR &= (~1<<pin);
+		GPIOA -> ODR &= ~(1<<pin);
 	if (gpio == GPIOB)
-		GPIOB -> ODR &= (~1<<pin);
+		GPIOB -> ODR &= ~(1<<pin);
 	if (gpio == GPIOC)
-		GPIOC -> ODR &= (~1<<pin);
+		GPIOC -> ODR &= ~(1<<pin);
 }
 
 

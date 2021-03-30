@@ -1,9 +1,9 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(del_ops.o)
-                              src/AcquisitionEMG.o (operator delete(void*, unsigned int))
+                              src/Adc1Stm32f446re.o (operator delete(void*, unsigned int))
 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(new_op.o)
-                              src/STM32F446Usart.o (operator new(unsigned int))
+                              src/CanalEMG.o (operator new(unsigned int))
 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(allocator-inst.o)
                               src/main.o (std::allocator<char>::allocator())
 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libstdc++_nano.a(string-inst.o)
@@ -6071,54 +6071,632 @@ Discarded input sections
  .debug_frame   0x0000000000000000      0x134 StdPeriph_Driver/src/stm32f4xx_wwdg.o
  .ARM.attributes
                 0x0000000000000000       0x34 StdPeriph_Driver/src/stm32f4xx_wwdg.o
- .group         0x0000000000000000        0xc src/AcquisitionEMG.o
- .text          0x0000000000000000        0x0 src/AcquisitionEMG.o
- .data          0x0000000000000000        0x0 src/AcquisitionEMG.o
- .bss           0x0000000000000000        0x0 src/AcquisitionEMG.o
- .text._ZN14AcquisitionEMGC2Ev
-                0x0000000000000000       0x20 src/AcquisitionEMG.o
- .text._ZN14AcquisitionEMGD2Ev
-                0x0000000000000000       0x20 src/AcquisitionEMG.o
- .text._ZN14AcquisitionEMGD0Ev
-                0x0000000000000000       0x20 src/AcquisitionEMG.o
- .rodata        0x0000000000000000       0x10 src/AcquisitionEMG.o
- .debug_info    0x0000000000000000      0x190 src/AcquisitionEMG.o
- .debug_abbrev  0x0000000000000000      0x14c src/AcquisitionEMG.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/Adc1Stm32f446re.o
+ .text          0x0000000000000000        0x0 src/Adc1Stm32f446re.o
+ .data          0x0000000000000000        0x0 src/Adc1Stm32f446re.o
+ .bss           0x0000000000000000        0x0 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446reC2Eh
+                0x0000000000000000      0x170 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re8innitADCEv
+                0x0000000000000000       0xe0 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re7setGPIOEv
+                0x0000000000000000      0x110 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re13setResolutionEh
+                0x0000000000000000       0xb0 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re26setChannelPositioningQueueEhh
+                0x0000000000000000       0xe0 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re24setADCConversionNbsCycleEv
+                0x0000000000000000       0xe8 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re13getConversionEv
+                0x0000000000000000       0x20 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re9enableADCEv
+                0x0000000000000000       0x40 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re14desactivateADCEv
+                0x0000000000000000       0x24 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re18startAdcConversionEv
+                0x0000000000000000       0x24 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re11waitEocFlagEv
+                0x0000000000000000       0x50 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re12clearEocFlagEv
+                0x0000000000000000       0x30 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446re17stopAdcConversionEv
+                0x0000000000000000       0x24 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446reD2Ev
+                0x0000000000000000       0x20 src/Adc1Stm32f446re.o
+ .text._ZN15Adc1Stm32f446reD0Ev
+                0x0000000000000000       0x20 src/Adc1Stm32f446re.o
+ .rodata        0x0000000000000000       0x10 src/Adc1Stm32f446re.o
+ .debug_info    0x0000000000000000      0xa4d src/Adc1Stm32f446re.o
+ .debug_abbrev  0x0000000000000000      0x2bc src/Adc1Stm32f446re.o
  .debug_aranges
-                0x0000000000000000       0x30 src/AcquisitionEMG.o
- .debug_ranges  0x0000000000000000       0x20 src/AcquisitionEMG.o
- .debug_macro   0x0000000000000000       0x1b src/AcquisitionEMG.o
- .debug_macro   0x0000000000000000      0xb98 src/AcquisitionEMG.o
- .debug_line    0x0000000000000000       0x8e src/AcquisitionEMG.o
- .debug_str     0x0000000000000000     0x32e2 src/AcquisitionEMG.o
- .comment       0x0000000000000000       0x54 src/AcquisitionEMG.o
- .debug_frame   0x0000000000000000       0x84 src/AcquisitionEMG.o
+                0x0000000000000000       0x90 src/Adc1Stm32f446re.o
+ .debug_ranges  0x0000000000000000       0x80 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x213 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0xb98 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x65 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x3b src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x1c src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x22 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x8e src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x51 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x103 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x6a src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x1df src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x34 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x26 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0xe43 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000     0x9f98 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x448 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0xb2 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x477 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0xb5 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x41c src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x341 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x2ba src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x64 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x100 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x76d src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x59e src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x342 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x36c src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x114 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x73b src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x223 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x34 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x82 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x144 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0xc3 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x3cf src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x188 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x149 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x21e src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x23a src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x359 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x287 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x29a src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x142 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x191 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x35 src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000      0x34e src/Adc1Stm32f446re.o
+ .debug_macro   0x0000000000000000       0x40 src/Adc1Stm32f446re.o
+ .debug_line    0x0000000000000000      0xabb src/Adc1Stm32f446re.o
+ .debug_str     0x0000000000000000    0x6e515 src/Adc1Stm32f446re.o
+ .comment       0x0000000000000000       0x54 src/Adc1Stm32f446re.o
+ .debug_frame   0x0000000000000000      0x260 src/Adc1Stm32f446re.o
  .ARM.attributes
-                0x0000000000000000       0x34 src/AcquisitionEMG.o
+                0x0000000000000000       0x34 src/Adc1Stm32f446re.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/CanalEMG.o
  .group         0x0000000000000000        0xc src/CanalEMG.o
  .text          0x0000000000000000        0x0 src/CanalEMG.o
  .data          0x0000000000000000        0x0 src/CanalEMG.o
  .bss           0x0000000000000000        0x0 src/CanalEMG.o
- .text._ZN8CanalEMGC2Ev
-                0x0000000000000000       0x20 src/CanalEMG.o
+ .text._ZN8CanalEMGC2Eh
+                0x0000000000000000       0x4c src/CanalEMG.o
+ .text._ZN8CanalEMG11getAdcValueEv
+                0x0000000000000000       0x52 src/CanalEMG.o
  .text._ZN8CanalEMGD2Ev
                 0x0000000000000000       0x20 src/CanalEMG.o
  .text._ZN8CanalEMGD0Ev
                 0x0000000000000000       0x20 src/CanalEMG.o
  .rodata        0x0000000000000000       0x10 src/CanalEMG.o
- .debug_info    0x0000000000000000      0x190 src/CanalEMG.o
- .debug_abbrev  0x0000000000000000      0x14c src/CanalEMG.o
+ .debug_info    0x0000000000000000      0x2b3 src/CanalEMG.o
+ .debug_abbrev  0x0000000000000000      0x1ff src/CanalEMG.o
  .debug_aranges
-                0x0000000000000000       0x30 src/CanalEMG.o
- .debug_ranges  0x0000000000000000       0x20 src/CanalEMG.o
- .debug_macro   0x0000000000000000       0x1b src/CanalEMG.o
+                0x0000000000000000       0x38 src/CanalEMG.o
+ .debug_ranges  0x0000000000000000       0x28 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x227 src/CanalEMG.o
  .debug_macro   0x0000000000000000      0xb98 src/CanalEMG.o
- .debug_line    0x0000000000000000       0x82 src/CanalEMG.o
- .debug_str     0x0000000000000000     0x329a src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x34e src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x65 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x3b src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x1c src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x22 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x8e src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x51 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x103 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x6a src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x1d1 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x34 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x26 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0xe43 src/CanalEMG.o
+ .debug_macro   0x0000000000000000     0x9f98 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x448 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0xb2 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x477 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0xb5 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x41c src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x341 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x2ba src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x64 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x100 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x76d src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x59e src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x342 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x36c src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x114 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x73b src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x223 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x34 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x82 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x144 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0xc3 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x3cf src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x188 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x149 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x21e src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x23a src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x359 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x287 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x29a src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x142 src/CanalEMG.o
+ .debug_macro   0x0000000000000000      0x191 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x35 src/CanalEMG.o
+ .debug_macro   0x0000000000000000       0x40 src/CanalEMG.o
+ .debug_line    0x0000000000000000      0x80e src/CanalEMG.o
+ .debug_str     0x0000000000000000    0x6dfed src/CanalEMG.o
  .comment       0x0000000000000000       0x54 src/CanalEMG.o
- .debug_frame   0x0000000000000000       0x84 src/CanalEMG.o
+ .debug_frame   0x0000000000000000       0xa8 src/CanalEMG.o
  .ARM.attributes
                 0x0000000000000000       0x34 src/CanalEMG.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .group         0x0000000000000000        0xc src/Encodeur.o
+ .text          0x0000000000000000        0x0 src/Encodeur.o
+ .data          0x0000000000000000        0x0 src/Encodeur.o
+ .bss           0x0000000000000000        0x0 src/Encodeur.o
+ .text.NVIC_EnableIRQ
+                0x0000000000000000       0x34 src/Encodeur.o
+ .text._ZN8EncodeurC2EP12GPIO_TypeDefhh
+                0x0000000000000000       0x3c src/Encodeur.o
+ .text._ZN8Encodeur21innitExternalInteruptEP12GPIO_TypeDefhh
+                0x0000000000000000      0x2b8 src/Encodeur.o
+ .text._ZN8Encodeur18clearInterruptFlagEv
+                0x0000000000000000       0x30 src/Encodeur.o
+ .text._ZN8EncodeurD2Ev
+                0x0000000000000000       0x20 src/Encodeur.o
+ .text._ZN8EncodeurD0Ev
+                0x0000000000000000       0x20 src/Encodeur.o
+ .rodata        0x0000000000000000       0x10 src/Encodeur.o
+ .debug_info    0x0000000000000000      0xad0 src/Encodeur.o
+ .debug_abbrev  0x0000000000000000      0x2dc src/Encodeur.o
+ .debug_aranges
+                0x0000000000000000       0x48 src/Encodeur.o
+ .debug_ranges  0x0000000000000000       0x38 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x205 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0xb98 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x65 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x3b src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x1c src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x22 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x8e src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x51 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x103 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x6a src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x1df src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x34 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x26 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0xe43 src/Encodeur.o
+ .debug_macro   0x0000000000000000     0x9f98 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x448 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0xb2 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x477 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0xb5 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x41c src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x341 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x2ba src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x64 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x100 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x76d src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x59e src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x342 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x36c src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x114 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x73b src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x223 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x34 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x82 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x144 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0xc3 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x3cf src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x188 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x149 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x21e src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x23a src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x359 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x287 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x29a src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x142 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x191 src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x35 src/Encodeur.o
+ .debug_macro   0x0000000000000000      0x34e src/Encodeur.o
+ .debug_macro   0x0000000000000000       0x28 src/Encodeur.o
+ .debug_line    0x0000000000000000      0x978 src/Encodeur.o
+ .debug_str     0x0000000000000000    0x6e75b src/Encodeur.o
+ .comment       0x0000000000000000       0x54 src/Encodeur.o
+ .debug_frame   0x0000000000000000       0xf8 src/Encodeur.o
+ .ARM.attributes
+                0x0000000000000000       0x34 src/Encodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxeEncodeur.o
+ .text          0x0000000000000000        0x0 src/PositionAxeEncodeur.o
+ .data          0x0000000000000000        0x0 src/PositionAxeEncodeur.o
+ .bss           0x0000000000000000        0x0 src/PositionAxeEncodeur.o
+ .text._ZN19PositionAxeEncodeurC2EP12GPIO_TypeDefhh
+                0x0000000000000000       0x50 src/PositionAxeEncodeur.o
+ .text._ZN19PositionAxeEncodeur22setPositionPourcentageEh
+                0x0000000000000000       0x18 src/PositionAxeEncodeur.o
+ .text._ZN19PositionAxeEncodeur22getPositionPourcentageEv
+                0x0000000000000000       0x14 src/PositionAxeEncodeur.o
+ .text._ZN19PositionAxeEncodeurD2Ev
+                0x0000000000000000       0x20 src/PositionAxeEncodeur.o
+ .text._ZN19PositionAxeEncodeurD0Ev
+                0x0000000000000000       0x20 src/PositionAxeEncodeur.o
+ .rodata        0x0000000000000000       0x10 src/PositionAxeEncodeur.o
+ .debug_info    0x0000000000000000      0x452 src/PositionAxeEncodeur.o
+ .debug_abbrev  0x0000000000000000      0x25b src/PositionAxeEncodeur.o
+ .debug_aranges
+                0x0000000000000000       0x40 src/PositionAxeEncodeur.o
+ .debug_ranges  0x0000000000000000       0x30 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x20e src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0xb98 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x34e src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x65 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x3b src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x1c src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x22 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x8e src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x51 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x103 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x6a src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x1d1 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x34 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x26 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0xe43 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000     0x9f98 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x448 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0xb2 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x477 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0xb5 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x41c src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x341 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x2ba src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x64 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x100 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x76d src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x59e src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x342 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x36c src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x114 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x73b src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x223 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x34 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x82 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x144 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0xc3 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x3cf src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x188 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x149 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x21e src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x23a src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x359 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x287 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x29a src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x142 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000      0x191 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x35 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x28 src/PositionAxeEncodeur.o
+ .debug_macro   0x0000000000000000       0x16 src/PositionAxeEncodeur.o
+ .debug_line    0x0000000000000000      0x7e9 src/PositionAxeEncodeur.o
+ .debug_str     0x0000000000000000    0x6e192 src/PositionAxeEncodeur.o
+ .comment       0x0000000000000000       0x54 src/PositionAxeEncodeur.o
+ .debug_frame   0x0000000000000000       0xd4 src/PositionAxeEncodeur.o
+ .ARM.attributes
+                0x0000000000000000       0x34 src/PositionAxeEncodeur.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .group         0x0000000000000000        0xc src/PositionAxePotentiometre.o
+ .text          0x0000000000000000        0x0 src/PositionAxePotentiometre.o
+ .data          0x0000000000000000        0x0 src/PositionAxePotentiometre.o
+ .bss           0x0000000000000000        0x0 src/PositionAxePotentiometre.o
+ .text._ZN24PositionAxePotentiometreC2Eh
+                0x0000000000000000       0x4c src/PositionAxePotentiometre.o
+ .text._ZN24PositionAxePotentiometre22setPositionPourcentageEh
+                0x0000000000000000       0x1e src/PositionAxePotentiometre.o
+ .text._ZN24PositionAxePotentiometre22getPositionPourcentageEv
+                0x0000000000000000       0x18 src/PositionAxePotentiometre.o
+ .text._ZN24PositionAxePotentiometre25acquisitionNewPositionAxeEv
+                0x0000000000000000      0x100 src/PositionAxePotentiometre.o
+ .text._ZN24PositionAxePotentiometreD2Ev
+                0x0000000000000000       0x20 src/PositionAxePotentiometre.o
+ .text._ZN24PositionAxePotentiometreD0Ev
+                0x0000000000000000       0x20 src/PositionAxePotentiometre.o
+ .rodata        0x0000000000000000       0x10 src/PositionAxePotentiometre.o
+ .debug_info    0x0000000000000000      0x345 src/PositionAxePotentiometre.o
+ .debug_abbrev  0x0000000000000000      0x22c src/PositionAxePotentiometre.o
+ .debug_aranges
+                0x0000000000000000       0x48 src/PositionAxePotentiometre.o
+ .debug_ranges  0x0000000000000000       0x38 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x21c src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0xb98 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x34e src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x65 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x3b src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x1c src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x22 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x8e src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x51 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x103 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x6a src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x1d1 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x34 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x26 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0xe43 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000     0x9f98 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x448 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0xb2 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x477 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0xb5 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x41c src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x341 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x2ba src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x64 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x100 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x76d src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x59e src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x342 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x36c src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x114 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x73b src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x223 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x34 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x82 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x144 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0xc3 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x3cf src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x188 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x149 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x21e src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x23a src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x359 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x287 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x29a src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x142 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000      0x191 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x35 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x40 src/PositionAxePotentiometre.o
+ .debug_macro   0x0000000000000000       0x40 src/PositionAxePotentiometre.o
+ .debug_line    0x0000000000000000      0x8a4 src/PositionAxePotentiometre.o
+ .debug_str     0x0000000000000000    0x6e249 src/PositionAxePotentiometre.o
+ .comment       0x0000000000000000       0x54 src/PositionAxePotentiometre.o
+ .debug_frame   0x0000000000000000       0xf8 src/PositionAxePotentiometre.o
+ .ARM.attributes
+                0x0000000000000000       0x34 src/PositionAxePotentiometre.o
  .group         0x0000000000000000        0xc src/STM32F446Usart.o
  .group         0x0000000000000000        0x8 src/STM32F446Usart.o
  .group         0x0000000000000000        0x8 src/STM32F446Usart.o
@@ -6201,6 +6779,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0xb98 src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0x65 src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0x3b src/STM32F446Usart.o
+ .debug_macro   0x0000000000000000       0x1c src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0x22 src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0x8e src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0x51 src/STM32F446Usart.o
@@ -6209,6 +6788,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1df src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0x34 src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0x26 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000000      0xe43 src/STM32F446Usart.o
  .debug_macro   0x0000000000000000     0x9f98 src/STM32F446Usart.o
  .debug_macro   0x0000000000000000      0x448 src/STM32F446Usart.o
  .debug_macro   0x0000000000000000       0xb2 src/STM32F446Usart.o
@@ -6295,6 +6875,7 @@ Discarded input sections
  .text._ZN5Timer9setPWMLvlEht
                 0x0000000000000000      0x124 src/Timer_PWM.o
  .debug_macro   0x0000000000000000      0xb98 src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x34e src/Timer_PWM.o
  .debug_macro   0x0000000000000000       0x65 src/Timer_PWM.o
  .debug_macro   0x0000000000000000       0x3b src/Timer_PWM.o
  .debug_macro   0x0000000000000000       0x1c src/Timer_PWM.o
@@ -6303,6 +6884,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x51 src/Timer_PWM.o
  .debug_macro   0x0000000000000000      0x103 src/Timer_PWM.o
  .debug_macro   0x0000000000000000       0x6a src/Timer_PWM.o
+ .debug_macro   0x0000000000000000      0x1d1 src/Timer_PWM.o
  .debug_macro   0x0000000000000000       0x34 src/Timer_PWM.o
  .debug_macro   0x0000000000000000       0x26 src/Timer_PWM.o
  .debug_macro   0x0000000000000000      0xe43 src/Timer_PWM.o
@@ -7746,8 +8328,11 @@ LOAD StdPeriph_Driver/src/stm32f4xx_syscfg.o
 LOAD StdPeriph_Driver/src/stm32f4xx_tim.o
 LOAD StdPeriph_Driver/src/stm32f4xx_usart.o
 LOAD StdPeriph_Driver/src/stm32f4xx_wwdg.o
-LOAD src/AcquisitionEMG.o
+LOAD src/Adc1Stm32f446re.o
 LOAD src/CanalEMG.o
+LOAD src/Encodeur.o
+LOAD src/PositionAxeEncodeur.o
+LOAD src/PositionAxePotentiometre.o
 LOAD src/STM32F446Usart.o
 LOAD src/Timer_PWM.o
 LOAD src/VecteurEMG.o
@@ -8449,118 +9034,114 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x0000000000000268       0x20 src/system_stm32f4xx.o
  .debug_ranges  0x0000000000000288       0x20 startup/startup_stm32.o
 
-.debug_macro    0x0000000000000000     0x5132
+.debug_macro    0x0000000000000000     0x3db4
  .debug_macro   0x0000000000000000      0x32b src/STM32F446Usart.o
  .debug_macro   0x000000000000032b       0x1c src/STM32F446Usart.o
- .debug_macro   0x0000000000000347      0xe43 src/STM32F446Usart.o
- .debug_macro   0x000000000000118a       0x1c src/STM32F446Usart.o
- .debug_macro   0x00000000000011a6      0x17c src/STM32F446Usart.o
- .debug_macro   0x0000000000001322       0x10 src/STM32F446Usart.o
- .debug_macro   0x0000000000001332      0x41e src/STM32F446Usart.o
- .debug_macro   0x0000000000001750       0x10 src/STM32F446Usart.o
- .debug_macro   0x0000000000001760       0x18 src/STM32F446Usart.o
- .debug_macro   0x0000000000001778       0x52 src/STM32F446Usart.o
- .debug_macro   0x00000000000017ca       0x3c src/STM32F446Usart.o
- .debug_macro   0x0000000000001806       0x34 src/STM32F446Usart.o
- .debug_macro   0x000000000000183a       0x16 src/STM32F446Usart.o
- .debug_macro   0x0000000000001850      0x10e src/STM32F446Usart.o
- .debug_macro   0x000000000000195e       0x94 src/STM32F446Usart.o
- .debug_macro   0x00000000000019f2       0x16 src/STM32F446Usart.o
- .debug_macro   0x0000000000001a08       0x43 src/STM32F446Usart.o
- .debug_macro   0x0000000000001a4b       0x34 src/STM32F446Usart.o
- .debug_macro   0x0000000000001a7f       0x10 src/STM32F446Usart.o
- .debug_macro   0x0000000000001a8f       0x58 src/STM32F446Usart.o
- .debug_macro   0x0000000000001ae7       0x71 src/STM32F446Usart.o
- .debug_macro   0x0000000000001b58       0x16 src/STM32F446Usart.o
- .debug_macro   0x0000000000001b6e      0x12a src/STM32F446Usart.o
- .debug_macro   0x0000000000001c98      0x35c src/STM32F446Usart.o
- .debug_macro   0x0000000000001ff4       0x16 src/STM32F446Usart.o
- .debug_macro   0x000000000000200a       0x29 src/STM32F446Usart.o
- .debug_macro   0x0000000000002033       0x1c src/STM32F446Usart.o
- .debug_macro   0x000000000000204f       0xde src/STM32F446Usart.o
- .debug_macro   0x000000000000212d      0x20a src/Timer_PWM.o
- .debug_macro   0x0000000000002337      0x34e src/Timer_PWM.o
- .debug_macro   0x0000000000002685      0x1d1 src/Timer_PWM.o
- .debug_macro   0x0000000000002856      0x21d src/controlL297.o
- .debug_macro   0x0000000000002a73      0x202 src/hardwareConfig.o
- .debug_macro   0x0000000000002c75       0x16 src/hardwareConfig.o
- .debug_macro   0x0000000000002c8b      0x70e src/main.o
- .debug_macro   0x0000000000003399       0x1c src/main.o
- .debug_macro   0x00000000000033b5       0x18 src/main.o
- .debug_macro   0x00000000000033cd       0x6e src/main.o
- .debug_macro   0x000000000000343b       0x28 src/main.o
- .debug_macro   0x0000000000003463       0x41 src/main.o
- .debug_macro   0x00000000000034a4       0x12 src/main.o
- .debug_macro   0x00000000000034b6       0x2e src/main.o
- .debug_macro   0x00000000000034e4       0x19 src/main.o
- .debug_macro   0x00000000000034fd       0x88 src/main.o
- .debug_macro   0x0000000000003585       0x19 src/main.o
- .debug_macro   0x000000000000359e       0x22 src/main.o
- .debug_macro   0x00000000000035c0       0x3c src/main.o
- .debug_macro   0x00000000000035fc       0x10 src/main.o
- .debug_macro   0x000000000000360c       0x10 src/main.o
- .debug_macro   0x000000000000361c       0x33 src/main.o
- .debug_macro   0x000000000000364f      0x173 src/main.o
- .debug_macro   0x00000000000037c2       0x10 src/main.o
- .debug_macro   0x00000000000037d2       0x17 src/main.o
- .debug_macro   0x00000000000037e9       0x10 src/main.o
- .debug_macro   0x00000000000037f9       0x35 src/main.o
- .debug_macro   0x000000000000382e       0x5e src/main.o
- .debug_macro   0x000000000000388c       0x16 src/main.o
- .debug_macro   0x00000000000038a2       0x52 src/main.o
- .debug_macro   0x00000000000038f4       0x5e src/main.o
- .debug_macro   0x0000000000003952       0x11 src/main.o
- .debug_macro   0x0000000000003963       0x11 src/main.o
- .debug_macro   0x0000000000003974       0x2f src/main.o
- .debug_macro   0x00000000000039a3       0x16 src/main.o
- .debug_macro   0x00000000000039b9       0x10 src/main.o
- .debug_macro   0x00000000000039c9       0x1c src/main.o
- .debug_macro   0x00000000000039e5       0x10 src/main.o
- .debug_macro   0x00000000000039f5       0x1c src/main.o
- .debug_macro   0x0000000000003a11       0x52 src/main.o
- .debug_macro   0x0000000000003a63       0x22 src/main.o
- .debug_macro   0x0000000000003a85       0x10 src/main.o
- .debug_macro   0x0000000000003a95       0x40 src/main.o
- .debug_macro   0x0000000000003ad5       0xd5 src/main.o
- .debug_macro   0x0000000000003baa       0x1c src/main.o
- .debug_macro   0x0000000000003bc6       0x3d src/main.o
- .debug_macro   0x0000000000003c03       0x16 src/main.o
- .debug_macro   0x0000000000003c19      0x130 src/main.o
- .debug_macro   0x0000000000003d49      0x11d src/main.o
- .debug_macro   0x0000000000003e66       0x10 src/main.o
- .debug_macro   0x0000000000003e76      0x241 src/main.o
- .debug_macro   0x00000000000040b7       0x17 src/main.o
- .debug_macro   0x00000000000040ce      0x24c src/syscalls.o
- .debug_macro   0x000000000000431a       0x4c src/syscalls.o
- .debug_macro   0x0000000000004366       0x94 src/syscalls.o
- .debug_macro   0x00000000000043fa       0x34 src/syscalls.o
- .debug_macro   0x000000000000442e       0x57 src/syscalls.o
- .debug_macro   0x0000000000004485      0x174 src/syscalls.o
- .debug_macro   0x00000000000045f9      0x339 src/syscalls.o
- .debug_macro   0x0000000000004932       0x43 src/syscalls.o
- .debug_macro   0x0000000000004975       0x1c src/syscalls.o
- .debug_macro   0x0000000000004991       0x10 src/syscalls.o
- .debug_macro   0x00000000000049a1       0x35 src/syscalls.o
- .debug_macro   0x00000000000049d6       0x10 src/syscalls.o
- .debug_macro   0x00000000000049e6       0x10 src/syscalls.o
- .debug_macro   0x00000000000049f6       0x35 src/syscalls.o
- .debug_macro   0x0000000000004a2b      0x12c src/syscalls.o
- .debug_macro   0x0000000000004b57       0x10 src/syscalls.o
- .debug_macro   0x0000000000004b67      0x145 src/syscalls.o
- .debug_macro   0x0000000000004cac      0x189 src/syscalls.o
- .debug_macro   0x0000000000004e35       0x16 src/syscalls.o
- .debug_macro   0x0000000000004e4b       0xce src/syscalls.o
- .debug_macro   0x0000000000004f19      0x219 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000347      0x17c src/STM32F446Usart.o
+ .debug_macro   0x00000000000004c3       0x10 src/STM32F446Usart.o
+ .debug_macro   0x00000000000004d3      0x41e src/STM32F446Usart.o
+ .debug_macro   0x00000000000008f1       0x10 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000901       0x18 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000919       0x52 src/STM32F446Usart.o
+ .debug_macro   0x000000000000096b       0x3c src/STM32F446Usart.o
+ .debug_macro   0x00000000000009a7       0x34 src/STM32F446Usart.o
+ .debug_macro   0x00000000000009db       0x16 src/STM32F446Usart.o
+ .debug_macro   0x00000000000009f1      0x10e src/STM32F446Usart.o
+ .debug_macro   0x0000000000000aff       0x94 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000b93       0x16 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000ba9       0x43 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000bec       0x34 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000c20       0x10 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000c30       0x58 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000c88       0x71 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000cf9       0x16 src/STM32F446Usart.o
+ .debug_macro   0x0000000000000d0f      0x12a src/STM32F446Usart.o
+ .debug_macro   0x0000000000000e39      0x35c src/STM32F446Usart.o
+ .debug_macro   0x0000000000001195       0x16 src/STM32F446Usart.o
+ .debug_macro   0x00000000000011ab       0x29 src/STM32F446Usart.o
+ .debug_macro   0x00000000000011d4       0x1c src/STM32F446Usart.o
+ .debug_macro   0x00000000000011f0       0xde src/STM32F446Usart.o
+ .debug_macro   0x00000000000012ce      0x20a src/Timer_PWM.o
+ .debug_macro   0x00000000000014d8      0x21d src/controlL297.o
+ .debug_macro   0x00000000000016f5      0x202 src/hardwareConfig.o
+ .debug_macro   0x00000000000018f7       0x16 src/hardwareConfig.o
+ .debug_macro   0x000000000000190d      0x70e src/main.o
+ .debug_macro   0x000000000000201b       0x1c src/main.o
+ .debug_macro   0x0000000000002037       0x18 src/main.o
+ .debug_macro   0x000000000000204f       0x6e src/main.o
+ .debug_macro   0x00000000000020bd       0x28 src/main.o
+ .debug_macro   0x00000000000020e5       0x41 src/main.o
+ .debug_macro   0x0000000000002126       0x12 src/main.o
+ .debug_macro   0x0000000000002138       0x2e src/main.o
+ .debug_macro   0x0000000000002166       0x19 src/main.o
+ .debug_macro   0x000000000000217f       0x88 src/main.o
+ .debug_macro   0x0000000000002207       0x19 src/main.o
+ .debug_macro   0x0000000000002220       0x22 src/main.o
+ .debug_macro   0x0000000000002242       0x3c src/main.o
+ .debug_macro   0x000000000000227e       0x10 src/main.o
+ .debug_macro   0x000000000000228e       0x10 src/main.o
+ .debug_macro   0x000000000000229e       0x33 src/main.o
+ .debug_macro   0x00000000000022d1      0x173 src/main.o
+ .debug_macro   0x0000000000002444       0x10 src/main.o
+ .debug_macro   0x0000000000002454       0x17 src/main.o
+ .debug_macro   0x000000000000246b       0x10 src/main.o
+ .debug_macro   0x000000000000247b       0x35 src/main.o
+ .debug_macro   0x00000000000024b0       0x5e src/main.o
+ .debug_macro   0x000000000000250e       0x16 src/main.o
+ .debug_macro   0x0000000000002524       0x52 src/main.o
+ .debug_macro   0x0000000000002576       0x5e src/main.o
+ .debug_macro   0x00000000000025d4       0x11 src/main.o
+ .debug_macro   0x00000000000025e5       0x11 src/main.o
+ .debug_macro   0x00000000000025f6       0x2f src/main.o
+ .debug_macro   0x0000000000002625       0x16 src/main.o
+ .debug_macro   0x000000000000263b       0x10 src/main.o
+ .debug_macro   0x000000000000264b       0x1c src/main.o
+ .debug_macro   0x0000000000002667       0x10 src/main.o
+ .debug_macro   0x0000000000002677       0x1c src/main.o
+ .debug_macro   0x0000000000002693       0x52 src/main.o
+ .debug_macro   0x00000000000026e5       0x22 src/main.o
+ .debug_macro   0x0000000000002707       0x10 src/main.o
+ .debug_macro   0x0000000000002717       0x40 src/main.o
+ .debug_macro   0x0000000000002757       0xd5 src/main.o
+ .debug_macro   0x000000000000282c       0x1c src/main.o
+ .debug_macro   0x0000000000002848       0x3d src/main.o
+ .debug_macro   0x0000000000002885       0x16 src/main.o
+ .debug_macro   0x000000000000289b      0x130 src/main.o
+ .debug_macro   0x00000000000029cb      0x11d src/main.o
+ .debug_macro   0x0000000000002ae8       0x10 src/main.o
+ .debug_macro   0x0000000000002af8      0x241 src/main.o
+ .debug_macro   0x0000000000002d39       0x17 src/main.o
+ .debug_macro   0x0000000000002d50      0x24c src/syscalls.o
+ .debug_macro   0x0000000000002f9c       0x4c src/syscalls.o
+ .debug_macro   0x0000000000002fe8       0x94 src/syscalls.o
+ .debug_macro   0x000000000000307c       0x34 src/syscalls.o
+ .debug_macro   0x00000000000030b0       0x57 src/syscalls.o
+ .debug_macro   0x0000000000003107      0x174 src/syscalls.o
+ .debug_macro   0x000000000000327b      0x339 src/syscalls.o
+ .debug_macro   0x00000000000035b4       0x43 src/syscalls.o
+ .debug_macro   0x00000000000035f7       0x1c src/syscalls.o
+ .debug_macro   0x0000000000003613       0x10 src/syscalls.o
+ .debug_macro   0x0000000000003623       0x35 src/syscalls.o
+ .debug_macro   0x0000000000003658       0x10 src/syscalls.o
+ .debug_macro   0x0000000000003668       0x10 src/syscalls.o
+ .debug_macro   0x0000000000003678       0x35 src/syscalls.o
+ .debug_macro   0x00000000000036ad      0x12c src/syscalls.o
+ .debug_macro   0x00000000000037d9       0x10 src/syscalls.o
+ .debug_macro   0x00000000000037e9      0x145 src/syscalls.o
+ .debug_macro   0x000000000000392e      0x189 src/syscalls.o
+ .debug_macro   0x0000000000003ab7       0x16 src/syscalls.o
+ .debug_macro   0x0000000000003acd       0xce src/syscalls.o
+ .debug_macro   0x0000000000003b9b      0x219 src/system_stm32f4xx.o
 
-.debug_line     0x0000000000000000     0x5496
+.debug_line     0x0000000000000000     0x549f
  .debug_line    0x0000000000000000      0xee7 src/STM32F446Usart.o
  .debug_line    0x0000000000000ee7      0xad7 src/Timer_PWM.o
  .debug_line    0x00000000000019be      0xa34 src/controlL297.o
- .debug_line    0x00000000000023f2      0x8da src/hardwareConfig.o
- .debug_line    0x0000000000002ccc     0x15df src/main.o
- .debug_line    0x00000000000042ab      0x83a src/syscalls.o
- .debug_line    0x0000000000004ae5      0x935 src/system_stm32f4xx.o
- .debug_line    0x000000000000541a       0x7c startup/startup_stm32.o
+ .debug_line    0x00000000000023f2      0x8e3 src/hardwareConfig.o
+ .debug_line    0x0000000000002cd5     0x15df src/main.o
+ .debug_line    0x00000000000042b4      0x83a src/syscalls.o
+ .debug_line    0x0000000000004aee      0x935 src/system_stm32f4xx.o
+ .debug_line    0x0000000000005423       0x7c startup/startup_stm32.o
 
 .debug_str      0x0000000000000000    0x81f4d
  .debug_str     0x0000000000000000    0x72b53 src/STM32F446Usart.o

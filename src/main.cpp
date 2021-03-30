@@ -6,12 +6,12 @@
  * @date       4 mars 2019
  */
 
-<<<<<<< Updated upstream
+
 //branche justin
 // branche tristan
-=======
 
->>>>>>> Stashed changes
+
+
 //Déclarations spécifiques au matériel
 #include "hardwareConfig.h"
 #include "Timer_PWM.h"
@@ -38,7 +38,7 @@ controlL297 *testL2974;
 //communication
 //volatiles
 volatile bool serialPcPauseCompleted = false;
-char messagePosition[6]= {'<','P',100,200,'>'};
+char messagePosition[6]= {'<','P',101,200,'>'};
 char messageCalibration[7] =	{'<','C','A','L',100,'>'};
 std::string messageComm[2]= {"<ACK>","<ERR>"};
 COMM_STATE commState=WAIT;
@@ -62,9 +62,9 @@ int main(void) {
 	testL2972->setSpeed(100);
 	testL2973->setSpeed(100);
 
-	testL297->setDirection(CW);
-	testL2972->setDirection(CW);
-	testL2973->setDirection(CW);
+	testL297->setDirection(CW); 	//coude direction doesn't change
+	testL2972->setDirection(CW); 	//Epaule direction ok
+	testL2973->setDirection(CW);	//poignet
 
 	testL297->setEnable(true);
 	testL2972->setEnable(true);

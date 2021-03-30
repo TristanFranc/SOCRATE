@@ -90,7 +90,7 @@ void controlL297::setDirection(_DIRECTION_ dir)
 	case CCW:
 
 		if(_selection==0)
-			config->GPIO_Pin_Enable(GPIOA, 10);
+			config->GPIO_Pin_Disable(GPIOA, 10);
 		if(_selection==1)
 			config->GPIO_Pin_Enable(GPIOA, 11);
 		if(_selection==2)
@@ -105,7 +105,7 @@ void controlL297::setDirection(_DIRECTION_ dir)
 
 	case CW:
 		if(_selection==0)
-			config->GPIO_Pin_Disable(GPIOA, 10);
+			config->GPIO_Pin_Enable(GPIOA, 10);
 		if(_selection==1)
 			config->GPIO_Pin_Disable(GPIOA, 11);
 		if(_selection==2)
