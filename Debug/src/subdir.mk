@@ -9,8 +9,11 @@ C_SRCS += \
 ../src/system_stm32f4xx.c 
 
 CPP_SRCS += \
-../src/AcquisitionEMG.cpp \
+../src/Adc1Stm32f446re.cpp \
 ../src/CanalEMG.cpp \
+../src/Encodeur.cpp \
+../src/PositionAxeEncodeur.cpp \
+../src/PositionAxePotentiometre.cpp \
 ../src/STM32F446Usart.cpp \
 ../src/Timer_PWM.cpp \
 ../src/VecteurEMG.cpp \
@@ -23,8 +26,11 @@ C_DEPS += \
 ./src/system_stm32f4xx.d 
 
 OBJS += \
-./src/AcquisitionEMG.o \
+./src/Adc1Stm32f446re.o \
 ./src/CanalEMG.o \
+./src/Encodeur.o \
+./src/PositionAxeEncodeur.o \
+./src/PositionAxePotentiometre.o \
 ./src/STM32F446Usart.o \
 ./src/Timer_PWM.o \
 ./src/VecteurEMG.o \
@@ -35,8 +41,11 @@ OBJS += \
 ./src/system_stm32f4xx.o 
 
 CPP_DEPS += \
-./src/AcquisitionEMG.d \
+./src/Adc1Stm32f446re.d \
 ./src/CanalEMG.d \
+./src/Encodeur.d \
+./src/PositionAxeEncodeur.d \
+./src/PositionAxePotentiometre.d \
 ./src/STM32F446Usart.d \
 ./src/Timer_PWM.d \
 ./src/VecteurEMG.d \
@@ -46,10 +55,16 @@ CPP_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/AcquisitionEMG.o: ../src/AcquisitionEMG.cpp src/subdir.mk
-	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/AcquisitionEMG.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+src/Adc1Stm32f446re.o: ../src/Adc1Stm32f446re.cpp src/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/Adc1Stm32f446re.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/CanalEMG.o: ../src/CanalEMG.cpp src/subdir.mk
 	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/CanalEMG.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+src/Encodeur.o: ../src/Encodeur.cpp src/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/Encodeur.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+src/PositionAxeEncodeur.o: ../src/PositionAxeEncodeur.cpp src/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/PositionAxeEncodeur.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+src/PositionAxePotentiometre.o: ../src/PositionAxePotentiometre.cpp src/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/PositionAxePotentiometre.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/STM32F446Usart.o: ../src/STM32F446Usart.cpp src/subdir.mk
 	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/STM32F446Usart.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/Timer_PWM.o: ../src/Timer_PWM.cpp src/subdir.mk
