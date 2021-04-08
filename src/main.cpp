@@ -6,7 +6,12 @@
  * @date       4 mars 2019
  */
 
+
 //branche justin
+// branche tristan
+
+
+
 //Déclarations spécifiques au matériel
 #include "hardwareConfig.h"
 #include "Timer_PWM.h"
@@ -33,7 +38,7 @@ controlL297 *testL2974;
 //communication
 //volatiles
 volatile bool serialPcPauseCompleted = false;
-char messagePosition[6]= {'<','P',100,200,'>'};
+char messagePosition[6]= {'<','P',101,200,'>'};
 char messageCalibration[7] =	{'<','C','A','L',100,'>'};
 std::string messageComm[2]= {"<ACK>","<ERR>"};
 COMM_STATE commState=WAIT;
@@ -57,9 +62,9 @@ int main(void) {
 	testL2972->setSpeed(100);
 	testL2973->setSpeed(100);
 
-	testL297->setDirection(CW);
-	testL2972->setDirection(CW);
-	testL2973->setDirection(CW);
+	testL297->setDirection(CW); 	//coude direction doesn't change
+	testL2972->setDirection(CW); 	//Epaule direction ok
+	testL2973->setDirection(CW);	//poignet
 
 	testL297->setEnable(true);
 	testL2972->setEnable(true);
@@ -70,7 +75,12 @@ int main(void) {
 	testL2972->setLockState(LOCK);
 	testL2973->setLockState(LOCK);//pb12 cause des problemes
 
-	stm32F446->GPIO_Config(GPIOA, 5, OUTPUT,2);// led activité
+	//stm32F446->GPIO_Config(GPIOA, 5, OUTPUT,2);// led activité
+
+	stm32F446->GPIO_Config(GPIOA, 8, OUTPUT,2);
+	stm32F446->GPIO_Config(GPIOA, 9, OUTPUT,2);
+	stm32F446->GPIO_Pin_Enable(GPIOA, 8);
+	stm32F446->GPIO_Pin_Disable(GPIOA, 9);
 
 	commAffichage = STM32F446Usart3::getInstance();
 	commAffichage->setBaudRate(9600);
@@ -127,7 +137,7 @@ int main(void) {
 				case VALIDATE:
 					if(rxData=='>')
 					{
-						GPIOA -> ODR ^= 1<<5;// led d'activité ** dois être enlever
+						//GPIOA -> ODR ^= 1<<5;// led d'activité ** dois être enlever
 
 						switch (rxCmd) {
 						case 0:

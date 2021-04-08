@@ -1,6 +1,6 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-main.cpp:45:5:int main()	24	static
-main.cpp:200:17:void TIM5_IRQHandler()	4	static
-main.cpp:208:1:void __static_initialization_and_destruction_0(int, int)	32	static
-main.cpp:208:1:cpp)	8	static
-main.cpp:208:1:cpp)	8	static
+main.cpp:51:5:int main()	24	static
+main.cpp:211:17:void TIM5_IRQHandler()	4	static
+main.cpp:219:1:void __static_initialization_and_destruction_0(int, int)	32	static
+main.cpp:219:1:cpp)	8	static
+main.cpp:219:1:cpp)	8	static

@@ -12,6 +12,7 @@
 #define POSITIONAXEENCODEUR_H_
 
 
+
 #define NBS_TOTAL_DENT_COUDE 113
 #define NBS_TOTAL_DENT_EPAULE 120
 
@@ -20,6 +21,10 @@
 
 #define MOTEUR_HORAIRE 0 		// soustraction
 #define MOTEUR_ANTIHORAIRE 1	// addition
+
+#define NBS_TOTAL_DENT_COUDE 113
+#define NBS_TOTAL_DENT_EPAULE 120
+
 
 extern "C"
 {
@@ -37,14 +42,20 @@ private:
 	friend void EXTI15_10_IRQHandler(void);
 
 	Encodeur *encodeur;
+
 	uint8_t positionAxePourcentage;
 	uint8_t positionAxeNoDent;
 	bool directionMoteur;
 	bool validInterrupt;
+
+	uint8_t PositionAxePourcentage;
+	bool direction;
+
 	uint8_t noPin;
 public:
 
 	PositionAxeEncodeur(GPIO_TypeDef *gpioPort, uint8_t noPin, uint8_t trigger);
+
 
 	void conversionNbsDentPourcentage();
 
@@ -58,6 +69,11 @@ public:
 	bool getDirectionMoteur();
 
 	void clearInterruptFlag();
+
+	void innitEncodeur(GPIO_TypeDef *gpioPort, uint8_t noPin, uint8_t trigger);
+	void conversionDegrePourcentage();
+	void setPositionPourcentage(uint8_t positionPourcentage);
+	void getPositionPourcentage();
 
 	virtual ~PositionAxeEncodeur();
 };

@@ -20,6 +20,12 @@
 
 
 
+
+class Encodeur
+{
+private:
+
+
 class Encodeur
 {
 private:
