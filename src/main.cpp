@@ -75,7 +75,12 @@ int main(void) {
 	testL2972->setLockState(LOCK);
 	testL2973->setLockState(LOCK);//pb12 cause des problemes
 
-	stm32F446->GPIO_Config(GPIOA, 5, OUTPUT,2);// led activité
+	//stm32F446->GPIO_Config(GPIOA, 5, OUTPUT,2);// led activité
+
+	stm32F446->GPIO_Config(GPIOA, 8, OUTPUT,2);
+	stm32F446->GPIO_Config(GPIOA, 9, OUTPUT,2);
+	stm32F446->GPIO_Pin_Enable(GPIOA, 8);
+	stm32F446->GPIO_Pin_Disable(GPIOA, 9);
 
 	commAffichage = STM32F446Usart3::getInstance();
 	commAffichage->setBaudRate(9600);
@@ -132,7 +137,7 @@ int main(void) {
 				case VALIDATE:
 					if(rxData=='>')
 					{
-						GPIOA -> ODR ^= 1<<5;// led d'activité ** dois être enlever
+						//GPIOA -> ODR ^= 1<<5;// led d'activité ** dois être enlever
 
 						switch (rxCmd) {
 						case 0:
