@@ -11,6 +11,10 @@ PositionAxePotentiometre::PositionAxePotentiometre(uint8_t noAxeRobot)
 {
 	adc =  new Adc1Stm32f446re(noAxeRobot);
 	positionAxePourcentage = 0;
+
+	rawPosition = 0;
+
+
 	this->noAxeRobot = noAxeRobot;
 	rawPosition = 1;
 }
@@ -33,7 +37,11 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 		rawPosition = adc->getConversion();
 		switch(noAxeRobot)
 		{
+
+		case 4:
+
 		case 3:
+
 			if(rawPosition < POSITION_MIN_COUDE)
 			{
 				rawPosition = POSITION_MIN_COUDE;
@@ -41,7 +49,11 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 			positionAxePourcentage = (100 * (rawPosition - POSITION_MIN_COUDE))/ (POSITION_MAX_COUDE - POSITION_MIN_COUDE);
 			break;
 
+
+		case 3:
+
 		case 4:
+
 			if(rawPosition < POSITION_MIN_EPAULE)
 			{
 				rawPosition = POSITION_MIN_EPAULE;
@@ -68,6 +80,13 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 	}
 
 }
+
+
+uint8_t PositionAxePotentiometre::getRawPosition()
+{
+	return this->rawPosition;
+}
+
 
 PositionAxePotentiometre::~PositionAxePotentiometre()
 {
