@@ -17,6 +17,7 @@
 #include "Timer_PWM.h"
 #include "STM32F446Usart.h"
 #include "controlL297.h"
+#include "L298x.h"
 
 
 
@@ -35,6 +36,7 @@ controlL297 *testL297;
 controlL297 *testL2972;
 controlL297 *testL2973;
 controlL297 *testL2974;
+L298x *testL298;
 //communication
 //volatiles
 volatile bool serialPcPauseCompleted = false;
@@ -57,6 +59,8 @@ int main(void) {
 	testL297= new controlL297(L297_1);
 	testL2972= new controlL297(L297_2);
 	testL2973= new controlL297(L297_3_4);
+
+	testL298 = new L298x();
 
 	testL297->setSpeed(100);
 	testL2972->setSpeed(100);
@@ -169,29 +173,22 @@ int main(void) {
 
 					}
 					if( modeSocrate==IDLE)
-							{
-								testL297->setLockState(LOCK);
-								testL2972->setLockState(LOCK);
-								testL2973->setLockState(LOCK);
-							}
-							else if (modeSocrate==CAPTEURS)
-							{
-								testL297->setLockState(UNLOCK);
-								testL2972->setLockState(LOCK);
-								testL2973->setLockState(LOCK);
-							}
-							else if (modeSocrate==MANUEL)
-							{
-								testL297->setLockState(LOCK);
-								testL2972->setLockState(UNLOCK);
-								testL2973->setLockState(LOCK);
-							}
-							else if (modeSocrate==CALIBRATION)
-								{
-									testL297->setLockState(LOCK);
-									testL2972->setLockState(LOCK);
-									testL2973->setLockState(UNLOCK);
-								}
+					{
+						testL298->setDirection(IDLE_P);
+					}
+					else if (modeSocrate==CAPTEURS)
+					{
+
+					}
+					else if (modeSocrate==MANUEL)
+					{
+						testL298->setDirection(CW_P);
+					}
+					else if (modeSocrate==CALIBRATION)
+					{
+						testL298->setDirection(CCW_P);
+
+					}
 					commState =WAIT;
 					break;
 			}

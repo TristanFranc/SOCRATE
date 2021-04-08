@@ -64,8 +64,9 @@ controlL297::controlL297(_L297_SELECT_ selection)
 		config->GPIO_Config(GPIOB, 12, OUTPUT);// lock
 		config->GPIO_Config(GPIOC, 12, OUTPUT);// direction
 		break;
+
 	}
-	//timer->start();
+
 
 }
 
@@ -175,7 +176,7 @@ bool controlL297::getLockState()
 		return 0;
 	}
 
-		return 1;
+	return 1;
 }
 bool controlL297::isEnables()
 {
