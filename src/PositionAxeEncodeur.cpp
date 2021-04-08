@@ -73,20 +73,10 @@ bool PositionAxeEncodeur::getDirectionMoteur()
 void PositionAxeEncodeur::clearInterruptFlag()
 {
 	encodeur->clearInterruptFlag();
-}
 
 	PositionAxePourcentage = 0;
 }
 
-void PositionAxeEncodeur::setPositionPourcentage(uint8_t positionPourcentage)
-{
-
-}
-
-void PositionAxeEncodeur::getPositionPourcentage()
-{
-
-}
 
 
 

@@ -72,8 +72,7 @@ public:
 
 	void innitEncodeur(GPIO_TypeDef *gpioPort, uint8_t noPin, uint8_t trigger);
 	void conversionDegrePourcentage();
-	void setPositionPourcentage(uint8_t positionPourcentage);
-	void getPositionPourcentage();
+
 
 	virtual ~PositionAxeEncodeur();
 };

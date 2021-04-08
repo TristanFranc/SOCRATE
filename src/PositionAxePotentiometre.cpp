@@ -38,7 +38,6 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 		switch(noAxeRobot)
 		{
 
-		case 4:
 
 		case 3:
 
@@ -50,7 +49,6 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 			break;
 
 
-		case 3:
 
 		case 4:
 

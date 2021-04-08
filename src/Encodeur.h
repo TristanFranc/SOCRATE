@@ -26,10 +26,6 @@ class Encodeur
 private:
 
 
-class Encodeur
-{
-private:
-
 	uint8_t noPin;
 
 public:
