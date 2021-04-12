@@ -21,109 +21,60 @@ Adc1Stm32f446re::Adc1Stm32f446re(uint8_t noAxe)
 	this->noAxe = noAxe;
 	nbsTotalConversionADC = 1;
 
-
 	//Config ADC axe 0	(Épaule)
-	configFonctionnementADC[0][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[0][1] = GPIO_MODER_MODER2; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[0][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[0][3] = 2;							//no du channel à activer
+		configFonctionnementADC[0][0] = 'A';               			//GPIO à activer
+		configFonctionnementADC[0][1] = GPIO_MODER_MODER2; 			//no de la pin MODER à activer en mode analogique
+		configFonctionnementADC[0][2] = 1;                 			//no de l'ADC à activer
+		configFonctionnementADC[0][3] = 2;							//no du channel à activer
+		configFonctionnementADC[0][4] = 1;							//position dans la chaine de conversion
+		configFonctionnementADC[0][5] = 8;							//nbs de bit de Résolution
+		configFonctionnementADC[0][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
-	//Config ADC axe 0 (Biceps)
-	configFonctionnementADC[0][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[0][1] = GPIO_MODER_MODER0; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[0][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[0][3] = 0;							//no du channel à activer
+		//Config ADC axe 1 (Coude)
+		configFonctionnementADC[1][0] = 'A';               			//GPIO à activer
+		configFonctionnementADC[1][1] = GPIO_MODER_MODER0; 			//no de la pin MODER à activer en mode analogique
+		configFonctionnementADC[1][2] = 1;                 			//no de l'ADC à activer
+		configFonctionnementADC[1][3] = 0;							//no du channel à activer
+		configFonctionnementADC[1][4] = 1;							//position dans la chaine de conversion
+		configFonctionnementADC[1][5] = 8;							//nbs de bit de Résolution
+		configFonctionnementADC[1][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
-	configFonctionnementADC[0][4] = 1;							//position dans la chaine de conversion
-	configFonctionnementADC[0][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[0][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
+		//Config ADC axe 2 (Pince)
+		configFonctionnementADC[2][0] = 'A';               			//GPIO à activer
+		configFonctionnementADC[2][1] = GPIO_MODER_MODER1; 			//no de la pin MODER à activer en mode analogique
+		configFonctionnementADC[2][2] = 1;                 			//no de l'ADC à activer
+		configFonctionnementADC[2][3] = 1;							//no du channel à activer
+		configFonctionnementADC[2][4] = 1;							//position dans la chaine de conversion
+		configFonctionnementADC[2][5] = 8;							//nbs de bit de Résolution
+		configFonctionnementADC[2][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
+		//Config potentiometre épaule
+		configFonctionnementADC[3][0] = 'A';               			//GPIO à activer
+		configFonctionnementADC[3][1] = GPIO_MODER_MODER5; 			//no de la pin MODER à activer en mode analogique
+		configFonctionnementADC[3][2] = 1;                 			//no de l'ADC à activer
+		configFonctionnementADC[3][3] = 5;							//no du channel à activer
+		configFonctionnementADC[3][4] = 1;							//position dans la chaine de conversion
+		configFonctionnementADC[3][5] = 8;							//nbs de bit de Résolution
+		configFonctionnementADC[3][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
-	//Config ADC axe 1 (Coude)
-	configFonctionnementADC[1][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[1][1] = GPIO_MODER_MODER0; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[1][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[1][3] = 0;							//no du channel à activer
-	configFonctionnementADC[1][4] = 1;							//position dans la chaine de conversion
-	configFonctionnementADC[1][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[1][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
-
-	//Config ADC axe 2 (Pince)
-	configFonctionnementADC[2][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[2][1] = GPIO_MODER_MODER1; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[2][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[2][3] = 1;							//no du channel à activer
-
-	//Config ADC axe 1 (Pince)
-	configFonctionnementADC[1][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[1][1] = GPIO_MODER_MODER1; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[1][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[1][3] = 1;							//no du channel à activer
-	configFonctionnementADC[1][4] = 2;							//position dans la chaine de conversion
-	configFonctionnementADC[1][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[1][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
-
-	//Config ADC axe 2	(Épaule)
-	configFonctionnementADC[2][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[2][1] = GPIO_MODER_MODER2; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[2][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[2][3] = 2;							//no du channel à activer
-
-	configFonctionnementADC[2][4] = 1;							//position dans la chaine de conversion
-	configFonctionnementADC[2][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[2][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
-
-	//Config potentiometre épaule
-	configFonctionnementADC[3][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[3][1] = GPIO_MODER_MODER5; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[3][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[3][3] = 5;							//no du channel à activer
-	configFonctionnementADC[3][4] = 1;							//position dans la chaine de conversion
-	configFonctionnementADC[3][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[3][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
-
-	//Config potentiometre coude
-	configFonctionnementADC[4][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[4][1] = GPIO_MODER_MODER4; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[4][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[4][3] = 4;							//no du channel à activer
-	configFonctionnementADC[4][4] = 1;							//position dans la chaine de conversion
-	configFonctionnementADC[4][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[4][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
+		//Config potentiometre coude
+		configFonctionnementADC[4][0] = 'A';               			//GPIO à activer
+		configFonctionnementADC[4][1] = GPIO_MODER_MODER4; 			//no de la pin MODER à activer en mode analogique
+		configFonctionnementADC[4][2] = 1;                 			//no de l'ADC à activer
+		configFonctionnementADC[4][3] = 4;							//no du channel à activer
+		configFonctionnementADC[4][4] = 1;							//position dans la chaine de conversion
+		configFonctionnementADC[4][5] = 8;							//nbs de bit de Résolution
+		configFonctionnementADC[4][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
 
-
-	//Config potentiometre coude
-	configFonctionnementADC[3][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[3][1] = GPIO_MODER_MODER4; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[3][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[3][3] = 4;							//no du channel à activer
-	configFonctionnementADC[3][4] = 3;							//position dans la chaine de conversion
-	configFonctionnementADC[3][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[3][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
-
-	//Config potentiometre épaule
-	configFonctionnementADC[4][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[4][1] = GPIO_MODER_MODER5; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[4][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[4][3] = 5;							//no du channel à activer
-	configFonctionnementADC[4][4] = 4;							//position dans la chaine de conversion
-	configFonctionnementADC[4][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[4][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
-
-
-	//Config potentiometre pince
-	configFonctionnementADC[5][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[5][1] = GPIO_MODER_MODER6; 			//no de la pin MODER à activer en mode analogique
-	configFonctionnementADC[5][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[5][3] = 6;							//no du channel à activer
-
-	configFonctionnementADC[5][4] = 1;							//position dans la chaine de conversion
-
-	configFonctionnementADC[5][4] = 5;							//position dans la chaine de conversion
-
-	configFonctionnementADC[5][5] = 8;							//nbs de bit de Résolution
-	configFonctionnementADC[5][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
+		//Config potentiometre pince
+		configFonctionnementADC[5][0] = 'A';               			//GPIO à activer
+		configFonctionnementADC[5][1] = GPIO_MODER_MODER6; 			//no de la pin MODER à activer en mode analogique
+		configFonctionnementADC[5][2] = 1;                 			//no de l'ADC à activer
+		configFonctionnementADC[5][3] = 6;							//no du channel à activer
+		configFonctionnementADC[5][4] = 1;							//position dans la chaine de conversion
+		configFonctionnementADC[5][5] = 8;							//nbs de bit de Résolution
+		configFonctionnementADC[5][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
 	innitADC();
 	enableADC();
@@ -251,7 +202,7 @@ void Adc1Stm32f446re::setResolution(uint8_t resolution)
  * 			  queuePosition: position dans la queue de conversion normal
  * @return -> none
  */
-void Adc1Stm32f446re::setChannelPositioningQueue(uint8_t noChannel, uint8_t queuePosition)
+void Adc1Stm32f446re::setChannelPositioningQueue(uint32_t noChannel, uint32_t queuePosition)
 {
 	//	//Gestion de la position du channel dans la chaine de conversion
 	if(queuePosition < 7)

@@ -16,7 +16,7 @@ PositionAxePotentiometre::PositionAxePotentiometre(uint8_t noAxeRobot)
 
 
 	this->noAxeRobot = noAxeRobot;
-	rawPosition = 1;
+	//rawPosition = 1;
 }
 
 void PositionAxePotentiometre::setPositionPourcentage(uint8_t positionPourcentage)
@@ -47,7 +47,6 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 			}
 			positionAxePourcentage = (100 * (rawPosition - POSITION_MIN_COUDE))/ (POSITION_MAX_COUDE - POSITION_MIN_COUDE);
 			break;
-
 
 
 		case 4:

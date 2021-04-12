@@ -1,4 +1,4 @@
-src/main.o: ../src/main.cpp ../src/hardwareConfig.h \
+src/main.o: ../src/main.cpp \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/stm32f4xx.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core/core_cm4.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core/core_cmInstr.h \
@@ -38,12 +38,12 @@ src/main.o: ../src/main.cpp ../src/hardwareConfig.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm32f4xx_fmpi2c.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm32f4xx_spdifrx.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm32f4xx_cec.h \
- ../src/Timer_PWM.h \
+ ../src/hardwareConfig.h ../src/Timer_PWM.h \
  C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/system_stm32f4xx.h \
  ../src/STM32F446Usart.h ../src/templateBufferComm.h ../src/controlL297.h \
- ../src/L298x.h
-
-../src/hardwareConfig.h:
+ ../src/L298x.h ../src/PositionAxeEncodeur.h ../src/Encodeur.h \
+ ../src/GestionMouvementAxe.h ../src/PositionAxePotentiometre.h \
+ ../src/Adc1Stm32f446re.h
 
 C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/stm32f4xx.h:
 
@@ -123,6 +123,8 @@ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm
 
 C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc/stm32f4xx_cec.h:
 
+../src/hardwareConfig.h:
+
 ../src/Timer_PWM.h:
 
 C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/system_stm32f4xx.h:
@@ -134,3 +136,13 @@ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/system_stm3
 ../src/controlL297.h:
 
 ../src/L298x.h:
+
+../src/PositionAxeEncodeur.h:
+
+../src/Encodeur.h:
+
+../src/GestionMouvementAxe.h:
+
+../src/PositionAxePotentiometre.h:
+
+../src/Adc1Stm32f446re.h:

@@ -22,6 +22,7 @@ private:
 	uint8_t positionPotPourcentage;
 	PositionAxePotentiometre *potentiometre;
 	controlL297 *moteur;
+
 public:
 	GestionMouvementAxe(uint8_t noMoteur, uint8_t noPot);
 

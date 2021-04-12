@@ -19,13 +19,13 @@ GestionMouvementAxe::GestionMouvementAxe(uint8_t noMoteur, uint8_t noPot)
 	case 0:
 		moteur = new controlL297(L297_2);
 		moteur->setSpeed(100);
-		moteur->setLockState(UNLOCK);
+		moteur->setLockState(LOCK);
 		break;
 
 	case 1:
 		moteur = new controlL297(L297_1);
 		moteur->setSpeed(100);
-		moteur->setLockState(UNLOCK);
+		moteur->setLockState(LOCK);
 		break;
 
 	case 2:

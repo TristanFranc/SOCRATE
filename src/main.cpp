@@ -13,33 +13,64 @@
 
 
 //Déclarations spécifiques au matériel
+// Classes spécifiques au STM32F446
+#include "stm32f4xx.h"
+//classes standares
+#include <string>
 #include "hardwareConfig.h"
 #include "Timer_PWM.h"
 #include "STM32F446Usart.h"
 #include "controlL297.h"
 #include "L298x.h"
+#include "PositionAxeEncodeur.h"
+#include "GestionMouvementAxe.h"
+
+//emplacement composant
+#define AXE_EPAULE 0
+#define AXE_COUDE 1
+#define AXE_PINCE 2
+#define POT_EPAULE 3
+#define POT_COUDE 4
+#define POT_PINCE 5
+#define ENCO_EPAULE 6
+#define ENCO_COUDE 7
+#define ENCO_PINCE_MASTER 8
+#define ENCO_PINCE_SLAVE 9
+
+
+#define ENCO_FALLING_TRIGGER 0
+#define ENCO_RISING_TRIGGER 1
+
+#define NO_PIN_ENCO_COUDE 2
+#define NO_PIN_ENCO_EPAULE 10
 
 
 
-// Classes spécifiques au STM32F446
-#include "stm32f4xx.h"
-//classes standares
-#include <string>
+
 //définitions
 enum COMM_STATE {WAIT, RXCMD, RXPAYLOAD, VALIDATE};
 enum MODE_ACTUEL:uint8_t{IDLE=0,CAPTEURS=1,MANUEL=2,CALIBRATION=3};
+
+void initSysteme(void);
+void initcommUsart3(void);
+void initGestionMouvementAxe(void);
+
 //objets
 hardwareConfig *stm32F446;
 Timer *cadanceComm;
 STM32F446Usart3 *commAffichage;
-controlL297 *testL297;
-controlL297 *testL2972;
-controlL297 *testL2973;
-controlL297 *testL2974;
 L298x *testL298;
+
+GestionMouvementAxe *coude;
+GestionMouvementAxe *epaule;
+GestionMouvementAxe *pince;
+
+Timer *timerConversionEMG;
+
 //communication
-//volatiles
+
 volatile bool serialPcPauseCompleted = false;
+
 char messagePosition[6]= {'<','P',101,200,'>'};
 char messageCalibration[7] =	{'<','C','A','L',100,'>'};
 std::string messageComm[2]= {"<ACK>","<ERR>"};
@@ -50,51 +81,19 @@ uint16_t rxCnt=0;
 uint8_t rxCmd=0;
 const uint16_t PAYLOAD_SIZE[4]={1,2,3,10};
 uint16_t rxPayload[15];
+
+
+
+
+
 int main(void) {
 
-	stm32F446 = new hardwareConfig();
-
-	stm32F446->SysClockConfig();
-
-	testL297= new controlL297(L297_1);
-	testL2972= new controlL297(L297_2);
-	testL2973= new controlL297(L297_3_4);
-
-	testL298 = new L298x();
-
-	testL297->setSpeed(100);
-	testL2972->setSpeed(100);
-	testL2973->setSpeed(100);
-
-	testL297->setDirection(CW); 	//coude direction doesn't change
-	testL2972->setDirection(CW); 	//Epaule direction ok
-	testL2973->setDirection(CW);	//poignet
-
-	testL297->setEnable(true);
-	testL2972->setEnable(true);
-	testL2973->setEnable(true);
+	initSysteme();
+	initcommUsart3();
+	initGestionMouvementAxe();
 
 
-	testL297->setLockState(LOCK);
-	testL2972->setLockState(LOCK);
-	testL2973->setLockState(LOCK);//pb12 cause des problemes
-
-	//stm32F446->GPIO_Config(GPIOA, 5, OUTPUT,2);// led activité
-
-	stm32F446->GPIO_Config(GPIOA, 8, OUTPUT,2);
-	stm32F446->GPIO_Config(GPIOA, 9, OUTPUT,2);
-	stm32F446->GPIO_Pin_Enable(GPIOA, 8);
-	stm32F446->GPIO_Pin_Disable(GPIOA, 9);
-
-	commAffichage = STM32F446Usart3::getInstance();
-	commAffichage->setBaudRate(9600);
-	cadanceComm = new Timer(TIM5,10000,true);
-	cadanceComm->enablePWM(2,100);
-
-	cadanceComm->start();
-
-
-
+	testL298= new L298x();
 
 	while(1)
 	{
@@ -120,6 +119,7 @@ int main(void) {
 				case 'P':
 					//position
 					rxCmd=1;
+
 					break;
 				case 'C':
 					//calibration
@@ -135,13 +135,14 @@ int main(void) {
 					rxPayload[rxCnt++]=rxData;
 					if(rxCnt>PAYLOAD_SIZE[rxCmd])
 					{
+
 						commState =VALIDATE;
 					}
 					break;
 				case VALIDATE:
 					if(rxData=='>')
 					{
-						//GPIOA -> ODR ^= 1<<5;// led d'activité ** dois être enlever
+						//GPIOA -> ODR ^= 1<<5;// led d'activité ** dois être enlever dans code final
 
 						switch (rxCmd) {
 						case 0:
@@ -159,7 +160,13 @@ int main(void) {
 
 						case 1:
 							//position
-
+							if(modeSocrate==MANUEL)
+							{
+								if(coude->getPositionPotPourcentage()<rxPayload[2])
+								{
+									coude->setMoteurDirEtSpeed(100, 1);
+								}
+							}
 							break;
 						case 2:
 							//preset calibratin
@@ -172,37 +179,74 @@ int main(void) {
 						}
 
 					}
-					if( modeSocrate==IDLE)
-					{
-						testL298->setDirection(IDLE_P);
-					}
-					else if (modeSocrate==CAPTEURS)
-					{
 
-					}
-					else if (modeSocrate==MANUEL)
-					{
-						testL298->setDirection(CW_P);
-					}
-					else if (modeSocrate==CALIBRATION)
-					{
-						testL298->setDirection(CCW_P);
-
-					}
 					commState =WAIT;
 					break;
 			}
 		}
+		if( modeSocrate==IDLE)
+		{
+
+		}
+		else if (modeSocrate==CAPTEURS)
+		{
+
+		}
+		else if (modeSocrate==MANUEL)
+		{
+			messagePosition[3]=(100+coude->getPositionPotPourcentage());
+		}
+		else if (modeSocrate==CALIBRATION)
+		{
+
+
+		}
+
 		if (serialPcPauseCompleted)
 		{
 
-			//commAffichage->write(messageComm[1].c_str());
 			commAffichage->write(messagePosition);
+			//commAffichage->write(coude->getPositionPotPourcentage());
 			//commAffichage->write(messageCalibration);
+			//commAffichage->write(coude->getPositionPotPourcentage());
 			serialPcPauseCompleted = false;
 		}
 
+	}
+}
+void initSysteme(void)
+{
+	stm32F446 = new hardwareConfig();
+	stm32F446->SysClockConfig();
+}
+void initcommUsart3(void)
+{
+	commAffichage = STM32F446Usart3::getInstance();
+	commAffichage->setBaudRate(9600);
+	cadanceComm = new Timer(TIM5,10000,true);
+	cadanceComm->enablePWM(2,100);
+	cadanceComm->start();
+}
+void initGestionMouvementAxe(void)
+{
+	timerConversionEMG = new Timer(TIM7,10000,true);
 
+	coude = new GestionMouvementAxe(AXE_COUDE, POT_COUDE);
+	epaule = new GestionMouvementAxe(AXE_EPAULE, POT_EPAULE);
+	pince = new GestionMouvementAxe(AXE_PINCE, POT_PINCE);
+	//encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER); // peut être rajouter si on utilise les encodeurs éventuellement
+	//encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
+	timerConversionEMG->start();
+}
+// interruptions
+extern "C" void TIM7_IRQHandler(void)
+{
+	if (TIM7->SR & TIM_SR_UIF) // if UIF flag is set
+	{
+		TIM7->SR &= ~TIM_SR_UIF; // clear UIF flag
+
+		coude->updatePositionPot();
+		epaule->updatePositionPot();
 	}
 }
 extern "C" void TIM5_IRQHandler(void) {
