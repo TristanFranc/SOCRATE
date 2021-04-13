@@ -58,20 +58,21 @@ void initGestionMouvementAxe(void);
 //objets
 hardwareConfig *stm32F446;
 Timer *cadanceComm;
+Timer *timerConversionEMG;
 STM32F446Usart3 *commAffichage;
-L298x *testL298;
+//L298x *testL298;
 
 GestionMouvementAxe *coude;
 GestionMouvementAxe *epaule;
 GestionMouvementAxe *pince;
 
-Timer *timerConversionEMG;
+
 
 //communication
 
 volatile bool serialPcPauseCompleted = false;
 
-char messagePosition[6]= {'<','P',101,200,'>'};
+char messagePosition[3][6]={{'<','P',100,100,'>'}, {'<','P',101,100,'>'},{'<','P',102,100,'>'}};
 char messageCalibration[7] =	{'<','C','A','L',100,'>'};
 std::string messageComm[2]= {"<ACK>","<ERR>"};
 COMM_STATE commState=WAIT;
@@ -89,11 +90,12 @@ uint16_t rxPayload[15];
 int main(void) {
 
 	initSysteme();
-	initcommUsart3();
 	initGestionMouvementAxe();
+	initcommUsart3();
+	timerConversionEMG->start();
 
 
-	testL298= new L298x();
+	//testL298= new L298x();
 
 	while(1)
 	{
@@ -184,31 +186,38 @@ int main(void) {
 					break;
 			}
 		}
-		if( modeSocrate==IDLE)
-		{
+		/********************Gestion du Menu*****************************/
+		switch (modeSocrate) {
+		case IDLE:
 
+			break;
+		case CAPTEURS:
+
+			break;
+		case MANUEL:
+			// mis à jour dees messages de position
+			messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+				messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
+				messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+
+			break;
+		case CALIBRATION:
+
+			break;
 		}
-		else if (modeSocrate==CAPTEURS)
-		{
 
-		}
-		else if (modeSocrate==MANUEL)
-		{
-			messagePosition[3]=(100+coude->getPositionPotPourcentage());
-		}
-		else if (modeSocrate==CALIBRATION)
-		{
-
-
-		}
-
+		/*************************** envoie des messages****************/
 		if (serialPcPauseCompleted)
 		{
 
-			commAffichage->write(messagePosition);
-			//commAffichage->write(coude->getPositionPotPourcentage());
-			//commAffichage->write(messageCalibration);
-			//commAffichage->write(coude->getPositionPotPourcentage());
+			for(int a=0;a<3;a++)
+			{
+				for(int b=0;b<6;b++)
+				{
+					commAffichage->write(messagePosition[a][b]);
+				}
+			}
+
 			serialPcPauseCompleted = false;
 		}
 
@@ -236,7 +245,7 @@ void initGestionMouvementAxe(void)
 	pince = new GestionMouvementAxe(AXE_PINCE, POT_PINCE);
 	//encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER); // peut être rajouter si on utilise les encodeurs éventuellement
 	//encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
-	timerConversionEMG->start();
+
 }
 // interruptions
 extern "C" void TIM7_IRQHandler(void)
@@ -247,6 +256,7 @@ extern "C" void TIM7_IRQHandler(void)
 
 		coude->updatePositionPot();
 		epaule->updatePositionPot();
+		pince->updatePositionPot();
 	}
 }
 extern "C" void TIM5_IRQHandler(void) {
