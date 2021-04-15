@@ -10,17 +10,24 @@
 #include "VecteurEMG.h"
 #include <stdint-gcc.h>
 #include "Adc1Stm32f446re.h"
+#include "PID.h"
+#include "FiltreFenetreGlissante.h"
 
 #ifndef CANALEMG_H_
 #define CANALEMG_H_
 
-
+#define POSITION_MAX_EMG 255
+#define POSITION_MIN_EMG 10
 
 class CanalEMG
 {
 private:
 	Adc1Stm32f446re *adc;
-	VecteurEMG *vecteur;
+	FiltreFenetreGlissante *filtreFenetreGlissante;
+	PID *pid;
+
+	uint8_t positionEmgRaw;
+	uint8_t positionEmgPourcentage;
 	//AcquisitionEMG *acquisitionEMG;
 
 public:
@@ -31,7 +38,7 @@ public:
 	 * @param  -> noAxe: uméro de l'axe à auxquel l'adc sera associer
 	 * @return -> None
 	 */
-	CanalEMG(uint8_t noAxeEmg);
+	CanalEMG(uint8_t noAxeEmg, double kp, double ki, double kd);
 
 	/*
 	 * @name   -> getAdcValue
@@ -40,6 +47,16 @@ public:
 	 * @return -> uint8_t: dernière conversion de l'adc
 	 */
 	uint8_t getAdcValue();
+
+	void acquisitionNewPositionEmg();
+
+	void calculPidValue(uint8_t valueActuelAxe);
+
+	uint32_t getValuePID();
+	bool getDirectionMoteur();
+	uint8_t getPositionEmgRaw();
+	uint8_t getPositionEmgPourcentage();
+	int16_t getErreurPidRaw();
 
 
 	virtual ~CanalEMG();

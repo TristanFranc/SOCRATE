@@ -13,6 +13,7 @@ RM := rm -rf
 -include src/subdir.mk
 -include StdPeriph_Driver/src/subdir.mk
 -include CMSIS/device/subdir.mk
+-include CMSIS/subdir.mk
 -include subdir.mk
 -include objects.mk
 

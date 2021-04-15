@@ -40,6 +40,7 @@ public:
 	void setDirection(_DIRECTION_ dir);
 	void setLockState(_STATE_ state);
 	void setEnable(bool state);
+	//void setPinceState
 
 	//getter
 	uint32_t getSpeed(void);

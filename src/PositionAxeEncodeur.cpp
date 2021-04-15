@@ -11,18 +11,73 @@ PositionAxeEncodeur::PositionAxeEncodeur(GPIO_TypeDef *gpioPort, uint8_t noPin, 
 {
 	this->noPin = noPin;
 	encodeur = new Encodeur(gpioPort, noPin, trigger);
-	PositionAxePourcentage = 0;
+
+
+	positionAxePourcentage = 0; //
+	positionAxeNoDent = 0;
+
+	directionMoteur = 0;
+	validInterrupt = 0;
 }
+
+void PositionAxeEncodeur::conversionNbsDentPourcentage()
+{
+	switch(noPin)
+	{
+	case NO_PIN_COUDE:
+		positionAxePourcentage = (100 * positionAxeNoDent) / NBS_TOTAL_DENT_COUDE;
+		break;
+
+	case NO_PIN_EPAULE:
+		positionAxePourcentage = (100 * positionAxeNoDent) / NBS_TOTAL_DENT_EPAULE;
+		break;
+	}
+	setPositionPourcentage(positionAxePourcentage);
+}
+
 
 void PositionAxeEncodeur::setPositionPourcentage(uint8_t positionPourcentage)
 {
-
+	this->positionAxePourcentage = positionPourcentage;
 }
 
-void PositionAxeEncodeur::getPositionPourcentage()
+uint8_t PositionAxeEncodeur::getPositionPourcentage()
 {
-
+	return this->positionAxePourcentage;
 }
+
+void PositionAxeEncodeur::setPositionAxeNbsDent(uint8_t directionMoteur)
+{
+	switch(directionMoteur)
+	{
+	case MOTEUR_HORAIRE:
+		this->positionAxeNoDent--;
+		break;
+
+	case MOTEUR_ANTIHORAIRE:
+		this->positionAxeNoDent++;
+		break;
+	}
+}
+
+uint8_t PositionAxeEncodeur::getNoPin()
+{
+	return this->noPin;
+}
+
+bool PositionAxeEncodeur::getDirectionMoteur()
+{
+	return this->directionMoteur;
+}
+
+void PositionAxeEncodeur::clearInterruptFlag()
+{
+	encodeur->clearInterruptFlag();
+
+	PositionAxePourcentage = 0;
+}
+
+
 
 
 PositionAxeEncodeur::~PositionAxeEncodeur()

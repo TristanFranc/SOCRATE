@@ -74,7 +74,7 @@ public:
 	 * 			  queuePosition: position dans la queue de conversion normal
 	 * @return -> none
 	 */
-	void setChannelPositioningQueue(uint8_t noChannel, uint8_t queuePosition);
+	void setChannelPositioningQueue(uint32_t noChannel, uint32_t queuePosition);
 
 	/*
 	 * @name   -> setADCConversionNbsCycle
