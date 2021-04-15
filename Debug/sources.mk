@@ -34,5 +34,4 @@ CMSIS/device \
 StdPeriph_Driver/src \
 src \
 startup \
-CMSIS \
 

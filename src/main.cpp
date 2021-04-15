@@ -197,11 +197,8 @@ int main(void) {
 									valTargetPince = rxPayload[2];
 									break;
 								}
-								//								if(coude->getPositionPotPourcentage()<rxPayload[2])
-								//								{
-								//									coude->setMoteurDirEtSpeed(100, 1);
-								//								}
 							}
+
 							break;
 						case 2:
 							//preset calibratin
@@ -227,6 +224,53 @@ int main(void) {
 			epaule->setMoteurLockState(0);//lock
 			break;
 		case CAPTEURS:
+
+			//
+			//			coudeEmg->calculPidValue(coude->getPositionPotPourcentage());
+			//			if(coudeEmg->getErreurPidRaw() < 4)
+			//			{
+			//				coude->setMoteurLockState(false);
+			//				//poignet->setMoteurLockState(false);
+			//			}
+			//			else
+			//			{
+			//				coude->setMoteurLockState(true);
+			//				coude->setMoteurDirEtSpeed(coudeEmg->getValuePID(), coudeEmg->getDirectionMoteur());
+			//
+			//				if(coude->getMoteurLockState())
+			//				{
+			//					//poignet->setMoteurDirEtSpeed(coudeEmg->getValuePID() / 3, coudeEmg->getDirectionMoteur());
+			//				}
+			//
+			//			}
+			//
+			//			pinceEmg->calculPidValue(pince->getPositionPotPourcentage());
+			//			if(pinceEmg->getErreurPidRaw() < 1)
+			//			{
+			//				pince->setDirectionPince(2);
+			//			}
+			//			else
+			//			{
+			//				pince->setDirectionPince(pinceEmg->getDirectionMoteur());
+			//			}
+			//
+			//
+			//
+			//			epauleEmg->calculPidValue(epaule->getPositionPotPourcentage());
+			//			if(epauleEmg->getErreurPidRaw() < 5)
+			//			{
+			//				epaule->setMoteurLockState(false);
+			//			}
+			//			else
+			//			{
+			//				epaule->setMoteurLockState(true);
+			//				epaule->setMoteurDirEtSpeed(epauleEmg->getValuePID(), epauleEmg->getDirectionMoteur());
+			//
+			//			}
+			//
+			//
+			//
+			//
 
 			break;
 		case MANUEL:
@@ -293,8 +337,8 @@ void initGestionMouvementAxe(void)
 	filtreEpaule = new FiltreFenetreGlissante();
 	filtrePince = new FiltreFenetreGlissante();
 
-	encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER); // peut être rajouter si on utilise les encodeurs éventuellement
-	encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
+	//encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER); // peut être rajouter si on utilise les encodeurs éventuellement
+	//encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
 
 }
 void gestionModeManuel(void)
@@ -316,7 +360,7 @@ void gestionModeManuel(void)
 		coude->setMoteurLockState(0);//lock
 		messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
 	}
-	//messagePosition[0][3]=(100+filtreEpaule->resultatFiltre());
+	messagePosition[0][3]=(100+filtreEpaule->resultatFiltre());
 	messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
 	messagePosition[2][3]=(100+filtrePince->resultatFiltre());
 }
