@@ -47,6 +47,7 @@
 "src/FiltreFenetreGlissante.o"
 "src/GestionMouvementAxe.o"
 "src/L298x.o"
+"src/PID.o"
 "src/PositionAxeEncodeur.o"
 "src/PositionAxePotentiometre.o"
 "src/STM32F446Usart.o"

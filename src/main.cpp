@@ -25,6 +25,7 @@
 #include "PositionAxeEncodeur.h"
 #include "GestionMouvementAxe.h"
 #include "FiltreFenetreGlissante.h"
+#include "CanalEMG.h"
 
 //emplacement composant
 #define AXE_EPAULE 0
@@ -55,6 +56,8 @@ enum MODE_ACTUEL:uint8_t{IDLE=0,CAPTEURS=1,MANUEL=2,CALIBRATION=3};
 void initSysteme(void);
 void initcommUsart3(void);
 void initGestionMouvementAxe(void);
+void innitGestionMouvementAxe(void);
+void gestionModeManuel(void);
 
 //objets
 hardwareConfig *stm32F446;
@@ -62,6 +65,11 @@ Timer *cadanceComm;
 Timer *timerConversionEMG;
 STM32F446Usart3 *commAffichage;
 //L298x *testL298;
+
+
+CanalEMG *coudeEmg;
+CanalEMG *pinceEmg;
+CanalEMG *epauleEmg;
 
 GestionMouvementAxe *coude;
 GestionMouvementAxe *epaule;
@@ -71,6 +79,9 @@ GestionMouvementAxe *pince;
 FiltreFenetreGlissante *filtreCoude;
 FiltreFenetreGlissante *filtreEpaule;
 FiltreFenetreGlissante *filtrePince;
+
+PositionAxeEncodeur *encodeurCoude;
+PositionAxeEncodeur *encodeurEpaule;
 
 
 //communication
@@ -92,6 +103,8 @@ uint16_t rxPayload[15];
 uint8_t valTargetEpaule=0;
 uint8_t valTargetCoude=0;
 uint8_t valTargetPince =0;
+
+uint8_t flag = 0;
 
 
 int main(void) {
@@ -185,7 +198,7 @@ int main(void) {
 									break;
 								}
 								//								if(coude->getPositionPotPourcentage()<rxPayload[2])
-									//								{
+								//								{
 								//									coude->setMoteurDirEtSpeed(100, 1);
 								//								}
 							}
@@ -218,24 +231,8 @@ int main(void) {
 			break;
 		case MANUEL:
 			// mis à jour dees messages de position
+			gestionModeManuel();
 
-			if(valTargetCoude <= filtreCoude->resultatFiltre())
-			{
-				coude->setMoteurLockState(1);//unlock
-				coude->setMoteurDirEtSpeed(100, 0);
-			}
-			if(valTargetCoude >= filtreCoude->resultatFiltre())
-			{
-				coude->setMoteurLockState(1);//unlock
-				coude->setMoteurDirEtSpeed(100, 1);
-			}
-			if(valTargetCoude ==filtreCoude->resultatFiltre())
-			{
-				coude->setMoteurLockState(0);//lock
-			}
-			messagePosition[0][3]=(100+filtreEpaule->resultatFiltre());
-			messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
-			messagePosition[2][3]=(100+filtrePince->resultatFiltre());
 
 			break;
 		case CALIBRATION:
@@ -273,9 +270,20 @@ void initcommUsart3(void)
 	cadanceComm->enablePWM(2,100);
 	cadanceComm->start();
 }
+void innitCanalEMG(void)
+{
+	timerConversionEMG = new Timer(TIM7,20000,true);
+
+
+	coudeEmg = new CanalEMG(AXE_COUDE, 0.1,0.1,0.1);
+	pinceEmg = new CanalEMG(AXE_PINCE, 0.1,0.1,0.1);
+	epauleEmg = new CanalEMG(AXE_EPAULE, 0.1,0.1,0.1);
+
+}
+
 void initGestionMouvementAxe(void)
 {
-	timerConversionEMG = new Timer(TIM7,10000,true);
+
 
 	coude = new GestionMouvementAxe(AXE_COUDE, POT_COUDE);
 	epaule = new GestionMouvementAxe(AXE_EPAULE, POT_EPAULE);
@@ -285,9 +293,32 @@ void initGestionMouvementAxe(void)
 	filtreEpaule = new FiltreFenetreGlissante();
 	filtrePince = new FiltreFenetreGlissante();
 
-	//encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER); // peut être rajouter si on utilise les encodeurs éventuellement
-	//encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
+	encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER); // peut être rajouter si on utilise les encodeurs éventuellement
+	encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
 
+}
+void gestionModeManuel(void)
+{
+	if(valTargetCoude <= filtreCoude->resultatFiltre())
+	{
+		coude->setMoteurLockState(1);//unlock
+		coude->setMoteurDirEtSpeed(10, 0);
+		messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+	}
+	if(valTargetCoude >= filtreCoude->resultatFiltre())
+	{
+		coude->setMoteurLockState(1);//unlock
+		coude->setMoteurDirEtSpeed(10, 1);
+		messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+	}
+	if(valTargetCoude ==filtreCoude->resultatFiltre())
+	{
+		coude->setMoteurLockState(0);//lock
+		messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+	}
+	//messagePosition[0][3]=(100+filtreEpaule->resultatFiltre());
+	messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+	messagePosition[2][3]=(100+filtrePince->resultatFiltre());
 }
 // interruptions
 extern "C" void TIM7_IRQHandler(void)

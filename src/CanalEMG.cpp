@@ -15,10 +15,14 @@
  * @param  -> noAxe: uméro de l'axe à auxquel l'adc sera associer
  * @return -> None
  */
-CanalEMG::CanalEMG(uint8_t noAxeEmg)
+CanalEMG::CanalEMG(uint8_t noAxeEmg, double kp, double ki, double kd)
 {
 	adc = new Adc1Stm32f446re(noAxeEmg);
-	vecteur = new VecteurEMG();
+	filtreFenetreGlissante = new FiltreFenetreGlissante();
+	pid = new PID(kp, ki, kd);
+
+	positionEmgRaw = 0;
+	positionEmgPourcentage = 0;
 
 }
 
@@ -36,9 +40,60 @@ uint8_t CanalEMG::getAdcValue()
 	{
 		conversion = adc->getConversion();
 		adc->clearEocFlag();
+
 		return conversion;
 	}
 	else return 0;
+}
+
+void CanalEMG::acquisitionNewPositionEmg()
+{
+	positionEmgRaw = getAdcValue();
+
+	if(positionEmgRaw < POSITION_MIN_EMG)
+	{
+		positionEmgRaw = POSITION_MIN_EMG;
+	}
+
+	positionEmgPourcentage = (100 * (positionEmgRaw - POSITION_MIN_EMG)) / (POSITION_MAX_EMG - POSITION_MIN_EMG);
+
+	if(positionEmgPourcentage > 100)
+	 {
+		 positionEmgPourcentage = 100;
+	 }
+
+	filtreFenetreGlissante->miseNiveauFiltre(positionEmgPourcentage);
+}
+
+void CanalEMG::calculPidValue(uint8_t positionActuelAxe)
+{
+	pid->calculPID(positionActuelAxe,positionEmgPourcentage);
+}
+
+uint32_t CanalEMG::getValuePID()
+{
+	return pid->getValuePID();
+}
+
+bool CanalEMG::getDirectionMoteur()
+{
+	return pid->getDirectionMoteur();
+}
+
+uint8_t CanalEMG::getPositionEmgRaw()
+{
+	return this->positionEmgRaw;
+}
+
+uint8_t CanalEMG::getPositionEmgPourcentage()
+{
+	return this->positionEmgPourcentage;
+	//return filtreFenetreGlissante->resultatFiltre();
+}
+
+int16_t CanalEMG::getErreurPidRaw()
+{
+ return pid->getErreurRaw();
 }
 
 CanalEMG::~CanalEMG()
@@ -46,4 +101,3 @@ CanalEMG::~CanalEMG()
 
 
 }
-

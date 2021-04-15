@@ -1,10 +1,12 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-main.cpp:97:5:int main()	24	static
-main.cpp:263:6:void initSysteme()	16	static
-main.cpp:268:6:void initcommUsart3()	16	static
-main.cpp:276:6:void initGestionMouvementAxe()	16	static
-main.cpp:293:17:void TIM7_IRQHandler()	16	static
-main.cpp:309:17:void TIM5_IRQHandler()	4	static
-main.cpp:317:1:void __static_initialization_and_destruction_0(int, int)	32	static
-main.cpp:317:1:cpp)	8	static
-main.cpp:317:1:cpp)	8	static
+main.cpp:110:5:int main()	24	static
+main.cpp:260:6:void initSysteme()	16	static
+main.cpp:265:6:void initcommUsart3()	16	static
+main.cpp:273:6:void innitCanalEMG()	16	static
+main.cpp:284:6:void initGestionMouvementAxe()	16	static
+main.cpp:300:6:void gestionModeManuel()	16	static
+main.cpp:324:17:void TIM7_IRQHandler()	16	static
+main.cpp:340:17:void TIM5_IRQHandler()	4	static
+main.cpp:348:1:void __static_initialization_and_destruction_0(int, int)	32	static
+main.cpp:348:1:cpp)	8	static
+main.cpp:348:1:cpp)	8	static
