@@ -44,6 +44,7 @@
 "src/Adc1Stm32f446re.o"
 "src/CanalEMG.o"
 "src/Encodeur.o"
+"src/FiltreFenetreGlissante.o"
 "src/GestionMouvementAxe.o"
 "src/L298x.o"
 "src/PositionAxeEncodeur.o"

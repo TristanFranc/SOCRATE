@@ -24,6 +24,7 @@
 #include "L298x.h"
 #include "PositionAxeEncodeur.h"
 #include "GestionMouvementAxe.h"
+#include "FiltreFenetreGlissante.h"
 
 //emplacement composant
 #define AXE_EPAULE 0
@@ -67,6 +68,10 @@ GestionMouvementAxe *epaule;
 GestionMouvementAxe *pince;
 
 
+FiltreFenetreGlissante *filtreCoude;
+FiltreFenetreGlissante *filtreEpaule;
+FiltreFenetreGlissante *filtrePince;
+
 
 //communication
 
@@ -83,8 +88,10 @@ uint8_t rxCmd=0;
 const uint16_t PAYLOAD_SIZE[4]={1,2,3,10};
 uint16_t rxPayload[15];
 
-
-
+//variable du mode manuel
+uint8_t valTargetEpaule=0;
+uint8_t valTargetCoude=0;
+uint8_t valTargetPince =0;
 
 
 int main(void) {
@@ -93,6 +100,7 @@ int main(void) {
 	initGestionMouvementAxe();
 	initcommUsart3();
 	timerConversionEMG->start();
+
 
 
 	//testL298= new L298x();
@@ -144,7 +152,7 @@ int main(void) {
 				case VALIDATE:
 					if(rxData=='>')
 					{
-						//GPIOA -> ODR ^= 1<<5;// led d'activité ** dois être enlever dans code final
+
 
 						switch (rxCmd) {
 						case 0:
@@ -164,10 +172,22 @@ int main(void) {
 							//position
 							if(modeSocrate==MANUEL)
 							{
-								if(coude->getPositionPotPourcentage()<rxPayload[2])
-								{
-									coude->setMoteurDirEtSpeed(100, 1);
+
+								switch (rxPayload[1]) {
+								case 100:
+									valTargetEpaule= rxPayload[2];
+									break;
+								case 101:
+									valTargetCoude= rxPayload[2];
+									break;
+								case 102:
+									valTargetPince = rxPayload[2];
+									break;
 								}
+								//								if(coude->getPositionPotPourcentage()<rxPayload[2])
+									//								{
+								//									coude->setMoteurDirEtSpeed(100, 1);
+								//								}
 							}
 							break;
 						case 2:
@@ -187,18 +207,35 @@ int main(void) {
 			}
 		}
 		/********************Gestion du Menu*****************************/
-		switch (modeSocrate) {
+		switch (modeSocrate)
+		{
 		case IDLE:
-
+			coude->setMoteurLockState(0);//lock
+			epaule->setMoteurLockState(0);//lock
 			break;
 		case CAPTEURS:
 
 			break;
 		case MANUEL:
 			// mis à jour dees messages de position
-			messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
-				messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
-				messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+
+			if(valTargetCoude <= filtreCoude->resultatFiltre())
+			{
+				coude->setMoteurLockState(1);//unlock
+				coude->setMoteurDirEtSpeed(100, 0);
+			}
+			if(valTargetCoude >= filtreCoude->resultatFiltre())
+			{
+				coude->setMoteurLockState(1);//unlock
+				coude->setMoteurDirEtSpeed(100, 1);
+			}
+			if(valTargetCoude ==filtreCoude->resultatFiltre())
+			{
+				coude->setMoteurLockState(0);//lock
+			}
+			messagePosition[0][3]=(100+filtreEpaule->resultatFiltre());
+			messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+			messagePosition[2][3]=(100+filtrePince->resultatFiltre());
 
 			break;
 		case CALIBRATION:
@@ -209,10 +246,10 @@ int main(void) {
 		/*************************** envoie des messages****************/
 		if (serialPcPauseCompleted)
 		{
-
-			for(int a=0;a<3;a++)
+			//position des axes
+			for(uint8_t a=0;a<3;a++)
 			{
-				for(int b=0;b<6;b++)
+				for(uint8_t b=0;b<6;b++)
 				{
 					commAffichage->write(messagePosition[a][b]);
 				}
@@ -243,6 +280,11 @@ void initGestionMouvementAxe(void)
 	coude = new GestionMouvementAxe(AXE_COUDE, POT_COUDE);
 	epaule = new GestionMouvementAxe(AXE_EPAULE, POT_EPAULE);
 	pince = new GestionMouvementAxe(AXE_PINCE, POT_PINCE);
+
+	filtreCoude = new FiltreFenetreGlissante();
+	filtreEpaule = new FiltreFenetreGlissante();
+	filtrePince = new FiltreFenetreGlissante();
+
 	//encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER); // peut être rajouter si on utilise les encodeurs éventuellement
 	//encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
 
@@ -257,6 +299,11 @@ extern "C" void TIM7_IRQHandler(void)
 		coude->updatePositionPot();
 		epaule->updatePositionPot();
 		pince->updatePositionPot();
+
+		// filtrage des valeures de pourentage de pot à chaque foi qu'ils sont mis à jour
+		filtreCoude->miseNiveauFiltre(coude->getPositionPotPourcentage());
+		filtreEpaule->miseNiveauFiltre(epaule->getPositionPotPourcentage());
+		filtrePince->miseNiveauFiltre(pince->getPositionPotPourcentage());
 	}
 }
 extern "C" void TIM5_IRQHandler(void) {

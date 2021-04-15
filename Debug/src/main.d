@@ -43,7 +43,7 @@ src/main.o: ../src/main.cpp \
  ../src/STM32F446Usart.h ../src/templateBufferComm.h ../src/controlL297.h \
  ../src/L298x.h ../src/PositionAxeEncodeur.h ../src/Encodeur.h \
  ../src/GestionMouvementAxe.h ../src/PositionAxePotentiometre.h \
- ../src/Adc1Stm32f446re.h
+ ../src/Adc1Stm32f446re.h ../src/FiltreFenetreGlissante.h
 
 C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/stm32f4xx.h:
 
@@ -146,3 +146,5 @@ C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device/system_stm3
 ../src/PositionAxePotentiometre.h:
 
 ../src/Adc1Stm32f446re.h:
+
+../src/FiltreFenetreGlissante.h:

@@ -12,6 +12,7 @@ CPP_SRCS += \
 ../src/Adc1Stm32f446re.cpp \
 ../src/CanalEMG.cpp \
 ../src/Encodeur.cpp \
+../src/FiltreFenetreGlissante.cpp \
 ../src/GestionMouvementAxe.cpp \
 ../src/L298x.cpp \
 ../src/PositionAxeEncodeur.cpp \
@@ -31,6 +32,7 @@ OBJS += \
 ./src/Adc1Stm32f446re.o \
 ./src/CanalEMG.o \
 ./src/Encodeur.o \
+./src/FiltreFenetreGlissante.o \
 ./src/GestionMouvementAxe.o \
 ./src/L298x.o \
 ./src/PositionAxeEncodeur.o \
@@ -48,6 +50,7 @@ CPP_DEPS += \
 ./src/Adc1Stm32f446re.d \
 ./src/CanalEMG.d \
 ./src/Encodeur.d \
+./src/FiltreFenetreGlissante.d \
 ./src/GestionMouvementAxe.d \
 ./src/L298x.d \
 ./src/PositionAxeEncodeur.d \
@@ -67,6 +70,8 @@ src/CanalEMG.o: ../src/CanalEMG.cpp src/subdir.mk
 	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/CanalEMG.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/Encodeur.o: ../src/Encodeur.cpp src/subdir.mk
 	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/Encodeur.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+src/FiltreFenetreGlissante.o: ../src/FiltreFenetreGlissante.cpp src/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/FiltreFenetreGlissante.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/GestionMouvementAxe.o: ../src/GestionMouvementAxe.cpp src/subdir.mk
 	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DDEBUG -DSTM32F446xx -DUSE_STDPERIPH_DRIVER -c -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/StdPeriph_Driver/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/inc" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/device" -I"C:/Users/201723940/STM32CubeIDE/workspace_1.5.1/SOCRATE/CMSIS/core" -O0 -ffunction-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"src/GestionMouvementAxe.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 src/L298x.o: ../src/L298x.cpp src/subdir.mk
