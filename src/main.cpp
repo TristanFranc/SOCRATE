@@ -6,97 +6,233 @@
  * @date       4 mars 2019
  */
 
-
-//branche justin
-// branche tristan
-
+// Classes spécifiques au STM32F446
+#include "stm32f4xx.h"
+#include <string>
 
 
 //Déclarations spécifiques au matériel
 #include "hardwareConfig.h"
-#include "Timer_PWM.h"
 #include "STM32F446Usart.h"
-#include "controlL297.h"
+#include "Timer_PWM.h"
+#include "CanalEMG.h"
+#include "Adc1Stm32f446re.h"
+#include "PositionAxeEncodeur.h"
+#include "GestionMouvementAxe.h"
+
+//emplacement composant
+#define AXE_EPAULE 0
+#define AXE_COUDE 1
+#define AXE_PINCE 2
+#define POT_EPAULE 3
+#define POT_COUDE 4
+#define POT_PINCE 5
+#define ENCO_EPAULE 6
+#define ENCO_COUDE 7
+#define ENCO_PINCE_MASTER 8
+#define ENCO_PINCE_SLAVE 9
 
 
+#define ENCO_FALLING_TRIGGER 0
+#define ENCO_RISING_TRIGGER 1
 
-// Classes spécifiques au STM32F446
-#include "stm32f4xx.h"
-//classes standares
-#include <string>
-//définitions
-enum COMM_STATE {WAIT, RXCMD, RXPAYLOAD, VALIDATE};
-enum MODE_ACTUEL:uint8_t{IDLE=0,CAPTEURS=1,MANUEL=2,CALIBRATION=3};
-//objets
+#define NO_PIN_ENCO_COUDE 2
+#define NO_PIN_ENCO_EPAULE 10
+
+// Definnition de fonction
+void innitSysteme(void);
+void innitCanalEMG(void);
+void innitComUsart3(void);
+void innitGestionMouvementAxe(void);
+
+//création emplacement Objet
 hardwareConfig *stm32F446;
-Timer *cadanceComm;
-STM32F446Usart3 *commAffichage;
-controlL297 *testL297;
-controlL297 *testL2972;
-controlL297 *testL2973;
-controlL297 *testL2974;
-//communication
-//volatiles
-volatile bool serialPcPauseCompleted = false;
-char messagePosition[6]= {'<','P',101,200,'>'};
-char messageCalibration[7] =	{'<','C','A','L',100,'>'};
-std::string messageComm[2]= {"<ACK>","<ERR>"};
-COMM_STATE commState=WAIT;
-MODE_ACTUEL modeSocrate = IDLE;
-uint8_t rxData=0;
-uint16_t rxCnt=0;
-uint8_t rxCmd=0;
-const uint16_t PAYLOAD_SIZE[4]={1,2,3,10};
-uint16_t rxPayload[15];
-int main(void) {
+CanalEMG *coudeEmg;
+CanalEMG *pinceEmg;
+CanalEMG *epauleEmg;
 
+GestionMouvementAxe *coude;
+GestionMouvementAxe *epaule;
+GestionMouvementAxe *pince;
+//GestionMouvementAxe *poignet;
+
+PositionAxeEncodeur *encodeurCoude;
+PositionAxeEncodeur *encodeurEpaule;
+
+Timer *timerConversionEMG;
+
+
+STM32F446Usart3 *usart;
+Timer *timerUsart;
+
+
+// Variable
+bool validInterruptEnco = 0;
+bool serialPcPauseCompleted = 0;
+uint8_t flag = 0;
+uint8_t adcConversionFlag = 0;
+int16_t erreur = 0;
+bool direction = 0;
+
+int main(void)
+{
+	innitSysteme();
+	innitCanalEMG();
+	innitGestionMouvementAxe();
+	innitComUsart3();
+	timerConversionEMG->start();
+	pince->setDirectionPince(1);
+	while(1)
+	{
+		if(flag)
+		{
+
+
+			coudeEmg->calculPidValue(coude->getPositionPotPourcentage());
+			if(coudeEmg->getErreurPidRaw() < 4)
+			{
+				coude->setMoteurLockState(false);
+//				poignet->setMoteurLockState(false);
+			}
+			else
+			{
+				coude->setMoteurLockState(true);
+				coude->setMoteurDirEtSpeed(coudeEmg->getValuePID(), coudeEmg->getDirectionMoteur());
+
+				if(coude->getMoteurLockState())
+				{
+//					poignet->setMoteurDirEtSpeed(coudeEmg->getValuePID() / 3, coudeEmg->getDirectionMoteur());
+				}
+
+			}
+
+			pinceEmg->calculPidValue(pince->getPositionPotPourcentage());
+			if(pinceEmg->getErreurPidRaw() < 1)
+			{
+				pince->setDirectionPince(2);
+			}
+			else
+			{
+				pince->setDirectionPince(pinceEmg->getDirectionMoteur());
+			}
+
+
+
+			epauleEmg->calculPidValue(epaule->getPositionPotPourcentage());
+			if(epauleEmg->getErreurPidRaw() < 5)
+			{
+				epaule->setMoteurLockState(false);
+			}
+			else
+			{
+				epaule->setMoteurLockState(true);
+				epaule->setMoteurDirEtSpeed(epauleEmg->getValuePID(), epauleEmg->getDirectionMoteur());
+
+			}
+
+			usart->write(epauleEmg->getValuePID());
+			flag = 0;
+		}
+	}
+}
+
+
+/*
+ * @name   -> innitSysteme
+ * @brief  -> initialisation du hardware et de la clock du stm32f446re
+ * @param  -> None
+ * @return -> None
+ */
+void innitSysteme(void)
+{
 	stm32F446 = new hardwareConfig();
-
 	stm32F446->SysClockConfig();
+}
 
-	testL297= new controlL297(L297_1);
-	testL2972= new controlL297(L297_2);
-	testL2973= new controlL297(L297_3_4);
-
-	testL297->setSpeed(100);
-	testL2972->setSpeed(100);
-	testL2973->setSpeed(100);
-
-	testL297->setDirection(CW); 	//coude direction doesn't change
-	testL2972->setDirection(CW); 	//Epaule direction ok
-	testL2973->setDirection(CW);	//poignet
-
-	testL297->setEnable(true);
-	testL2972->setEnable(true);
-	testL2973->setEnable(true);
+/*
+ * @name   -> innitCanalEMG
+ * @brief  -> initialisation des différents composant necessaire aux différents canalEMG
+ * @param  -> None
+ * @return -> None
+ */
+void innitCanalEMG(void)
+{
+	timerConversionEMG = new Timer(TIM7,20000,true);
 
 
-	testL297->setLockState(LOCK);
-	testL2972->setLockState(LOCK);
-	testL2973->setLockState(LOCK);//pb12 cause des problemes
+	coudeEmg = new CanalEMG(AXE_COUDE, 0.1,0.1,0.1);
+	pinceEmg = new CanalEMG(AXE_PINCE, 0.1,0.1,0.1);
+	epauleEmg = new CanalEMG(AXE_EPAULE, 0.1,0.1,0.1);
 
+}
+
+void innitGestionMouvementAxe()
+{
+	coude = new GestionMouvementAxe(AXE_COUDE, POT_COUDE);
+	epaule = new GestionMouvementAxe(AXE_EPAULE, POT_EPAULE);
+	pince = new GestionMouvementAxe(AXE_PINCE, POT_PINCE);
+	//poignet = new GestionMouvementAxe(ENCO_PINCE_MASTER, POT_COUDE);
+	encodeurCoude = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_COUDE, ENCO_RISING_TRIGGER);
+	encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
+}
+
+
+<<<<<<< Updated upstream
 	//stm32F446->GPIO_Config(GPIOA, 5, OUTPUT,2);// led activité
 
 	stm32F446->GPIO_Config(GPIOA, 8, OUTPUT,2);
 	stm32F446->GPIO_Config(GPIOA, 9, OUTPUT,2);
 	stm32F446->GPIO_Pin_Enable(GPIOA, 8);
 	stm32F446->GPIO_Pin_Disable(GPIOA, 9);
+=======
+void innitComUsart3(void)
+{
+	stm32F446->GPIO_Config(GPIOA, 3, OUTPUT,2);
+	usart = STM32F446Usart3::getInstance();
+	usart->setBaudRate(9600);
+>>>>>>> Stashed changes
 
-	commAffichage = STM32F446Usart3::getInstance();
-	commAffichage->setBaudRate(9600);
-	cadanceComm = new Timer(TIM5,10000,true);
-	cadanceComm->enablePWM(2,100);
+	timerUsart = new Timer(TIM5,10000,true);
+	timerUsart->enablePWM(2,100);
+	timerUsart->start();
+}
 
-	cadanceComm->start();
+/*
+ * @name   -> TIM7_IRQHandler
+ * @brief  -> interruption global du timer 7
+ * @param  -> None
+ * @return -> None
+ */
+extern "C" void TIM7_IRQHandler(void)
+{
+	if (TIM7->SR & TIM_SR_UIF) // if UIF flag is set
+	{
+		TIM7->SR &= ~TIM_SR_UIF; // clear UIF flag
 
 
+		epauleEmg->acquisitionNewPositionEmg();
+		coudeEmg->acquisitionNewPositionEmg();
+		pinceEmg->acquisitionNewPositionEmg();
 
+		coude->updatePositionPot();
+		epaule->updatePositionPot();
+		pince->updatePositionPot();
 
-	while(1)
+		flag = 1;
+
+	}
+}
+
+extern "C" void EXTI2_IRQHandler(void)
+{
+	if(EXTI->PR & EXTI_PR_PR2)
 	{
 
-		while(commAffichage->dataAvailable())
+		validInterruptEnco = 1;
+
+		if(validInterruptEnco)
 		{
+<<<<<<< Updated upstream
 			rxData= commAffichage->read();
 			switch (commState) {
 			case WAIT:
@@ -195,30 +331,51 @@ int main(void) {
 					commState =WAIT;
 					break;
 			}
+=======
+			encodeurCoude->setPositionAxeNbsDent(coude->getDirectionMoteur());
+			encodeurCoude->conversionNbsDentPourcentage();
+			validInterruptEnco = 0;
+>>>>>>> Stashed changes
 		}
-		if (serialPcPauseCompleted)
-		{
-
-			//commAffichage->write(messageComm[1].c_str());
-			commAffichage->write(messagePosition);
-			//commAffichage->write(messageCalibration);
-			serialPcPauseCompleted = false;
-		}
-
-
+		encodeurCoude->clearInterruptFlag();
 	}
+
 }
+
+extern "C" void EXTI9_5_IRQHandler(void)
+{
+
+	//PC6
+
+
+}
+
+extern "C" void EXTI15_10_IRQHandler(void)
+{
+	//encodeurEpaule PB10
+	if(EXTI->PR & EXTI_PR_PR10)
+	{
+		validInterruptEnco = 1;
+
+		if(validInterruptEnco)
+		{
+			encodeurEpaule->setPositionAxeNbsDent(epaule->getDirectionMoteur());
+			encodeurEpaule->conversionNbsDentPourcentage();
+			validInterruptEnco = 0;
+		}
+
+		encodeurEpaule->clearInterruptFlag();
+	}
+
+	//PB15
+}
+
+
 extern "C" void TIM5_IRQHandler(void) {
 	if (TIM5->SR & TIM_SR_UIF) // if UIF flag is set
 	{
 		TIM5->SR &= ~TIM_SR_UIF; // clear UIF flag
 		serialPcPauseCompleted = true;
-
 	}
 
 }
-
-
-
-
-

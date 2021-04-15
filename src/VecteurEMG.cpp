@@ -7,9 +7,30 @@
 
 #include "VecteurEMG.h"
 
-VecteurEMG::VecteurEMG() {
-	// TODO Auto-generated constructor stub
+VecteurEMG::VecteurEMG()
+{
+	actualRobotPosition = 0;
+	actualControlerPosition = 0;
+}
 
+void VecteurEMG::setActualRobotPosition(uint8_t robotPosition)
+{
+	this->actualRobotPosition = robotPosition;
+}
+
+uint8_t VecteurEMG::getActualRobotPosition()
+{
+	return this->actualRobotPosition;
+}
+
+void VecteurEMG::setActualControlerPosition(uint8_t controlerPosition)
+{
+	this->actualControlerPosition = controlerPosition;
+}
+
+uint8_t VecteurEMG::getActualControlerPosition()
+{
+	return this->actualControlerPosition;
 }
 
 VecteurEMG::~VecteurEMG() {

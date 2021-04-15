@@ -10,11 +10,16 @@
 PositionAxePotentiometre::PositionAxePotentiometre(uint8_t noAxeRobot)
 {
 	adc =  new Adc1Stm32f446re(noAxeRobot);
+	filtreFenetreGlissante = new FiltreFenetreGlissante();
 	positionAxePourcentage = 0;
+<<<<<<< Updated upstream
 
 	rawPosition = 0;
 
 
+=======
+	rawPosition = 0;
+>>>>>>> Stashed changes
 	this->noAxeRobot = noAxeRobot;
 	rawPosition = 1;
 }
@@ -26,7 +31,8 @@ void PositionAxePotentiometre::setPositionPourcentage(uint8_t positionPourcentag
 
 uint8_t PositionAxePotentiometre::getPositionPourcentage()
 {
-	return this->positionAxePourcentage;
+//	return this->positionAxePourcentage;
+	return filtreFenetreGlissante->resultatFiltre();
 }
 
 void PositionAxePotentiometre::acquisitionNewPositionAxe()
@@ -37,11 +43,15 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 		rawPosition = adc->getConversion();
 		switch(noAxeRobot)
 		{
+<<<<<<< Updated upstream
 
 		case 4:
 
 		case 3:
 
+=======
+		case 4:
+>>>>>>> Stashed changes
 			if(rawPosition < POSITION_MIN_COUDE)
 			{
 				rawPosition = POSITION_MIN_COUDE;
@@ -49,11 +59,15 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 			positionAxePourcentage = (100 * (rawPosition - POSITION_MIN_COUDE))/ (POSITION_MAX_COUDE - POSITION_MIN_COUDE);
 			break;
 
+<<<<<<< Updated upstream
 
 		case 3:
 
 		case 4:
 
+=======
+		case 3:
+>>>>>>> Stashed changes
 			if(rawPosition < POSITION_MIN_EPAULE)
 			{
 				rawPosition = POSITION_MIN_EPAULE;
@@ -76,17 +90,28 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 			positionAxePourcentage = 100;
 		}
 		setPositionPourcentage(positionAxePourcentage);
+		filtreFenetreGlissante->miseNiveauFiltre(positionAxePourcentage);
 		adc->clearEocFlag();
 	}
 
 }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 uint8_t PositionAxePotentiometre::getRawPosition()
 {
 	return this->rawPosition;
 }
 
+<<<<<<< Updated upstream
+=======
+uint8_t PositionAxePotentiometre::getValueFiltreFenetreGlissante()
+{
+
+}
+>>>>>>> Stashed changes
 
 PositionAxePotentiometre::~PositionAxePotentiometre()
 {

@@ -20,16 +20,22 @@
 
 
 
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
+class Encodeur
+{
+private:
+
+<<<<<<< Updated upstream
 
 class Encodeur
 {
 private:
 
-
-class Encodeur
-{
-private:
-
+=======
+>>>>>>> Stashed changes
 	uint8_t noPin;
 
 public:

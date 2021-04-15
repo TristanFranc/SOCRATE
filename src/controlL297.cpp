@@ -17,7 +17,8 @@ controlL297::controlL297(_L297_SELECT_ selection)
 	//config->GPIO_Pin_Disable(GPIOB,1);
 	speed = 1;// vitesse en HZ
 	lock = true;// actif bas
-	chanel=0;
+	chanel = 0;
+	direction = CW;
 
 	_selection= selection;
 
@@ -86,9 +87,10 @@ void controlL297::setSpeed(uint32_t speed)
 }
 void controlL297::setDirection(_DIRECTION_ dir)
 {
-	switch (dir) {
+	switch (dir)
+	{
 	case CCW:
-
+		direction = CCW;
 		if(_selection==0)
 			config->GPIO_Pin_Disable(GPIOA, 10);
 		if(_selection==1)
@@ -104,6 +106,7 @@ void controlL297::setDirection(_DIRECTION_ dir)
 		break;
 
 	case CW:
+		direction = CW;
 		if(_selection==0)
 			config->GPIO_Pin_Enable(GPIOA, 10);
 		if(_selection==1)
@@ -166,7 +169,7 @@ uint32_t controlL297::getSpeed()
 }
 bool controlL297::getDirection()
 {
-	return 0;
+	return direction;
 }
 bool controlL297::getLockState()
 {

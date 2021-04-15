@@ -25,7 +25,7 @@ class controlL297 {
 	typedef enum _L297_SELECT_ _L297_;
 	typedef enum _LOCK_STATE _STATE_;
 
-
+	_DIRECTION_ direction;
 	uint32_t speed;
 	uint8_t chanel;
 	_L297_ _selection;

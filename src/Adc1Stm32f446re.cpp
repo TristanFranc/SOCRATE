@@ -21,6 +21,7 @@ Adc1Stm32f446re::Adc1Stm32f446re(uint8_t noAxe)
 	this->noAxe = noAxe;
 	nbsTotalConversionADC = 1;
 
+<<<<<<< Updated upstream
 
 	//Config ADC axe 0	(Épaule)
 	configFonctionnementADC[0][0] = 'A';               			//GPIO à activer
@@ -29,15 +30,23 @@ Adc1Stm32f446re::Adc1Stm32f446re(uint8_t noAxe)
 	configFonctionnementADC[0][3] = 2;							//no du channel à activer
 
 	//Config ADC axe 0 (Biceps)
+=======
+	//Config ADC axe 0	(Épaule)
+>>>>>>> Stashed changes
 	configFonctionnementADC[0][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[0][1] = GPIO_MODER_MODER0; 			//no de la pin MODER à activer en mode analogique
+	configFonctionnementADC[0][1] = GPIO_MODER_MODER2; 			//no de la pin MODER à activer en mode analogique
 	configFonctionnementADC[0][2] = 1;                 			//no de l'ADC à activer
+<<<<<<< Updated upstream
 	configFonctionnementADC[0][3] = 0;							//no du channel à activer
 
+=======
+	configFonctionnementADC[0][3] = 2;							//no du channel à activer
+>>>>>>> Stashed changes
 	configFonctionnementADC[0][4] = 1;							//position dans la chaine de conversion
 	configFonctionnementADC[0][5] = 8;							//nbs de bit de Résolution
 	configFonctionnementADC[0][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
+<<<<<<< Updated upstream
 
 	//Config ADC axe 1 (Coude)
 	configFonctionnementADC[1][0] = 'A';               			//GPIO à activer
@@ -55,25 +64,33 @@ Adc1Stm32f446re::Adc1Stm32f446re(uint8_t noAxe)
 	configFonctionnementADC[2][3] = 1;							//no du channel à activer
 
 	//Config ADC axe 1 (Pince)
+=======
+	//Config ADC axe 1 (Coude)
+>>>>>>> Stashed changes
 	configFonctionnementADC[1][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[1][1] = GPIO_MODER_MODER1; 			//no de la pin MODER à activer en mode analogique
+	configFonctionnementADC[1][1] = GPIO_MODER_MODER0; 			//no de la pin MODER à activer en mode analogique
 	configFonctionnementADC[1][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[1][3] = 1;							//no du channel à activer
-	configFonctionnementADC[1][4] = 2;							//position dans la chaine de conversion
+	configFonctionnementADC[1][3] = 0;							//no du channel à activer
+	configFonctionnementADC[1][4] = 1;							//position dans la chaine de conversion
 	configFonctionnementADC[1][5] = 8;							//nbs de bit de Résolution
 	configFonctionnementADC[1][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
-	//Config ADC axe 2	(Épaule)
+	//Config ADC axe 2 (Pince)
 	configFonctionnementADC[2][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[2][1] = GPIO_MODER_MODER2; 			//no de la pin MODER à activer en mode analogique
+	configFonctionnementADC[2][1] = GPIO_MODER_MODER1; 			//no de la pin MODER à activer en mode analogique
 	configFonctionnementADC[2][2] = 1;                 			//no de l'ADC à activer
+<<<<<<< Updated upstream
 	configFonctionnementADC[2][3] = 2;							//no du channel à activer
 
+=======
+	configFonctionnementADC[2][3] = 1;							//no du channel à activer
+>>>>>>> Stashed changes
 	configFonctionnementADC[2][4] = 1;							//position dans la chaine de conversion
 	configFonctionnementADC[2][5] = 8;							//nbs de bit de Résolution
 	configFonctionnementADC[2][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
 	//Config potentiometre épaule
+<<<<<<< Updated upstream
 	configFonctionnementADC[3][0] = 'A';               			//GPIO à activer
 	configFonctionnementADC[3][1] = GPIO_MODER_MODER5; 			//no de la pin MODER à activer en mode analogique
 	configFonctionnementADC[3][2] = 1;                 			//no de l'ADC à activer
@@ -94,20 +111,22 @@ Adc1Stm32f446re::Adc1Stm32f446re(uint8_t noAxe)
 
 
 	//Config potentiometre coude
+=======
+>>>>>>> Stashed changes
 	configFonctionnementADC[3][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[3][1] = GPIO_MODER_MODER4; 			//no de la pin MODER à activer en mode analogique
+	configFonctionnementADC[3][1] = GPIO_MODER_MODER5; 			//no de la pin MODER à activer en mode analogique
 	configFonctionnementADC[3][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[3][3] = 4;							//no du channel à activer
-	configFonctionnementADC[3][4] = 3;							//position dans la chaine de conversion
+	configFonctionnementADC[3][3] = 5;							//no du channel à activer
+	configFonctionnementADC[3][4] = 1;							//position dans la chaine de conversion
 	configFonctionnementADC[3][5] = 8;							//nbs de bit de Résolution
 	configFonctionnementADC[3][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
-	//Config potentiometre épaule
+	//Config potentiometre coude
 	configFonctionnementADC[4][0] = 'A';               			//GPIO à activer
-	configFonctionnementADC[4][1] = GPIO_MODER_MODER5; 			//no de la pin MODER à activer en mode analogique
+	configFonctionnementADC[4][1] = GPIO_MODER_MODER4; 			//no de la pin MODER à activer en mode analogique
 	configFonctionnementADC[4][2] = 1;                 			//no de l'ADC à activer
-	configFonctionnementADC[4][3] = 5;							//no du channel à activer
-	configFonctionnementADC[4][4] = 4;							//position dans la chaine de conversion
+	configFonctionnementADC[4][3] = 4;							//no du channel à activer
+	configFonctionnementADC[4][4] = 1;							//position dans la chaine de conversion
 	configFonctionnementADC[4][5] = 8;							//nbs de bit de Résolution
 	configFonctionnementADC[4][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
@@ -117,11 +136,15 @@ Adc1Stm32f446re::Adc1Stm32f446re(uint8_t noAxe)
 	configFonctionnementADC[5][1] = GPIO_MODER_MODER6; 			//no de la pin MODER à activer en mode analogique
 	configFonctionnementADC[5][2] = 1;                 			//no de l'ADC à activer
 	configFonctionnementADC[5][3] = 6;							//no du channel à activer
+<<<<<<< Updated upstream
 
 	configFonctionnementADC[5][4] = 1;							//position dans la chaine de conversion
 
 	configFonctionnementADC[5][4] = 5;							//position dans la chaine de conversion
 
+=======
+	configFonctionnementADC[5][4] = 1;							//position dans la chaine de conversion
+>>>>>>> Stashed changes
 	configFonctionnementADC[5][5] = 8;							//nbs de bit de Résolution
 	configFonctionnementADC[5][6] = CHANNEL_SAMPLING_TIME_84;	//Channel sampling time
 
@@ -145,6 +168,7 @@ void Adc1Stm32f446re::innitADC()
 	RCC->APB2ENR |= RCC_APB2ENR_ADC1EN;					//Act de la clock sur l'adc
 	setGPIO();											//seeting du GPIO demander
 
+<<<<<<< Updated upstream
 
 	ADC->CCR |= ADC_CCR_ADCPRE_0;						//Set prescaler clock ADC
 	ADC1->CR1 |= ADC_CR1_SCAN;							//Scan mode
@@ -163,22 +187,28 @@ void Adc1Stm32f446re::innitADC()
 	ADC1->SQR1 |= 0 << 20;			//nbs total de conversion
 
 	//
+=======
+>>>>>>> Stashed changes
 	ADC->CCR |= ADC_CCR_ADCPRE_0;						//Set prescaler clock ADC
 	ADC1->CR1 |= ADC_CR1_SCAN;							//Scan mode
-	//
+
 	setResolution(configFonctionnementADC[noAxe][5]);	// Bit Résolution
-	//
+
 	//	ADC1->CR2 |= ADC_CR2_CONT;	 						//Mode conversion continue
 	ADC1->CR2 &= ~(ADC_CR2_CONT);						//Mode single
 	ADC1->CR2 |= ADC_CR2_EOCS;							// Flag EOC après chaque conversion
-	//
+
 	ADC1->CR2 &= ~ADC_CR2_ALIGN; 						//Alignement registre à droite
-	//
+
 	setADCConversionNbsCycle(); //sampling time par cycle
-	//
+
 	ADC1->SQR1 &= ~(0b1111 << 20); 	// remise à zéro  du nbs de conversion
+<<<<<<< Updated upstream
 	ADC1->SQR1 |= 4 << 20;			//nbs total de conversion
 
+=======
+	ADC1->SQR1 |= 0 << 20;			//nbs total de conversion
+>>>>>>> Stashed changes
 	setChannelPositioningQueue(configFonctionnementADC[noAxe][3],configFonctionnementADC[noAxe][4]);
 
 }
@@ -327,8 +357,11 @@ void Adc1Stm32f446re::enableADC()
 void Adc1Stm32f446re::desactivateADC()
 {
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 	ADC1->CR2 &= ~ADC_CR2_ADON;
 }
 
@@ -340,9 +373,13 @@ void Adc1Stm32f446re::desactivateADC()
  */
 void Adc1Stm32f446re::startAdcConversion()
 {
+<<<<<<< Updated upstream
 
 	setChannelPositioningQueue(configFonctionnementADC[this->noAxe][3],1);
 
+=======
+	setChannelPositioningQueue(configFonctionnementADC[this->noAxe][3],1);
+>>>>>>> Stashed changes
 	ADC1->CR2 |= ADC_CR2_SWSTART;
 }
 
@@ -364,7 +401,6 @@ uint8_t Adc1Stm32f446re::waitEocFlag()
 		return 0;
 	else
 		return 1;
-
 }
 
 /*
