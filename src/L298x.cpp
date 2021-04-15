@@ -7,8 +7,8 @@
 
 #include "L298x.h"
 
-L298x::L298x()
-{
+
+L298x::L298x() {
 	//pince pas de clock ou de chanal
 	//ouverture = cw
 	//fermeture = ccw

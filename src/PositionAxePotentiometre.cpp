@@ -21,7 +21,7 @@ PositionAxePotentiometre::PositionAxePotentiometre(uint8_t noAxeRobot)
 	rawPosition = 0;
 >>>>>>> Stashed changes
 	this->noAxeRobot = noAxeRobot;
-	rawPosition = 1;
+	//rawPosition = 1;
 }
 
 void PositionAxePotentiometre::setPositionPourcentage(uint8_t positionPourcentage)
@@ -45,7 +45,6 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 		{
 <<<<<<< Updated upstream
 
-		case 4:
 
 		case 3:
 
@@ -60,8 +59,6 @@ void PositionAxePotentiometre::acquisitionNewPositionAxe()
 			break;
 
 <<<<<<< Updated upstream
-
-		case 3:
 
 		case 4:
 

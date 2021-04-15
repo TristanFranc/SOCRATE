@@ -19,23 +19,10 @@
 #define SYSCFG_EXTI_PC 2
 
 
-
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 class Encodeur
 {
 private:
 
-<<<<<<< Updated upstream
-
-class Encodeur
-{
-private:
-
-=======
->>>>>>> Stashed changes
 	uint8_t noPin;
 
 public:

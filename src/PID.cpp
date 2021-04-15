@@ -79,4 +79,3 @@ int16_t PID::getErreurRaw()
 PID::~PID() {
 	// TODO Auto-generated destructor stub
 }
-
