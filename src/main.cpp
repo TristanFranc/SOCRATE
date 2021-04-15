@@ -46,7 +46,7 @@
 #define NO_PIN_ENCO_COUDE 2
 #define NO_PIN_ENCO_EPAULE 10
 
-
+#define VITESSE_MANUEL_MOTEURS 100
 
 
 //définitions
@@ -56,15 +56,16 @@ enum MODE_ACTUEL:uint8_t{IDLE=0,CAPTEURS=1,MANUEL=2,CALIBRATION=3};
 void initSysteme(void);
 void initcommUsart3(void);
 void initGestionMouvementAxe(void);
-void innitGestionMouvementAxe(void);
+void innitCanalEMG(void);
 void gestionModeManuel(void);
+void gestionPid(void);
 
 //objets
 hardwareConfig *stm32F446;
 Timer *cadanceComm;
 Timer *timerConversionEMG;
 STM32F446Usart3 *commAffichage;
-//L298x *testL298;
+
 
 
 CanalEMG *coudeEmg;
@@ -111,6 +112,7 @@ int main(void) {
 
 	initSysteme();
 	initGestionMouvementAxe();
+	innitCanalEMG();
 	initcommUsart3();
 	timerConversionEMG->start();
 
@@ -222,61 +224,14 @@ int main(void) {
 		case IDLE:
 			coude->setMoteurLockState(0);//lock
 			epaule->setMoteurLockState(0);//lock
+			pince->setDirectionPince(2);// idle
 			break;
 		case CAPTEURS:
-
-			//
-			//			coudeEmg->calculPidValue(coude->getPositionPotPourcentage());
-			//			if(coudeEmg->getErreurPidRaw() < 4)
-			//			{
-			//				coude->setMoteurLockState(false);
-			//				//poignet->setMoteurLockState(false);
-			//			}
-			//			else
-			//			{
-			//				coude->setMoteurLockState(true);
-			//				coude->setMoteurDirEtSpeed(coudeEmg->getValuePID(), coudeEmg->getDirectionMoteur());
-			//
-			//				if(coude->getMoteurLockState())
-			//				{
-			//					//poignet->setMoteurDirEtSpeed(coudeEmg->getValuePID() / 3, coudeEmg->getDirectionMoteur());
-			//				}
-			//
-			//			}
-			//
-			//			pinceEmg->calculPidValue(pince->getPositionPotPourcentage());
-			//			if(pinceEmg->getErreurPidRaw() < 1)
-			//			{
-			//				pince->setDirectionPince(2);
-			//			}
-			//			else
-			//			{
-			//				pince->setDirectionPince(pinceEmg->getDirectionMoteur());
-			//			}
-			//
-			//
-			//
-			//			epauleEmg->calculPidValue(epaule->getPositionPotPourcentage());
-			//			if(epauleEmg->getErreurPidRaw() < 5)
-			//			{
-			//				epaule->setMoteurLockState(false);
-			//			}
-			//			else
-			//			{
-			//				epaule->setMoteurLockState(true);
-			//				epaule->setMoteurDirEtSpeed(epauleEmg->getValuePID(), epauleEmg->getDirectionMoteur());
-			//
-			//			}
-			//
-			//
-			//
-			//
-
+			gestionPid();
 			break;
 		case MANUEL:
 			// mis à jour dees messages de position
 			gestionModeManuel();
-
 
 			break;
 		case CALIBRATION:
@@ -295,7 +250,7 @@ int main(void) {
 					commAffichage->write(messagePosition[a][b]);
 				}
 			}
-
+			//commAffichage->write(epaule->getPotRawPosition());
 			serialPcPauseCompleted = false;
 		}
 
@@ -316,8 +271,7 @@ void initcommUsart3(void)
 }
 void innitCanalEMG(void)
 {
-	timerConversionEMG = new Timer(TIM7,20000,true);
-
+	timerConversionEMG = new Timer(TIM7,10000,true);
 
 	coudeEmg = new CanalEMG(AXE_COUDE, 0.1,0.1,0.1);
 	pinceEmg = new CanalEMG(AXE_PINCE, 0.1,0.1,0.1);
@@ -327,7 +281,6 @@ void innitCanalEMG(void)
 
 void initGestionMouvementAxe(void)
 {
-
 
 	coude = new GestionMouvementAxe(AXE_COUDE, POT_COUDE);
 	epaule = new GestionMouvementAxe(AXE_EPAULE, POT_EPAULE);
@@ -343,26 +296,111 @@ void initGestionMouvementAxe(void)
 }
 void gestionModeManuel(void)
 {
-	if(valTargetCoude <= filtreCoude->resultatFiltre())
+	/*****************************Epaule**************************/
+	if(valTargetEpaule <= epaule->getPositionPotPourcentage())
+	{
+		epaule->setMoteurLockState(1);//unlock
+		epaule->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 0);
+		messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+	}
+	else if(valTargetEpaule >= epaule->getPositionPotPourcentage())
+	{
+		epaule->setMoteurLockState(1);//unlock
+		epaule->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 1);
+		messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+	}
+	else if(valTargetEpaule ==epaule->getPositionPotPourcentage())
+	{
+		epaule->setMoteurLockState(0);//lock
+		messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+	}
+
+	/*****************************Coude**************************/
+	if(valTargetCoude <= coude->getPositionPotPourcentage())
 	{
 		coude->setMoteurLockState(1);//unlock
-		coude->setMoteurDirEtSpeed(10, 0);
-		messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+		coude->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 0);
+		messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
 	}
-	if(valTargetCoude >= filtreCoude->resultatFiltre())
+	else if(valTargetCoude >= coude->getPositionPotPourcentage())
 	{
 		coude->setMoteurLockState(1);//unlock
-		coude->setMoteurDirEtSpeed(10, 1);
-		messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+		coude->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 1);
+		messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
 	}
-	if(valTargetCoude ==filtreCoude->resultatFiltre())
+	else if(valTargetCoude ==coude->getPositionPotPourcentage())
 	{
 		coude->setMoteurLockState(0);//lock
-		messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
+		messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
 	}
-	messagePosition[0][3]=(100+filtreEpaule->resultatFiltre());
-	messagePosition[1][3]=(100+filtreCoude->resultatFiltre());
-	messagePosition[2][3]=(100+filtrePince->resultatFiltre());
+
+	/*****************************Pince**************************/
+	if(valTargetPince <= pince->getPositionPotPourcentage())
+	{
+		pince->setDirectionPince(0);
+		messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+	}
+	else if(valTargetPince >= pince->getPositionPotPourcentage())
+	{
+		pince->setDirectionPince(1);
+		messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+	}
+	if(valTargetPince ==pince->getPositionPotPourcentage())
+	{
+		pince->setDirectionPince(2);
+		messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+	}
+//	messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+//	messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
+//	messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+}
+void gestionPid(void)
+{
+	coudeEmg->calculPidValue(coude->getPositionPotPourcentage());
+	if(coudeEmg->getErreurPidRaw() < 4)
+	{
+		coude->setMoteurLockState(false);
+		//poignet->setMoteurLockState(false);
+	}
+	else
+	{
+		coude->setMoteurLockState(true);
+		coude->setMoteurDirEtSpeed(coudeEmg->getValuePID(), coudeEmg->getDirectionMoteur());
+
+		if(coude->getMoteurLockState())
+		{
+			//poignet->setMoteurDirEtSpeed(coudeEmg->getValuePID() / 3, coudeEmg->getDirectionMoteur());
+		}
+
+	}
+
+	pinceEmg->calculPidValue(pince->getPositionPotPourcentage());
+	if(pinceEmg->getErreurPidRaw() < 1)
+	{
+		pince->setDirectionPince(2);
+	}
+	else
+	{
+		pince->setDirectionPince(pinceEmg->getDirectionMoteur());
+	}
+
+
+
+	epauleEmg->calculPidValue(epaule->getPositionPotPourcentage());
+	if(epauleEmg->getErreurPidRaw() < 5)
+	{
+		epaule->setMoteurLockState(false);
+	}
+	else
+	{
+		epaule->setMoteurLockState(true);
+		epaule->setMoteurDirEtSpeed(epauleEmg->getValuePID(), epauleEmg->getDirectionMoteur());
+
+	}
+
+	//usart->write(epauleEmg->getValuePID());
+
+
 }
 // interruptions
 extern "C" void TIM7_IRQHandler(void)
@@ -371,14 +409,18 @@ extern "C" void TIM7_IRQHandler(void)
 	{
 		TIM7->SR &= ~TIM_SR_UIF; // clear UIF flag
 
-		coude->updatePositionPot();
+		epauleEmg->acquisitionNewPositionEmg();
+		coudeEmg->acquisitionNewPositionEmg();
+		pinceEmg->acquisitionNewPositionEmg();
+
 		epaule->updatePositionPot();
+		coude->updatePositionPot();
 		pince->updatePositionPot();
 
 		// filtrage des valeures de pourentage de pot à chaque foi qu'ils sont mis à jour
-		filtreCoude->miseNiveauFiltre(coude->getPositionPotPourcentage());
-		filtreEpaule->miseNiveauFiltre(epaule->getPositionPotPourcentage());
-		filtrePince->miseNiveauFiltre(pince->getPositionPotPourcentage());
+		//		filtreEpaule->miseNiveauFiltre(epaule->getPositionPotPourcentage());
+		//		filtreCoude->miseNiveauFiltre(coude->getPositionPotPourcentage());
+		//		filtrePince->miseNiveauFiltre(pince->getPositionPotPourcentage());
 	}
 }
 extern "C" void TIM5_IRQHandler(void) {
