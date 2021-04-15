@@ -12,7 +12,6 @@ PositionAxeEncodeur::PositionAxeEncodeur(GPIO_TypeDef *gpioPort, uint8_t noPin, 
 	this->noPin = noPin;
 	encodeur = new Encodeur(gpioPort, noPin, trigger);
 
-
 	positionAxePourcentage = 0; //
 	positionAxeNoDent = 0;
 
@@ -73,12 +72,7 @@ bool PositionAxeEncodeur::getDirectionMoteur()
 void PositionAxeEncodeur::clearInterruptFlag()
 {
 	encodeur->clearInterruptFlag();
-
-	PositionAxePourcentage = 0;
 }
-
-
-
 
 PositionAxeEncodeur::~PositionAxeEncodeur()
 {

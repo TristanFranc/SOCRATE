@@ -19,12 +19,9 @@
 #define SYSCFG_EXTI_PC 2
 
 
-
-
 class Encodeur
 {
 private:
-
 
 	uint8_t noPin;
 

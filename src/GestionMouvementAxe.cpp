@@ -11,31 +11,47 @@
 
 GestionMouvementAxe::GestionMouvementAxe(uint8_t noMoteur, uint8_t noPot)
 {
-
 	potentiometre = new PositionAxePotentiometre(noPot);
 
+	this->noMoteur = noMoteur;
 	switch(noMoteur)
 	{
 	case 0:
 		moteur = new controlL297(L297_2);
 		moteur->setSpeed(100);
 		moteur->setLockState(LOCK);
+		moteur->setEnable(true);
+		moteur->setDirection(CCW);
 		break;
 
 	case 1:
 		moteur = new controlL297(L297_1);
 		moteur->setSpeed(100);
 		moteur->setLockState(LOCK);
+		moteur->setEnable(true);
+		moteur->setDirection(CCW);
 		break;
 
 	case 2:
-		moteur = new controlL297(L297_3_4);
-		moteur->setLockState(LOCK);
+		pince = new L298x();
+		//		moteur = new controlL297(L297_3_4);
+		//		moteur->setLockState(LOCK);
 		break;
-	}
-	moteur->setEnable(true);
-	moteur->setDirection(CCW);
 
+	case 8:
+		moteur = new controlL297(L297_3_4);
+		moteur->setSpeed(100);
+		moteur->setLockState(LOCK);
+		moteur->setEnable(true);
+		moteur->setDirection(CCW);
+		break;
+
+	}
+
+
+
+	positionEncoPourcentage = 0;
+	positionPotPourcentage = 0;
 
 }
 
@@ -63,7 +79,7 @@ uint8_t GestionMouvementAxe::getPositionPotPourcentage()
 
 uint8_t GestionMouvementAxe::getPotRawPosition()
 {
- return potentiometre->getRawPosition();
+	return potentiometre->getRawPosition();
 }
 
 bool GestionMouvementAxe::getDirectionMoteur()
@@ -71,6 +87,10 @@ bool GestionMouvementAxe::getDirectionMoteur()
 	return moteur->getDirection();
 }
 
+bool GestionMouvementAxe::getMoteurLockState()
+{
+	return moteur->getLockState();
+}
 
 //gestionMoteur
 void GestionMouvementAxe::setMoteurLockState(bool state)
@@ -96,14 +116,9 @@ void GestionMouvementAxe::setMoteurDirEtSpeed(uint32_t speed, bool direction)
 {
 	if(checkMovementLimit(direction))
 	{
-		if(speed < 400)
+		if(speed > 1000)
 		{
-			speed = 400;
-		}
-
-		else if(speed > 5000)
-		{
-			speed = 5000;
+			speed = 1000;
 		}
 
 		moteur->setSpeed(speed);
@@ -129,12 +144,17 @@ void GestionMouvementAxe::setMoteurDirEtSpeed(uint32_t speed, bool direction)
 
 bool GestionMouvementAxe::checkMovementLimit(bool directionVoulue)
 {
-	if(directionVoulue == 0 && (potentiometre->getPositionPourcentage() < 1))
+	 if(noMoteur == 8)
+	{
+		return 1;
+	}
+
+	 else if(directionVoulue == 0 && (potentiometre->getPositionPourcentage() < 1))
 	{
 		return 0;
 	}
 
-	else if(directionVoulue == 1 && (potentiometre->getPositionPourcentage() > 100))
+	else if(directionVoulue == 1 && (potentiometre->getPositionPourcentage() > 99))
 	{
 		return 0;
 	}
@@ -152,9 +172,26 @@ void GestionMouvementAxe::updatePositionPot()
 	this->positionPotPourcentage = potentiometre->getPositionPourcentage();
 }
 
+//gestion pince
+void GestionMouvementAxe::setDirectionPince(uint8_t direction)
+{
+	switch(direction)
+	{
+	case 0:
+		pince->setDirection(CW_P);
+		break;
+	case 1:
+		pince->setDirection(CCW_P);
+		break;
+	case 2:
+		pince->setDirection(IDLE_P);
+		break;
+	}
+}
 
 GestionMouvementAxe::~GestionMouvementAxe()
 {
 	// TODO Auto-generated destructor stub
 }
+
 

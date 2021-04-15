@@ -7,6 +7,7 @@
 
 #include "L298x.h"
 
+
 L298x::L298x() {
 	//pince pas de clock ou de chanal
 	//ouverture = cw
@@ -14,7 +15,6 @@ L298x::L298x() {
 	config = new hardwareConfig();
 	config->GPIO_Config(GPIOA, 8, OUTPUT,2);// controle de la pince A
 	config->GPIO_Config(GPIOA, 9, OUTPUT,2);// controle de la pince B
-
 }
 
 L298x::~L298x() {

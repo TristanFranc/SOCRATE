@@ -96,7 +96,6 @@ void Adc1Stm32f446re::innitADC()
 	RCC->APB2ENR |= RCC_APB2ENR_ADC1EN;					//Act de la clock sur l'adc
 	setGPIO();											//seeting du GPIO demander
 
-
 	ADC->CCR |= ADC_CCR_ADCPRE_0;						//Set prescaler clock ADC
 	ADC1->CR1 |= ADC_CR1_SCAN;							//Scan mode
 
@@ -111,25 +110,8 @@ void Adc1Stm32f446re::innitADC()
 	setADCConversionNbsCycle(); //sampling time par cycle
 
 	ADC1->SQR1 &= ~(0b1111 << 20); 	// remise à zéro  du nbs de conversion
+
 	ADC1->SQR1 |= 0 << 20;			//nbs total de conversion
-
-	//
-	ADC->CCR |= ADC_CCR_ADCPRE_0;						//Set prescaler clock ADC
-	ADC1->CR1 |= ADC_CR1_SCAN;							//Scan mode
-	//
-	setResolution(configFonctionnementADC[noAxe][5]);	// Bit Résolution
-	//
-	//	ADC1->CR2 |= ADC_CR2_CONT;	 						//Mode conversion continue
-	ADC1->CR2 &= ~(ADC_CR2_CONT);						//Mode single
-	ADC1->CR2 |= ADC_CR2_EOCS;							// Flag EOC après chaque conversion
-	//
-	ADC1->CR2 &= ~ADC_CR2_ALIGN; 						//Alignement registre à droite
-	//
-	setADCConversionNbsCycle(); //sampling time par cycle
-	//
-	ADC1->SQR1 &= ~(0b1111 << 20); 	// remise à zéro  du nbs de conversion
-	ADC1->SQR1 |= 4 << 20;			//nbs total de conversion
-
 	setChannelPositioningQueue(configFonctionnementADC[noAxe][3],configFonctionnementADC[noAxe][4]);
 
 }
@@ -277,9 +259,6 @@ void Adc1Stm32f446re::enableADC()
  */
 void Adc1Stm32f446re::desactivateADC()
 {
-
-
-
 	ADC1->CR2 &= ~ADC_CR2_ADON;
 }
 
@@ -291,9 +270,7 @@ void Adc1Stm32f446re::desactivateADC()
  */
 void Adc1Stm32f446re::startAdcConversion()
 {
-
 	setChannelPositioningQueue(configFonctionnementADC[this->noAxe][3],1);
-
 	ADC1->CR2 |= ADC_CR2_SWSTART;
 }
 
@@ -315,7 +292,6 @@ uint8_t Adc1Stm32f446re::waitEocFlag()
 		return 0;
 	else
 		return 1;
-
 }
 
 /*

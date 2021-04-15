@@ -71,6 +71,7 @@ void CanalEMG::calculPidValue(uint8_t positionActuelAxe)
 }
 
 uint32_t CanalEMG::getValuePID()
+
 {
 	return pid->getValuePID();
 }
