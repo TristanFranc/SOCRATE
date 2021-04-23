@@ -1,10 +1,10 @@
 /*
- * Timer_PWM.h
- *
- *  Created on: 11 mars 2021
- *      Author: 201723940
+ * @file    -> Timer_PWM.h
+ * @author  -> Tristan Franc
+ * @version -> 0.01
+ * @Created -> 11 mars 2021
+ * @brief   -> classe qui permet de configurer les timer 1,2,3,4,5,7 et de configurer leurs divers onctions et modes
  */
-
 #ifndef TIMER_PWM_H_
 #define TIMER_PWM_H_
 

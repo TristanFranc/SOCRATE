@@ -9907,7 +9907,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x0000000000006de1       0xce src/syscalls.o
  .debug_macro   0x0000000000006eaf      0x219 src/system_stm32f4xx.o
 
-.debug_line     0x0000000000000000     0xa184
+.debug_line     0x0000000000000000     0xa187
  .debug_line    0x0000000000000000      0xac4 src/Adc1Stm32f446re.o
  .debug_line    0x0000000000000ac4      0xd66 src/CanalEMG.o
  .debug_line    0x000000000000182a      0x81f src/FiltreFenetreGlissante.o
@@ -9915,14 +9915,14 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x0000000000002b1d      0x825 src/L298x.o
  .debug_line    0x0000000000003342      0xcb4 src/PID.o
  .debug_line    0x0000000000003ff6      0x901 src/PositionAxePotentiometre.o
- .debug_line    0x00000000000048f7      0xee8 src/STM32F446Usart.o
- .debug_line    0x00000000000057df      0xae6 src/Timer_PWM.o
- .debug_line    0x00000000000062c5      0xa36 src/controlL297.o
- .debug_line    0x0000000000006cfb      0x8e3 src/hardwareConfig.o
- .debug_line    0x00000000000075de     0x19bb src/main.o
- .debug_line    0x0000000000008f99      0x83a src/syscalls.o
- .debug_line    0x00000000000097d3      0x935 src/system_stm32f4xx.o
- .debug_line    0x000000000000a108       0x7c startup/startup_stm32.o
+ .debug_line    0x00000000000048f7      0xeeb src/STM32F446Usart.o
+ .debug_line    0x00000000000057e2      0xae6 src/Timer_PWM.o
+ .debug_line    0x00000000000062c8      0xa36 src/controlL297.o
+ .debug_line    0x0000000000006cfe      0x8e3 src/hardwareConfig.o
+ .debug_line    0x00000000000075e1     0x19bb src/main.o
+ .debug_line    0x0000000000008f9c      0x83a src/syscalls.o
+ .debug_line    0x00000000000097d6      0x935 src/system_stm32f4xx.o
+ .debug_line    0x000000000000a10b       0x7c startup/startup_stm32.o
 
 .debug_str      0x0000000000000000    0x7f326
  .debug_str     0x0000000000000000    0x6e151 src/Adc1Stm32f446re.o
