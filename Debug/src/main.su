@@ -1,13 +1,14 @@
 gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
-main.cpp:111:5:int main()	24	static
-main.cpp:259:6:void initSysteme()	16	static
-main.cpp:264:6:void initcommUsart3()	16	static
-main.cpp:272:6:void innitCanalEMG()	16	static
-main.cpp:282:6:void initGestionMouvementAxe()	16	static
-main.cpp:297:6:void gestionModeManuel()	8	static
-main.cpp:357:6:void gestionPid()	16	static
-main.cpp:406:17:void TIM7_IRQHandler()	8	static
-main.cpp:426:17:void TIM5_IRQHandler()	4	static
-main.cpp:434:1:void __static_initialization_and_destruction_0(int, int)	32	static
-main.cpp:434:1:cpp)	8	static
-main.cpp:434:1:cpp)	8	static
+main.cpp:115:5:int main()	24	static
+main.cpp:266:6:void initSysteme()	16	static
+main.cpp:271:6:void initcommUsart3()	16	static
+main.cpp:279:6:void innitCanalEMG()	16	static
+main.cpp:289:6:void initGestionMouvementAxe()	16	static
+main.cpp:304:6:void gestionCalibration()	4	static
+main.cpp:308:6:void gestionModeManuel()	8	static
+main.cpp:381:6:void gestionPid()	16	static
+main.cpp:430:17:void TIM7_IRQHandler()	8	static
+main.cpp:450:17:void TIM5_IRQHandler()	4	static
+main.cpp:458:1:void __static_initialization_and_destruction_0(int, int)	32	static
+main.cpp:458:1:cpp)	8	static
+main.cpp:458:1:cpp)	8	static

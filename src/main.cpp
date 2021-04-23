@@ -2,7 +2,7 @@
  * @file       main.cpp
  * @brief
  * @author    Tristan Franc & Justin Bélanger
- * @version    0.01
+ * @version    n/a
  * @date       4 mars 2019
  */
 
@@ -46,7 +46,7 @@
 #define NO_PIN_ENCO_COUDE 2
 #define NO_PIN_ENCO_EPAULE 10
 
-#define VITESSE_MANUEL_MOTEURS 100
+#define VITESSE_MANUEL_MOTEURS 70
 
 
 //définitions
@@ -57,6 +57,7 @@ void initSysteme(void);
 void initcommUsart3(void);
 void initGestionMouvementAxe(void);
 void innitCanalEMG(void);
+void gestionCalibration(void);
 void gestionModeManuel(void);
 void gestionPid(void);
 
@@ -102,8 +103,11 @@ uint16_t rxPayload[15];
 
 //variable du mode manuel
 uint8_t valTargetEpaule=0;
+uint8_t valTargetEpaulePrecedante=0;
 uint8_t valTargetCoude=0;
+uint8_t valTargetCoudePrecedante=0;
 uint8_t valTargetPince =0;
+uint8_t valTargetPincePrecedante=0;
 
 uint8_t flag = 0;
 
@@ -190,12 +194,15 @@ int main(void) {
 
 								switch (rxPayload[1]) {
 								case 100:
+									valTargetEpaulePrecedante=valTargetEpaule;//conserve val précédante
 									valTargetEpaule= rxPayload[2];
 									break;
 								case 101:
+									valTargetCoudePrecedante=valTargetCoude;
 									valTargetCoude= rxPayload[2];
 									break;
 								case 102:
+									valTargetPincePrecedante=valTargetPince;
 									valTargetPince = rxPayload[2];
 									break;
 								}
@@ -235,7 +242,7 @@ int main(void) {
 
 			break;
 		case CALIBRATION:
-
+			gestionCalibration();
 			break;
 		}
 
@@ -294,65 +301,82 @@ void initGestionMouvementAxe(void)
 	//encodeurEpaule = new PositionAxeEncodeur(GPIOB, NO_PIN_ENCO_EPAULE, ENCO_RISING_TRIGGER);
 
 }
+void gestionCalibration(void)
+{
+
+}
 void gestionModeManuel(void)
 {
 	/*****************************Epaule**************************/
-	if(valTargetEpaule <= epaule->getPositionPotPourcentage())
+	if(valTargetEpaule != valTargetEpaulePrecedante)
 	{
-		epaule->setMoteurLockState(1);//unlock
-		epaule->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 0);
-		messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+
+		if(valTargetEpaule < epaule->getPositionPotPourcentage())
+		{
+			epaule->setMoteurLockState(1);//unlock
+			epaule->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 0);
+			messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+		}
+		else if(valTargetEpaule > epaule->getPositionPotPourcentage())
+		{
+			epaule->setMoteurLockState(1);//unlock
+			epaule->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 1);
+			messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+		}
+
+		valTargetEpaulePrecedante = valTargetEpaule;
 	}
-	else if(valTargetEpaule >= epaule->getPositionPotPourcentage())
-	{
-		epaule->setMoteurLockState(1);//unlock
-		epaule->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 1);
-		messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
-	}
-	else if(valTargetEpaule ==epaule->getPositionPotPourcentage())
+	if((epaule->getPositionPotPourcentage()>=(valTargetEpaule-1))&&(epaule->getPositionPotPourcentage()<=(valTargetEpaule+1)))
 	{
 		epaule->setMoteurLockState(0);//lock
 		messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
 	}
 
 	/*****************************Coude**************************/
-	if(valTargetCoude <= coude->getPositionPotPourcentage())
+	if(valTargetCoude != valTargetCoudePrecedante)
 	{
-		coude->setMoteurLockState(1);//unlock
-		coude->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 0);
-		messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
+		if(valTargetCoude <= coude->getPositionPotPourcentage())
+		{
+			coude->setMoteurLockState(1);//unlock
+			coude->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 0);
+			messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
+		}
+		else if(valTargetCoude >= coude->getPositionPotPourcentage())
+		{
+			coude->setMoteurLockState(1);//unlock
+			coude->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 1);
+			messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
+		}
+		valTargetCoudePrecedante=valTargetCoude;
 	}
-	else if(valTargetCoude >= coude->getPositionPotPourcentage())
-	{
-		coude->setMoteurLockState(1);//unlock
-		coude->setMoteurDirEtSpeed(VITESSE_MANUEL_MOTEURS, 1);
-		messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
-	}
-	else if(valTargetCoude ==coude->getPositionPotPourcentage())
+	if((coude->getPositionPotPourcentage()>=(valTargetCoude-1))&&(coude->getPositionPotPourcentage()<=(valTargetCoude+1)))
 	{
 		coude->setMoteurLockState(0);//lock
 		messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
 	}
-
-	/*****************************Pince**************************/
-	if(valTargetPince <= pince->getPositionPotPourcentage())
+	//	/*****************************Pince**************************/
+	if(valTargetPince != valTargetPincePrecedante)
 	{
-		pince->setDirectionPince(0);
-		messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+		if(valTargetPince <= pince->getPositionPotPourcentage())
+		{
+			pince->setDirectionPince(0);
+			messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+		}
+		else if(valTargetPince >= pince->getPositionPotPourcentage())
+		{
+			pince->setDirectionPince(1);
+			messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+		}
+		valTargetPincePrecedante=valTargetPince;
 	}
-	else if(valTargetPince >= pince->getPositionPotPourcentage())
-	{
-		pince->setDirectionPince(1);
-		messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
-	}
-	if(valTargetPince ==pince->getPositionPotPourcentage())
+	if((pince->getPositionPotPourcentage()>=(valTargetPince-1))&&(pince->getPositionPotPourcentage()<=(valTargetPince+1)))
 	{
 		pince->setDirectionPince(2);
 		messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
 	}
-//	messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
-//	messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
-//	messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
+	//	messagePosition[0][3]=(100+epaule->getPositionPotPourcentage());
+	//	messagePosition[1][3]=(100+coude->getPositionPotPourcentage());
+	//	messagePosition[2][3]=(100+pince->getPositionPotPourcentage());
 }
 void gestionPid(void)
 {

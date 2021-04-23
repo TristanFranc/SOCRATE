@@ -14,7 +14,7 @@ hardwareConfig::hardwareConfig() {
 hardwareConfig::~hardwareConfig() {
 
 }
-// gère l'initialisation de base pour assurer le fonctionnement de base du nucle
+// gère l'initialisation de base pour assurer le fonctionnement de base du nucleo
 //****dois être la première chose appeler dans le main.
 void hardwareConfig::SysClockConfig(void)
 {

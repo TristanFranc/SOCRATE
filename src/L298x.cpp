@@ -1,8 +1,9 @@
 /*
- * L298x.cpp
- *
- *  Created on: 8 avr. 2021
- *      Author: 201723940
+ * @file    -> L298x.cpp
+ * @author  -> Tristan Franc
+ * @version -> n/a
+ * @Created -> 8 avr. 2021
+ * @brief     -> Classe qui permet de contrôler un L298 configuré en pont en H
  */
 
 #include "L298x.h"

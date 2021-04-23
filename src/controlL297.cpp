@@ -1,8 +1,9 @@
 /*
- * controlL297.cpp
- *
- *  Created on: Mar 16, 2021
- *      Author: 201723940
+ * @file    -> controlL297.cpp
+ * @author  -> Tristan FRanc
+ * @version -> n/a
+ * @Created ->  Mar 16, 2021
+ * @brief     -> Classe qui permet de contrôller les modules L297 de manière individuelle
  */
 
 #include "controlL297.h"
