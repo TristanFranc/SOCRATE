@@ -1,14 +1,21 @@
 /*
- * GestionMouvementAxe.cpp
- *
- *  Created on: 30 mars 2021
- *      Author: Justin
+ * @file    -> GestionMouvementAxe.cpp
+ * @author  -> Justin Bélanger
+ * @version -> 0.01
+ * @Created -> 30 mars 2021
+ * @brief   -> Classe qui fait la gestion des mouvements d'un axe du robot en fonction de sa position actuel et de ses limites
  */
 
 #include "GestionMouvementAxe.h"
 
 
-
+/*
+ * @name   -> GestionMouvementAxe
+ * @brief  -> Constructeur de la classe
+ * @param  -> noMoteur: numéro du moteur à activée/crée (voir liste define dans le main)
+ * 			  noPot:	numéro du potentiomètre à activée/crée (voir liste define dans le main)
+ * @return -> None
+ */
 GestionMouvementAxe::GestionMouvementAxe(uint8_t noMoteur, uint8_t noPot)
 {
 	potentiometre = new PositionAxePotentiometre(noPot);
@@ -56,43 +63,100 @@ GestionMouvementAxe::GestionMouvementAxe(uint8_t noMoteur, uint8_t noPot)
 }
 
 //setter
+
+/*
+ * @name   -> setPositionEncoPourcentage
+ * @brief  -> affecte la variable positionEncoPourcentage avec une nouvelle valeur
+ * @param  -> newPositionEncoPourcentage: nouvelle valeur qui affecteras positionEncoPourcentage
+ * @return -> None
+ */
 void GestionMouvementAxe::setPositionEncoPourcentage(uint8_t newPositionEncoPourcentage)
 {
 	this->positionEncoPourcentage = newPositionEncoPourcentage;
 }
 
+
+/*
+ * @name   -> setPositionPotPourcentage
+ * @brief  -> affecte la variable positionPotPourcentage avec une nouvelle valeur
+ * @param  -> newPositionPotPourcentage: ouvelle valeur qui affecteras positionPotPourcentage
+ * @return -> None
+ */
 void GestionMouvementAxe::setPositionPotPourcentage(uint8_t newPositionPotPourcentage)
 {
 	this->positionPotPourcentage = newPositionPotPourcentage;
 }
 
 //getter
+
+/*
+ * @name   -> getPositionEncoPourcentage
+ * @brief  -> renvoie la valeur en pourcentage associer à la position de l'encodeur de roue
+ * @param  -> None
+ * @return -> uint8_t
+ */
 uint8_t GestionMouvementAxe::getPositionEncoPourcentage()
 {
 	return this->positionEncoPourcentage;
 }
 
+
+/*
+ * @name   -> getPositionPotPourcentage
+ * @brief  -> renvoie la valeur en pourcentage associer à la position du potentiomètre
+ * @param  -> None
+ * @return -> uint8_t
+ */
 uint8_t GestionMouvementAxe::getPositionPotPourcentage()
 {
 	return this->positionPotPourcentage;
 }
 
+
+/*
+ * @name   -> getPotRawPosition
+ * @brief  -> renvoie la valeur de conversion de l'adc associer à la position du potentiomètre
+ * @param  -> None
+ * @return -> uint8_t
+ */
 uint8_t GestionMouvementAxe::getPotRawPosition()
 {
 	return potentiometre->getRawPosition();
 }
 
+
+/*
+ * @name   -> getDirectionMoteur
+ * @brief  -> renvoie la direction actuel à laquelle le moteur est actuellement
+ * @param  -> None
+ * @return -> bool
+ */
 bool GestionMouvementAxe::getDirectionMoteur()
 {
 	return moteur->getDirection();
 }
 
+
+/*
+ * @name   -> getMoteurLockState
+ * @brief  -> renvoie l'état actuel du moteur (lock ou unlock)
+ * @param  -> None
+ * @return -> bool
+ */
 bool GestionMouvementAxe::getMoteurLockState()
 {
 	return moteur->getLockState();
 }
 
+
 //gestionMoteur
+
+/*
+ * @name   -> setMoteurLockState
+ * @brief  -> permet de changer l'état actuel du moteur (lock ou unlock)
+ * @param  -> state: état voulue du moteur (lock ou unlock)
+ * @return -> None
+ */
 void GestionMouvementAxe::setMoteurLockState(bool state)
 {
 	switch(state)
@@ -107,11 +171,26 @@ void GestionMouvementAxe::setMoteurLockState(bool state)
 	}
 }
 
+
+/*
+ * @name   -> setMoteurEnableState
+ * @brief  -> permet de changer l'état actuel actuel du moteur (enable ou disable)
+ * @param  -> state: état voulue du moteur (enable ou disable)
+ * @return -> None
+ */
 void GestionMouvementAxe::setMoteurEnableState(bool state)
 {
 	moteur->setEnable(state);
 }
 
+
+/*
+ * @name   -> setMoteurDirEtSpeed
+ * @brief  -> permet de changer la direction et la vitesse du moteur si la position physique le permet
+ * @param  -> speed: vitesse voulue
+ * 			  direction: direction voulue
+ * @return -> None
+ */
 void GestionMouvementAxe::setMoteurDirEtSpeed(uint32_t speed, bool direction)
 {
 	if(checkMovementLimit(direction))
@@ -142,14 +221,21 @@ void GestionMouvementAxe::setMoteurDirEtSpeed(uint32_t speed, bool direction)
 	}
 }
 
+
+/*
+ * @name   -> checkMovementLimit
+ * @brief  -> Vérifie si le moteur peut aller dans un sens ou l'autre en fonction de la position physique actuel du moteur
+ * @param  -> directionVoulue: direction que le moteur veut prendre
+ * @return -> bool
+ */
 bool GestionMouvementAxe::checkMovementLimit(bool directionVoulue)
 {
-	 if(noMoteur == 8)
+	if(noMoteur == 8)
 	{
 		return 1;
 	}
 
-	 else if(directionVoulue == 0 && (potentiometre->getPositionPourcentage() < 1))
+	else if(directionVoulue == 0 && (potentiometre->getPositionPourcentage() < 1))
 	{
 		return 0;
 	}
@@ -166,13 +252,28 @@ bool GestionMouvementAxe::checkMovementLimit(bool directionVoulue)
 
 }
 
+
+/*
+ * @name   -> updatePositionPot
+ * @brief  -> fait l'acquisition d'une nouvelle valeur du potentiomètre associer
+ * @param  -> None
+ * @return -> None
+ */
 void GestionMouvementAxe::updatePositionPot()
 {
 	potentiometre->acquisitionNewPositionAxe();
 	this->positionPotPourcentage = potentiometre->getPositionPourcentage();
 }
 
+
 //gestion pince
+
+/*
+ * @name   -> setDirectionPince
+ * @brief  -> set la direction que le moteur de la pince doit prendre (CW, CCW ou IDLE)
+ * @param  -> direction: direction voulue
+ * @return -> None
+ */
 void GestionMouvementAxe::setDirectionPince(uint8_t direction)
 {
 	switch(direction)
@@ -189,6 +290,12 @@ void GestionMouvementAxe::setDirectionPince(uint8_t direction)
 	}
 }
 
+/*
+ * @name   -> ~GestionMouvementAxe
+ * @brief  -> destructeur de la classe
+ * @param  -> None
+ * @return -> None
+ */
 GestionMouvementAxe::~GestionMouvementAxe()
 {
 	// TODO Auto-generated destructor stub

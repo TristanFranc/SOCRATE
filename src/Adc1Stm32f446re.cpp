@@ -1,5 +1,5 @@
 /*
- * @file    -> Adc1Stm32f446re.h
+ * @file    -> Adc1Stm32f446re.cpp
  * @author  -> Justin Bélanger
  * @version -> 0.01
  * @Created -> 16 mars 2021
